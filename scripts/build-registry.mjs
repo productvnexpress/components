@@ -74,11 +74,15 @@ const registry = {
   items,
 };
 
-writeFileSync(join(ROOT, "registry.json"), JSON.stringify(registry, null, 2) + "\n");
+const registryJson = JSON.stringify(registry, null, 2) + "\n";
+writeFileSync(join(ROOT, "registry.json"), registryJson);
+// Also publish the manifest itself to public/, so it's reachable on Pages
+// alongside public/r/*.json (used by tooling to search/browse the catalog).
+writeFileSync(join(ROOT, "public", "registry.json"), registryJson);
 
 console.log(`Built ${items.length} components across ${categories.length} categories.`);
 console.log(`  -> public/r/*.json (${items.length} files)`);
-console.log(`  -> registry.json (manifest)`);
+console.log(`  -> registry.json / public/registry.json (manifest)`);
 
 if (errors.length) {
   console.log(`\n${errors.length} problem(s):`);
