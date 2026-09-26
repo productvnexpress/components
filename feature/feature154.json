@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature154",
+  "title": "Feature",
+  "description": "A component featuring dual infinite sliders with badges for features like Integrations, Automation, etc., inside a styled section with a gradient and wave overlay.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://magicui.design/r/marquee",
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature154.tsx",
+      "content": "\"use client\";\n\nimport {\n  Activity,\n  ArrowDownToLine,\n  ArrowUpDown,\n  Bell,\n  Brain,\n  CheckCircle,\n  Clock,\n  Code,\n  Database,\n  FileText,\n  GitBranch,\n  Redo,\n  Repeat,\n  Rocket,\n  Scaling,\n  Scan,\n  Zap,\n} from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Marquee } from \"@/components/magicui/marquee\";\nimport { Badge } from \"@/components/ui/badge\";\n\nconst badges = [\n  {\n    title: \"Integrations\",\n    icon: <Code className=\"size-4\" />,\n  },\n  {\n    title: \"Automation\",\n    icon: <ArrowUpDown className=\"size-4\" />,\n  },\n  {\n    title: \"Workflows\",\n    icon: <GitBranch className=\"size-4\" />,\n  },\n  {\n    title: \"Triggers\",\n    icon: <Zap className=\"size-4\" />,\n  },\n  {\n    title: \"Scheduling\",\n    icon: <Clock className=\"size-4\" />,\n  },\n  {\n    title: \"Monitoring\",\n    icon: <Activity className=\"size-4\" />,\n  },\n  {\n    title: \"AI Processing\",\n    icon: <Brain className=\"size-4\" />,\n  },\n  {\n    title: \"Data Pipeline\",\n    icon: <Database className=\"size-4\" />,\n  },\n  {\n    title: \"Notifications\",\n    icon: <Bell className=\"size-4\" />,\n  },\n  {\n    title: \"Auto-Deploy\",\n    icon: <Rocket className=\"size-4\" />,\n  },\n  {\n    title: \"Testing\",\n    icon: <CheckCircle className=\"size-4\" />,\n  },\n  {\n    title: \"Reporting\",\n    icon: <FileText className=\"size-4\" />,\n  },\n  {\n    title: \"Customization\",\n    icon: <Redo className=\"size-4\" />,\n  },\n  {\n    title: \"Collaboration\",\n    icon: <ArrowDownToLine className=\"size-4\" />,\n  },\n  {\n    title: \"Security\",\n    icon: <Repeat className=\"size-4\" />,\n  },\n  {\n    title: \"Performance\",\n    icon: <Scan className=\"size-4\" />,\n  },\n  {\n    title: \"Scalability\",\n    icon: <Scaling className=\"size-4\" />,\n  },\n];\n\ninterface Feature154Props {\n  className?: string;\n}\n\nconst Feature154 = ({ className }: Feature154Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"mx-auto flex max-w-3xl flex-col items-center justify-center gap-6 text-center\">\n          <Badge variant=\"outline\">Automations</Badge>\n          <h1 className=\"text-4xl font-semibold md:text-6xl\">\n            The best way to automate your workflow\n          </h1>\n          <p className=\"mx-auto max-w-3xl text-lg text-muted-foreground\">\n            Streamline operations with intelligent automation. Eliminate\n            repetitive tasks and focus on what matters most.\n          </p>\n        </div>\n        <div className=\"relative mt-10\">\n          <Marquee className=\"[--duration:30s]\">\n            {badges.map((badge) => (\n              <div\n                key={badge.title}\n                className=\"flex items-center gap-2 rounded-full bg-muted px-4 py-2\"\n              >\n                {badge.icon}\n                {badge.title}\n              </div>\n            ))}\n          </Marquee>\n          <Marquee reverse className=\"[--duration:30s]\">\n            {badges.map((badge) => (\n              <div\n                key={badge.title}\n                className=\"flex items-center gap-2 rounded-full bg-muted px-4 py-2\"\n              >\n                {badge.icon}\n                {badge.title}\n              </div>\n            ))}\n          </Marquee>\n          <div className=\"pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background\"></div>\n          <div className=\"pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background\"></div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature154 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/magicui/marquee.tsx",
+      "content": "import { ComponentPropsWithoutRef } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface MarqueeProps extends ComponentPropsWithoutRef<\"div\"> {\n  /**\n   * Optional CSS class name to apply custom styles\n   */\n  className?: string;\n  /**\n   * Whether to reverse the animation direction\n   * @default false\n   */\n  reverse?: boolean;\n  /**\n   * Whether to pause the animation on hover\n   * @default false\n   */\n  pauseOnHover?: boolean;\n  /**\n   * Content to be displayed in the marquee\n   */\n  children: React.ReactNode;\n  /**\n   * Whether to animate vertically instead of horizontally\n   * @default false\n   */\n  vertical?: boolean;\n  /**\n   * Number of times to repeat the content\n   * @default 4\n   */\n  repeat?: number;\n}\n\nexport function Marquee({\n  className,\n  reverse = false,\n  pauseOnHover = false,\n  children,\n  vertical = false,\n  repeat = 4,\n  ...props\n}: MarqueeProps) {\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]\",\n        {\n          \"flex-row\": !vertical,\n          \"flex-col\": vertical,\n        },\n        className,\n      )}\n    >\n      {Array(repeat)\n        .fill(0)\n        .map((_, i) => (\n          <div\n            key={i}\n            className={cn(\"flex shrink-0 justify-around [gap:var(--gap)]\", {\n              \"animate-marquee flex-row\": !vertical,\n              \"animate-marquee-vertical flex-col\": vertical,\n              \"group-hover:[animation-play-state:paused]\": pauseOnHover,\n              \"[animation-direction:reverse]\": reverse,\n            })}\n          >\n            {children}\n          </div>\n        ))}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

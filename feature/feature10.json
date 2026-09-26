@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature10",
+  "title": "Feature",
+  "description": "A block titled \"Why Us?\" with a subtitle, arranged in up to 4 columns featuring icons for Performance, Innovation, Quality, and Accessibility, each with a brief description.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature10.tsx",
+      "content": "import { PersonStanding, Timer, Zap, ZoomIn } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Feature10Props {\n  className?: string;\n}\n\nconst Feature10 = ({ className }: Feature10Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <p className=\"mb-4 text-xs text-muted-foreground\">Why Us?</p>\n        <h2 className=\"text-3xl font-medium lg:text-4xl\">\n          A better way to build websites\n        </h2>\n        <div className=\"mt-14 grid gap-6 md:grid-cols-2 lg:mt-20 lg:grid-cols-4\">\n          <div className=\"relative flex gap-3 rounded-lg border-dashed md:block md:border-l md:p-5\">\n            <span className=\"mb-8 flex size-10 shrink-0 items-center justify-center rounded-full bg-accent md:size-12\">\n              <Timer className=\"size-5 md:size-6\" />\n            </span>\n            <div>\n              <h3 className=\"font-medium md:mb-2 md:text-xl\">\n                Performance\n                <span className=\"absolute -left-px hidden h-6 w-px bg-primary md:inline-block\"></span>\n              </h3>\n              <p className=\"text-sm text-muted-foreground md:text-base\">\n                Lorem ipsum dolor sit amet, consectetur adipis elit. Sunt beatae\n                tenetur.\n              </p>\n            </div>\n          </div>\n          <div className=\"relative flex gap-3 rounded-lg border-dashed md:block md:border-l md:p-5\">\n            <span className=\"mb-8 flex size-10 shrink-0 items-center justify-center rounded-full bg-accent md:size-12\">\n              <Zap className=\"size-5 md:size-6\" />\n            </span>\n            <div>\n              <h3 className=\"font-medium md:mb-2 md:text-xl\">\n                Innovation\n                <span className=\"absolute -left-px hidden h-6 w-px bg-primary md:inline-block\"></span>\n              </h3>\n              <p className=\"text-sm text-muted-foreground md:text-base\">\n                Lorem ipsum dolor sit amet, consectetur adipis elit. Sunt beatae\n                tenetur.\n              </p>\n            </div>\n          </div>\n          <div className=\"relative flex gap-3 rounded-lg border-dashed md:block md:border-l md:p-5\">\n            <span className=\"mb-8 flex size-10 shrink-0 items-center justify-center rounded-full bg-accent md:size-12\">\n              <ZoomIn className=\"size-5 md:size-6\" />\n            </span>\n            <div>\n              <h3 className=\"font-medium md:mb-2 md:text-xl\">\n                Quality\n                <span className=\"absolute -left-px hidden h-6 w-px bg-primary md:inline-block\"></span>\n              </h3>\n              <p className=\"text-sm text-muted-foreground md:text-base\">\n                Lorem ipsum dolor sit amet, consectetur adipis elit. Sunt beatae\n                tenetur.\n              </p>\n            </div>\n          </div>\n          <div className=\"relative flex gap-3 rounded-lg border-dashed md:block md:border-l md:p-5\">\n            <span className=\"mb-8 flex size-10 shrink-0 items-center justify-center rounded-full bg-accent md:size-12\">\n              <PersonStanding className=\"size-5 md:size-6\" />\n            </span>\n            <div>\n              <h3 className=\"font-medium md:mb-2 md:text-xl\">\n                Accessibility\n                <span className=\"absolute -left-px hidden h-6 w-px bg-primary md:inline-block\"></span>\n              </h3>\n              <p className=\"text-sm text-muted-foreground md:text-base\">\n                Lorem ipsum dolor sit amet, consectetur adipis elit. Sunt beatae\n                tenetur.\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature10 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

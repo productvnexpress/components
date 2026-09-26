@@ -1,0 +1,4 @@
+node_modules/
+public/
+registry.json
+.DS_Store

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero162",
+  "title": "Hero",
+  "description": "A component featuring a 2-column layout with a prominent headline, subtext, and button on one side, and a grid of images and testimonials on the other.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/hero162.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface Hero162Props {\n  className?: string;\n}\n\nconst Hero162 = ({ className }: Hero162Props) => {\n  return (\n    <section\n      className={cn(\n        \"dark relative bg-background font-sans lg:h-[62.5rem]\",\n        className,\n      )}\n    >\n      <div className=\"container flex h-full w-full items-center py-20 lg:py-0\">\n        <div className=\"mx-auto grid h-full w-full max-w-[87.5rem] grid-cols-1 items-center gap-20 lg:grid-cols-2\">\n          <div>\n            <h1 className=\"mb-4 text-6xl leading-tight font-medium text-foreground\">\n              Setting New Industry Standards Through Excellence\n            </h1>\n            <p className=\"text-2xl text-foreground\">\n              Professional Support for Mental Wellness. Personalized Care for\n              Emotional Balance.\n            </p>\n            <div className=\"mt-10\">\n              <Button\n                asChild\n                variant=\"outline\"\n                className=\"block h-fit w-fit rounded-lg border-2 border-white bg-transparent px-8 py-5 text-lg leading-tight font-medium text-white transition duration-500 hover:scale-105 hover:bg-background hover:text-black\"\n              >\n                <a href=\"#\">Our services</a>\n              </Button>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div className=\"top-0 right-0 bottom-0 left-auto m-5 ml-0 w-full px-8 pb-5 lg:absolute lg:max-w-[50%] lg:px-0\">\n        <div className=\"grid h-full w-full grid-cols-1 grid-rows-[18.75rem_13.125rem_10rem] gap-5 md:grid-cols-[3fr_2fr] md:grid-rows-[80%_minmax(20%,9.375rem)]\">\n          <div className=\"row-[1/2] overflow-hidden md:col-[1/3]\">\n            <div className=\"h-full w-full overflow-hidden rounded-3xl bg-muted\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n                alt=\"\"\n                className=\"h-full w-full object-cover object-center\"\n              />\n            </div>\n          </div>\n          <div className=\"col-[1/2] row-[2/3]\">\n            <div className=\"flex h-full flex-col gap-3 overflow-hidden rounded-3xl bg-muted p-5 px-5 md:flex-row md:items-center md:gap-7 md:py-8\">\n              <div className=\"h-20 w-20 shrink-0 overflow-hidden rounded-xl md:h-[7.5rem] md:w-[7.5rem]\">\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp\"\n                  alt=\"\"\n                  className=\"h-full w-full object-cover object-center\"\n                />\n              </div>\n              <div className=\"flex h-full w-full flex-col justify-between gap-2\">\n                <p className=\"text-lg font-medium text-foreground\">\n                  &quot;Since beginning therapy here, I feel more grounded and\n                  at ease.&quot;\n                </p>\n                <p className=\"text-foreground\">John Doe</p>\n              </div>\n            </div>\n          </div>\n          <div className=\"row-[3/4] md:col-[2/3] md:row-[2/3]\">\n            <div className=\"h-full w-full overflow-hidden rounded-3xl bg-muted\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\"\n                alt=\"\"\n                className=\"h-full w-full object-cover object-center\"\n              />\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero162 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

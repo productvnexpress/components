@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "team4",
+  "title": "Team",
+  "description": "A component showcasing a team with 4 profile cards, including images, roles, bios, and social links. Each row adapts to screen size, displaying up to 4 columns.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "code/block/team4.tsx",
+      "content": "import { Github, Twitter, Users } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"@/components/ui/badge\";\n\nconst teamMembers = [\n  {\n    name: \"Alex Johnson\",\n    role: \"CEO & Founder\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp\",\n\n    bio: \"With a background in software development and a vision for productivity, Alex leads the team with passion on user-first innovation.\",\n    social: {\n      twitter: \"#\",\n      github: \"#\",\n    },\n  },\n  {\n    name: \"Jamie Lee\",\n    role: \"Chief Product Officer\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-2.webp\",\n\n    bio: \"Jamie brings years of experience in product design and strategy, ensuring each feature meets the highest standards of functionality and design. \",\n    social: {\n      twitter: \"#\",\n    },\n  },\n  {\n    name: \"Taylor Smith\",\n    role: \"Head of Engineering\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-3.webp\",\n\n    bio: \"Taylor drives the technical vision, overseeing development and ensuring the product is robust, secure, and scalable for users worldwide.\",\n    social: {\n      twitter: \"#\",\n      github: \"#\",\n    },\n  },\n  {\n    name: \"Morgan Davis\",\n    role: \"Marketing Lead\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-4.webp\",\n\n    bio: \"With a knack for storytelling and a deep understanding of the market, Morgan communicates our mission and product benefits to the world.\",\n    social: {\n      twitter: \"#\",\n    },\n  },\n];\n\ninterface Team4Props {\n  className?: string;\n}\n\nconst Team4 = ({ className }: Team4Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"flex flex-col gap-6 py-4 lg:py-8\">\n          <Badge\n            variant=\"outline\"\n            className=\"w-fit gap-1 bg-card px-3 text-sm font-normal tracking-tight shadow-sm\"\n          >\n            <Users className=\"size-4\" />\n            <span>Team up!</span>\n          </Badge>\n          <h2 className=\"text-3xl leading-tight tracking-tight md:text-4xl lg:text-6xl\">\n            The Minds Behind the Mission\n          </h2>\n          <p className=\"max-w-[600px] tracking-[-0.32px] text-muted-foreground\">\n            A dedicated team passionate about shaping the future of\n            productivity.\n          </p>\n        </div>\n\n        <div className=\"mt-10 grid gap-x-12 gap-y-16 sm:grid-cols-2 md:mt-14 lg:grid-cols-4\">\n          {teamMembers.map((member) => (\n            <div key={member.name} className=\"group flex flex-col\">\n              <img\n                src={member.image}\n                alt={member.name}\n                width={80}\n                height={80}\n                className=\"rounded-full object-contain\"\n              />\n              <div className=\"mt-6 flex flex-col tracking-[-0.32px]\">\n                <h3 className=\"text-lg\">{member.name}</h3>\n                <p className=\"text-muted-foreground-subtle\">{member.role}</p>\n                <p className=\"mt-4 text-sm tracking-[-0.36px] text-muted-foreground\">\n                  {member.bio}\n                </p>\n                <div className=\"mt-6 flex gap-2\">\n                  {member.social.twitter && (\n                    <a\n                      href={member.social.twitter}\n                      className=\"hover:text-foreground\"\n                    >\n                      <Twitter />\n                    </a>\n                  )}\n                  {member.social.github && (\n                    <a\n                      href={member.social.github}\n                      className=\"hover:text-foreground\"\n                    >\n                      <Github />\n                    </a>\n                  )}\n                </div>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Team4 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

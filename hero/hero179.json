@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero179",
+  "title": "Hero 179 - Inbox hero with layered wide-and-tall frames",
+  "description": "Split hero echoing hero178 structure with Shared Inbox narrative and two overlapping AspectRatio plates creating a wide lower band and tall rear panel.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "block/hero179/hero179.tsx",
+      "content": "import { Fragment } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Image {\n  src: string;\n  alt: string;\n  srcDark?: string;\n}\n\ninterface HeroLayeredProps {\n  eyebrow?: string;\n  heading: string;\n  description: string;\n  images: Image[];\n  className?: string;\n}\n\ninterface Hero179Props extends HeroLayeredProps {}\ntype Props = Partial<Hero179Props>;\n\nconst defaultProps: Hero179Props = {\n  eyebrow: \"Built with shadcn/ui\",\n  heading: \"Blocks Built With Shadcn & Tailwind\",\n  description: \"Finely crafted components built with React, Tailwind and shadcn/ui. Developers can copy and paste these blocks directly into their project.\",\n  images: [\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/placeholder/images/2-16x9.jpg\",\n      alt: \"Hero image placeholder\",\n    },\n  ],\n  buttons: undefined,\n  pill: undefined,\n};\n\nconst Hero179 = (props: Props) => {\n  const { eyebrow, heading, description, images, className } = {\n    ...defaultProps,\n    ...props,\n  };\n\n  const image = images[0];\n\n  return (\n    <section\n      className={cn(\n        \"relative border-b border-muted bg-background py-32\",\n        className,\n      )}\n    >\n      <div className=\"container mx-auto\">\n        <div className=\"grid grid-cols-1 items-center gap-2 md:gap-4 lg:grid-cols-2\">\n          <div className=\"flex w-full max-w-lg flex-col gap-9 lg:max-w-xl lg:py-28 xl:py-36\">\n            {eyebrow && (\n              <p className=\"font-mono text-sm text-muted-foreground\">\n                {eyebrow}\n              </p>\n            )}\n            <h1 className=\"text-6xl leading-none font-medium tracking-tight text-pretty text-foreground md:text-8xl lg:text-9xl\">\n              {heading.split(\"\\n\").map((line, index) => (\n                <Fragment key={index}>\n                  {index > 0 ? <br /> : null}\n                  {line}\n                </Fragment>\n              ))}\n            </h1>\n            <p className=\"text-lg leading-normal text-balance text-muted-foreground md:text-xl\">\n              {description}\n            </p>\n          </div>\n          <div>\n            <div className=\"relative ml-8 aspect-square w-full overflow-hidden lg:absolute lg:right-0 lg:bottom-0 lg:w-1/2\">\n              <div className=\"absolute inset-0 rounded-tl-lg bg-muted\" />\n              <div className=\"absolute right-0 bottom-0 w-11/12 overflow-hidden rounded-tl-lg shadow-md\">\n                <img\n                  src={image.src}\n                  alt={image.alt}\n                  className=\"aspect-4/3 w-full rounded-md border border-border object-cover object-top-left\"\n                />\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero179 };\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

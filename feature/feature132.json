@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature132",
+  "title": "Feature",
+  "description": "A component displaying a welcome message, a description, a \"Get Started\" button, and a 4-column layout of items with images, titles, and descriptions.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature132.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nconst itemsData = [\n  {\n    id: 1,\n    title: \"Performance\",\n    imageSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n  },\n  {\n    id: 2,\n    title: \"Innovation\",\n    imageSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n  },\n  {\n    id: 3,\n    title: \"Quality\",\n    imageSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n  },\n  {\n    id: 4,\n    title: \"Accessibility\",\n    imageSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n  },\n];\n\ninterface Feature132Props {\n  className?: string;\n}\n\nconst Feature132 = ({ className }: Feature132Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <h2 className=\"mb-6 text-center text-5xl font-semibold\">\n          Welcome to Our Website\n        </h2>\n        <p className=\"m-auto max-w-3xl text-center text-xl text-muted-foreground\">\n          Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig\n          doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur.\n          Explicabo.\n        </p>\n        <a\n          className=\"mx-auto mt-8 block w-fit rounded-full border-2 border-muted bg-background px-6 py-4 text-sm font-semibold transition hover:border-muted-foreground\"\n          href=\"#\"\n        >\n          Get Started\n        </a>\n        <div className=\"mx-auto mt-16 flex flex-col gap-6 md:flex-row\">\n          {itemsData.map((item) => (\n            <a className=\"block\" href=\"#\" key={item.id}>\n              <img\n                src={item.imageSrc}\n                alt=\"placeholder\"\n                className=\"mb-6 h-full max-h-72 w-full rounded-2xl object-cover transition hover:brightness-90 lg:max-h-96\"\n              />\n              <h6 className=\"mb-3 text-lg font-semibold\">{item.title}</h6>\n              <p className=\"text-sm text-muted-foreground\">\n                {item.description}\n              </p>\n            </a>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature132 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

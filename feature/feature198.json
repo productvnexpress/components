@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature198",
+  "title": "Feature",
+  "description": "A component showcasing 3 cards with icons, titles, and descriptions, each highlighting unique software benefits. Positioned dynamically for visual interest.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "card"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature198.tsx",
+      "content": "import { Cable, Workflow, Wrench } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Card } from \"@/components/ui/card\";\n\ninterface DataItem {\n  title: string;\n  description: string;\n  icon: React.ReactNode;\n  className?: string;\n}\n\nconst DATA: DataItem[] = [\n  {\n    title: \"Simplify Your Workflow\",\n    description:\n      \"Streamline your operations with tools designed to fit your business needs.\",\n    icon: <Workflow />,\n    className: \"absolute cursor-pointer top-0.5\",\n  },\n  {\n    title: \"Eliminate Clunky Tools\",\n    description:\n      \"Replace outdated software with intuitive solutions that empower your team.\",\n    icon: <Wrench />,\n    className: \"absolute cursor-pointer -right-4 top-5 xl:top-0 xl:right-5\",\n  },\n  {\n    title: \"Connect Your Workflows\",\n    description:\n      \"Integrate your tools and data to create seamless, efficient workflows.\",\n    icon: <Cable />,\n    className: \"absolute cursor-pointer bottom-2 left-[25%]\",\n  },\n];\n\nconst CardComponent = ({\n  title,\n  description,\n  icon,\n  className,\n}: {\n  title: string;\n  description: string;\n  icon: React.ReactNode;\n  className?: string;\n}) => {\n  return (\n    <div className={cn(\"\", className)}>\n      <Card className=\"flex max-w-lg transform items-center gap-4 rounded-2xl p-6 shadow-lg transition-transform hover:scale-105\">\n        <div className=\"shrink-0 rounded-full bg-muted p-3.5\">{icon}</div>\n        <div className=\"font-semibold\">\n          <p>{title}</p>\n          <p className=\"text-muted-foreground\">{description}</p>\n        </div>\n      </Card>\n    </div>\n  );\n};\n\ninterface Feature198Props {\n  className?: string;\n}\n\nconst Feature198 = ({ className }: Feature198Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"relative py-20 md:py-24 lg:py-28\">\n          <h2 className=\"mx-auto max-w-5xl text-center text-5xl font-medium sm:text-6xl lg:text-7xl xl:text-[85px]\">\n            <span className=\"text-muted-foreground\">\n              Your tools should adapt to your business.{\" \"}\n            </span>\n            <span>Not the other way around.</span>\n          </h2>\n\n          <div className=\"lg:hidden\">\n            <div className=\"grid translate-y-4 justify-items-center gap-2\">\n              {DATA.map((card, index) => (\n                <CardComponent\n                  key={index}\n                  title={card.title}\n                  description={card.description}\n                  icon={card.icon}\n                />\n              ))}\n            </div>\n          </div>\n\n          {/* Cards for larger screens (lg:block) */}\n          <div className=\"absolute inset-0 max-lg:hidden\">\n            {DATA.map((card, index) => (\n              <CardComponent\n                key={index}\n                title={card.title}\n                description={card.description}\n                icon={card.icon}\n                className={card.className}\n              />\n            ))}\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature198 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-header\"\n      className={cn(\n        \"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-title\"\n      className={cn(\"leading-none font-semibold\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-description\"\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-action\"\n      className={cn(\n        \"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-content\"\n      className={cn(\"px-6\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-footer\"\n      className={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardAction,\n  CardDescription,\n  CardContent,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

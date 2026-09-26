@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature99",
+  "title": "Feature",
+  "description": "A component displaying a setup guide with a heading, introductory section, and a 3-column layout for steps, each having a title and description.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature99.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Feature99Props {\n  className?: string;\n}\n\nconst Feature99 = ({ className }: Feature99Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"flex flex-col gap-8 lg:flex-row lg:gap-20\">\n          <div className=\"flex h-fit items-center gap-2.5 text-lg whitespace-nowrap\">\n            <span className=\"size-3 shrink-0 rounded-full bg-green-500\"></span>\n            Get started\n          </div>\n          <div>\n            <h2 className=\"mb-11 text-3xl lg:text-5xl\">Quick Setup Guide</h2>\n            <div className=\"grid gap-8 md:grid-cols-3\">\n              <div className=\"flex flex-col gap-1 border-l pr-4 pl-4 md:pl-8\">\n                <span className=\"font-mono text-4xl lg:text-6xl\">1</span>\n                <h3 className=\"mt-2 text-xl font-medium\">\n                  Integrate your HR platform effortlessly\n                </h3>\n                <p className=\"text-sm text-muted-foreground\">\n                  Our platform supports 38 HR systems, ensuring a smooth\n                  connection in just two minutes.\n                </p>\n              </div>\n              <div className=\"flex flex-col gap-1 border-l pr-4 pl-4 md:pl-8\">\n                <span className=\"font-mono text-4xl lg:text-6xl\">2</span>\n                <h3 className=\"mt-2 text-xl font-medium\">\n                  Sync employees with ease{\" \"}\n                </h3>\n                <p className=\"text-sm text-muted-foreground\">\n                  Automatically import your team into our system, enabling you\n                  to start analyzing the data instantly.\n                </p>\n              </div>\n              <div className=\"flex flex-col gap-1 border-l pr-4 pl-4 md:pl-8\">\n                <span className=\"font-mono text-4xl lg:text-6xl\">3</span>\n                <h3 className=\"mt-2 text-xl font-medium\">\n                  Dive into insights and manage your team\n                </h3>\n                <p className=\"text-sm text-muted-foreground\">\n                  Whether you work solo or with a team, explore benchmarks,\n                  review offers, and streamline leveling.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature99 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

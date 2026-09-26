@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature53",
+  "title": "Feature",
+  "description": "A component displaying a grid of logos and titles, transitioning from 2 to 4 columns, with unique numbering for each item.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature53.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nconst items = [\n  {\n    title: \"Next.js\",\n    image: (\n      <img\n        src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/nextjs-wordmark.svg\"\n        alt=\"next.js\"\n        className=\"mt-2.5 max-h-12 lg:mt-0 dark:invert\"\n      />\n    ),\n  },\n  {\n    title: \"React\",\n    image: (\n      <img\n        src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/react-wordmark.svg\"\n        alt=\"react\"\n        className=\"mt-2.5 max-h-9 lg:mt-0 lg:max-h-12\"\n      />\n    ),\n  },\n  {\n    title: \"Shadcn/ui\",\n    image: (\n      <img\n        src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcn-ui-wordmark.svg\"\n        alt=\"shadcn/ui\"\n        className=\"mt-2.5 max-h-5 lg:mt-0 lg:max-h-7 dark:invert\"\n      />\n    ),\n  },\n  {\n    title: \"Supabase\",\n    image: (\n      <>\n        <img\n          src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/supabase-wordmark.svg\"\n          alt=\"supabase\"\n          className=\"mt-2.5 max-h-6 lg:mt-0 lg:max-h-9 dark:hidden\"\n        />\n        <img\n          src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/supabase-wordmark-dark.svg\"\n          alt=\"supabase\"\n          className=\"mt-2.5 hidden max-h-6 lg:mt-0 lg:max-h-9 dark:block\"\n        />\n      </>\n    ),\n  },\n  {\n    title: \"Vercel\",\n    image: (\n      <img\n        src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/vercel-wordmark.svg \"\n        className=\"mt-2.5 max-h-5 lg:mt-0 lg:max-h-8 dark:invert\"\n        alt=\"vercel\"\n      />\n    ),\n  },\n  {\n    title: \"Tailwind\",\n    image: (\n      <>\n        <img\n          src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/tailwind-wordmark-light.svg\"\n          alt=\"tailwind\"\n          className=\"mt-2.5 max-h-5 lg:mt-0 lg:max-h-6 dark:hidden\"\n        />\n        <img\n          src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/tailwind-wordmark-dark.svg\"\n          alt=\"tailwind\"\n          className=\"mt-2.5 hidden max-h-5 lg:mt-0 lg:max-h-6 dark:block\"\n        />\n      </>\n    ),\n  },\n  {\n    title: \"Astro\",\n    image: (\n      <img\n        src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-wordmark.svg\"\n        alt=\"astro\"\n        className=\"mt-2.5 max-h-7 lg:mt-0 lg:max-h-9 dark:invert\"\n      />\n    ),\n  },\n  {\n    title: \"GitHub\",\n    image: (\n      <img\n        src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/github-wordmark.svg\"\n        alt=\"github\"\n        className=\"mt-2.5 max-h-6 lg:mt-0 lg:max-h-9 dark:invert\"\n      />\n    ),\n  },\n];\n\ninterface Feature53Props {\n  className?: string;\n}\n\nconst Feature53 = ({ className }: Feature53Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"grid grid-cols-2 gap-px border border-border bg-border md:grid-cols-4\">\n          {items.map((item, index) => (\n            <div key={index} className=\"bg-background\">\n              <div className=\"relative mx-4 flex min-h-[150px] flex-col items-center justify-center lg:min-h-[280px]\">\n                <p className=\"absolute top-4 left-0 font-mono text-xs\">\n                  <span>{String(index + 1).padStart(2, \"0\")}</span>\n                  <span className=\"ml-2\">{item.title}</span>\n                </p>\n                {item.image}\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature53 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero75",
+  "title": "Hero",
+  "description": "A component showcasing a business service with a catchy headline, description, upgrade button, overlapped avatars indicating user trust, and a side image.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-avatar",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/hero75.tsx",
+      "content": "import { ChevronRight } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\nimport { Button } from \"@/components/ui/button\";\n\ninterface Hero75Props {\n  className?: string;\n}\n\nconst Hero75 = ({ className }: Hero75Props) => {\n  return (\n    <section className={cn(\"dark flex\", className)}>\n      <div className=\"flex w-full items-center justify-center bg-background lg:w-1/2\">\n        <div className=\"container my-10 flex w-[500px] flex-col gap-24\">\n          <h1 className=\"text-4xl text-foreground\">\n            Business{\" \"}\n            <span className=\"bg-linear-to-tr from-foreground to-muted bg-clip-text text-transparent\">\n              PRO\n            </span>\n          </h1>\n          <div>\n            <h2 className=\"text-4xl text-foreground lg:text-6xl\">\n              Achieve More with Elite Access Pro\n            </h2>\n            <p className=\"mt-2.5 text-foreground lg:text-xl\">\n              Enhance your career hunt with increased visibility, first-look\n              opportunities and monetary incentives!\n            </p>\n            <Button className=\"mt-10 flex h-fit items-center gap-2.5 rounded-xl px-5 py-4 font-bold\">\n              <span>Upgrade to premium </span>\n              <ChevronRight className=\"size-5!\" />\n            </Button>\n          </div>\n          <div className=\"flex items-center gap-3.5\">\n            <div className=\"flex -space-x-3\">\n              <Avatar className=\"block size-11 min-h-11 min-w-11 rounded-full object-cover lg:size-11\">\n                <AvatarImage src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp\" />\n                <AvatarFallback>A</AvatarFallback>\n              </Avatar>\n              <Avatar className=\"block size-11 min-h-11 min-w-11 rounded-full object-cover lg:size-11\">\n                <AvatarImage src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-2.webp\" />\n                <AvatarFallback>B</AvatarFallback>\n              </Avatar>\n              <Avatar className=\"block size-11 min-h-11 min-w-11 rounded-full object-cover lg:size-11\">\n                <AvatarImage src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-3.webp\" />\n                <AvatarFallback>C</AvatarFallback>\n              </Avatar>\n              <Avatar className=\"block size-11 min-h-11 min-w-11 rounded-full object-cover lg:size-11\">\n                <AvatarImage src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-4.webp\" />\n                <AvatarFallback>D</AvatarFallback>\n              </Avatar>\n              <Avatar className=\"block size-11 min-h-11 min-w-11 rounded-full object-cover lg:size-11\">\n                <AvatarImage src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-5.webp\" />\n                <AvatarFallback>E</AvatarFallback>\n              </Avatar>\n            </div>\n            <span className=\"text-xs text-foreground lg:text-sm\">\n              More than 1 million medical practitioners rely on CareerMed\n            </span>\n          </div>\n        </div>\n      </div>\n      <img\n        src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\"\n        alt=\"\"\n        className=\"hidden h-screen w-1/2 object-cover lg:block\"\n      />\n    </section>\n  );\n};\n\nexport { Hero75 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/avatar.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as AvatarPrimitive from \"@radix-ui/react-avatar\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Avatar({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Root>) {\n  return (\n    <AvatarPrimitive.Root\n      data-slot=\"avatar\"\n      className={cn(\n        \"relative flex size-8 shrink-0 overflow-hidden rounded-full\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarImage({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Image>) {\n  return (\n    <AvatarPrimitive.Image\n      data-slot=\"avatar-image\"\n      className={cn(\"aspect-square size-full\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarFallback({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {\n  return (\n    <AvatarPrimitive.Fallback\n      data-slot=\"avatar-fallback\"\n      className={cn(\n        \"bg-muted flex size-full items-center justify-center rounded-full\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Avatar, AvatarImage, AvatarFallback }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

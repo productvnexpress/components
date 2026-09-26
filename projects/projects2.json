@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "projects2",
+  "title": "Projects",
+  "description": "A showcase block with a title and a list of projects. Each listing includes a bold title, description, and image arranged in a flexible grid.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/projects2.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Projects2type {\n  title: string;\n  description: string;\n  imagePath: string;\n  imageAlt: string;\n}\n\nconst projects2prop: Projects2type[] = [\n  {\n    title: \"MOSAIC\",\n    description:\n      \"A vibrant fusion of city lights and digital artistry, this installation transforms urban landscapes into interactive canvases, inviting viewers to become part of the evolving masterpiece.\",\n    imagePath: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw1.jpeg\",\n    imageAlt: \"Modern digital art installation\",\n  },\n  {\n    title: \"IDENTITY REIMAGINED\",\n    description:\n      \"A bold rebranding journey, where classic design principles meet contemporary flair. This project breathes new life into established brands, crafting visual stories that resonate across every platform.\",\n    imagePath: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw2.jpeg\",\n    imageAlt: \"Brand design mockups and materials\",\n  },\n  {\n    title: \"SERENITY SPACES\",\n    description:\n      \"An exploration of harmony between architecture and human experience. This concept blends natural materials and open layouts to create environments that inspire calm and creativity.\",\n    imagePath: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw3.jpeg\",\n    imageAlt: \"Architectural interior design concept\",\n  },\n];\n\ninterface Projects2Props {\n  className?: string;\n}\n\nconst Projects2 = ({ className }: Projects2Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <h1 className=\"mb-16 font-serif text-4xl font-normal tracking-wide text-foreground md:mb-24 md:text-6xl lg:text-7xl\">\n          PROJECT SHOWCASE\n        </h1>\n\n        <div className=\"space-y-16 md:space-y-24 lg:space-y-32\">\n          {projects2prop.map((project, index) => (\n            <div\n              key={index}\n              className=\"grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12\"\n            >\n              <div className=\"order-2 lg:order-1 lg:col-span-4\">\n                <h2 className=\"mb-4 font-sans text-base font-bold tracking-wider text-foreground uppercase md:text-base\">\n                  {project.title}\n                </h2>\n                <p className=\"max-w-sm font-sans text-sm leading-relaxed text-muted-foreground md:text-base\">\n                  {project.description}\n                </p>\n              </div>\n\n              <div className=\"order-1 lg:order-2 lg:col-span-8\">\n                <div className=\"relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-border\">\n                  <img\n                    src={project.imagePath}\n                    alt={project.imageAlt}\n                    className=\"h-full w-full object-cover\"\n                  />\n                </div>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Projects2 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

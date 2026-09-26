@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero193",
+  "title": "Hero 193 - Centered fullscreen hero with serif headline",
+  "description": "A full-height hero with edge-to-edge background photography, centered Playfair headline with an italic accent word, supporting copy, and one rounded primary button.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "block/hero193/hero193.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Image {\n  src: string;\n  alt: string;\n  srcDark?: string;\n}\ninterface Button {\n  text: string;\n  url: string;\n  icon?: React.ReactNode;\n}\ninterface Buttons {\n  primary?: Button;\n  secondary?: Button;\n}\n\ninterface HeroFullscreenProps {\n  className?: string;\n  backgroundImage: Image;\n  heading: string;\n  description: string;\n  buttons?: Buttons;\n}\n\ninterface Hero193Props extends HeroFullscreenProps {\n  headingEmphasisParts?: Hero193HeadingEmphasis;\n}\ntype Props = Partial<Hero193Props>;\n\nconst defaultProps: Hero193Props = {\n  backgroundImage: {\n  src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/fullscreen/andrew-kliatskyi-VGQhjo6EUks-unsplash.jpg\",\n  alt: \"Full-bleed background\",\n},\n  heading: \"Build experiences that feel inevitable\",\n  description: \"From first impression to lasting habit — craft every surface with intention.\",\n  buttons: {\n    primary: { text: \"Explore work\", url: \"#\" },\n  },\n  headingEmphasisParts: {\n    before: \"Build experiences that feel \",\n    emphasis: \"inevitable\",\n    after: \"\",\n  },\n};\n\ninterface Hero193HeadingEmphasis {\n  before: string;\n  emphasis: string;\n  after: string;\n}\n\nconst Hero193 = (props: Props) => {\n  const {\n    backgroundImage,\n    heading,\n    headingEmphasisParts,\n    description,\n    buttons,\n    className,\n  } = {\n    ...defaultProps,\n    ...props,\n  };\n\n  return (\n    <section\n      style={{\n        backgroundImage: `url('${backgroundImage.src}')`,\n      }}\n      className={cn(\n        \"dark relative h-svh min-h-[37.5rem] w-full bg-cover bg-center bg-no-repeat\",\n        className,\n      )}\n    >\n      <div aria-hidden className=\"absolute inset-0 bg-black/40\" />\n      <div className=\"relative z-10 flex size-full items-center justify-center px-12 py-8 md:px-24 md:py-16\">\n        <div className=\"m-0 flex w-full max-w-2xl flex-col items-center gap-8 text-center md:max-w-3xl\">\n          <h1 className=\"font-playfair text-5xl leading-none font-normal text-foreground md:text-7xl md:leading-tight\">\n            {headingEmphasisParts ? (\n              <>\n                {headingEmphasisParts.before}\n                <span className=\"italic\">{headingEmphasisParts.emphasis}</span>\n                {headingEmphasisParts.after}\n              </>\n            ) : (\n              heading\n            )}\n          </h1>\n          <p className=\"w-full max-w-2xl text-2xl font-medium text-muted-foreground\">\n            {description}\n          </p>\n          {buttons?.primary && (\n            <Button\n              asChild\n              className=\"h-fit rounded-full py-3.5 ps-7! pe-7! text-base\"\n            >\n              <a href={buttons.primary.url}>{buttons.primary.text}</a>\n            </Button>\n          )}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero193 };\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "about15",
+  "title": "About",
+  "description": "A component with a 2-column layout featuring an angled image and user info on one side and a title with paragraphs on the other. Unique for its image tilt and contrasting text styles.",
+  "dependencies": [
+    "react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/about15.tsx",
+      "content": "import React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface About15Props {\n  className?: string;\n}\n\nconst About15 = ({ className }: About15Props) => {\n  return (\n    <section\n      className={cn(\"dark bg-background py-32 text-foreground\", className)}\n    >\n      <div className=\"container flex flex-col items-center justify-center gap-25 lg:flex-row lg:gap-[10vw]\">\n        <div className=\"w-xs rotate-[-6deg] border bg-foreground p-1 text-background\">\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri4/img14.png\"\n            alt=\"\"\n            className=\"pointer-events-none h-110 w-full object-cover\"\n          />\n\n          <div className=\"pt-2 pb-1\">\n            <p className=\"text-lg font-medium tracking-tight text-background\">\n              John Doe\n            </p>\n            <p className=\"text-sm text-background/50\">@shadcnblocks.com</p>\n          </div>\n        </div>\n        <div className=\"w-xs space-y-6\">\n          <h1 className=\"mb-15 text-5xl font-medium tracking-tight\">\n            Shaping ideas with clarity and{\" \"}\n            <span className=\"font-instrumentSerif\">impact</span>\n          </h1>\n          <p className=\"text-sm lg:text-base\">\n            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet\n            voluptate saepe quas cum reprehenderit eligendi inventore animi\n            excepturi sapiente earum.\n          </p>\n          <p className=\"text-sm lg:text-base\">\n            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet\n            voluptate saepe quas cum reprehenderit eligendi inventore animi\n            excepturi sapiente earum.\n          </p>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { About15 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

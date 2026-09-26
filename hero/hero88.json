@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero88",
+  "title": "Hero 88 - Gradient Statement Hero",
+  "description": "A DM Sans hero with a two-line headline using a primary gradient on the first line and solid foreground on the second, supporting copy with emphasized years line, primary CTA, and a text link with arrow to explore work.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "block/hero88/hero88.tsx",
+      "content": "import { ArrowDown } from \"lucide-react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface Hero88Props {\n  className?: string;\n}\n\nconst Hero88 = ({ className }: Hero88Props) => {\n  return (\n    <section\n      className={cn(\"font-dm_sans bg-background py-12 md:py-32\", className)}\n    >\n      <div className=\"container\">\n        <div className=\"flex w-full flex-col gap-6\">\n          <h1 className=\"text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl\">\n            <span className=\"bg-linear-to-t from-primary to-primary/70 bg-clip-text text-transparent\">\n              Hi, we&apos;re Shadcnblocks\n            </span>\n            <br />\n            <span className=\"text-foreground\">\n              Transforming ideas into stunning digital experiences.\n            </span>\n          </h1>\n\n          <p className=\"text-xl text-muted-foreground sm:text-3xl\">\n            With over{\" \"}\n            <strong className=\"font-semibold text-foreground\">\n              20 years of expertise\n            </strong>\n            , we specialize in crafting high-quality digital products that\n            captivate your audience and drive business growth.\n          </p>\n\n          <div className=\"flex flex-col items-center gap-4 py-4 sm:flex-row sm:flex-wrap\">\n            <Button className=\"w-full rounded-full px-8 py-6 text-lg font-bold sm:w-fit sm:px-12 sm:py-8\">\n              Let&apos;s Collaborate\n            </Button>\n            <a\n              href=\"#\"\n              className=\"inline-flex items-center gap-2 text-lg text-muted-foreground transition-colors hover:text-foreground sm:text-xl\"\n            >\n              <span>or explore our work</span>\n              <ArrowDown className=\"size-4 shrink-0 sm:size-6\" aria-hidden />\n            </a>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero88 };\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature26",
+  "title": "Feature",
+  "description": "A component displaying 6 features with icons, titles, and descriptions in a grid of up to 3 columns.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "@radix-ui/react-separator"
+  ],
+  "registryDependencies": [
+    "badge",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature26.tsx",
+      "content": "import {\n  Code,\n  Infinity as InfinityIcon,\n  Lock,\n  MessageCircle,\n  Text,\n  Upload,\n} from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { Separator } from \"@/components/ui/separator\";\n\nconst features = [\n  {\n    title: \"100% Secure\",\n    description:\n      \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, numquam possimus necessitatibus voluptatem eius.\",\n    icon: <Lock className=\"h-5\" />,\n  },\n  {\n    title: \"24/7 Support\",\n    description:\n      \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, numquam possimus necessitatibus voluptatem eius.\",\n    icon: <MessageCircle className=\"h-5\" />,\n  },\n  {\n    title: \"Unlimited Access\",\n    description:\n      \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, numquam possimus necessitatibus voluptatem eius.\",\n    icon: <InfinityIcon className=\"h-5\" />,\n  },\n  {\n    title: \"Easy to Use\",\n    description:\n      \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, numquam possimus necessitatibus voluptatem eius.\",\n    icon: <Text className=\"h-5\" />,\n  },\n  {\n    title: \"Built for Developers\",\n    description:\n      \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, numquam possimus necessitatibus voluptatem eius.\",\n    icon: <Code className=\"h-5\" />,\n  },\n  {\n    title: \"Always Up to Date\",\n    description:\n      \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, numquam possimus necessitatibus voluptatem eius.\",\n    icon: <Upload className=\"h-5\" />,\n  },\n];\n\ninterface Feature26Props {\n  className?: string;\n}\n\nconst Feature26 = ({ className }: Feature26Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <Badge className=\"mb-6\" variant=\"outline\">\n          Features\n        </Badge>\n        <h2 className=\"text-3xl font-medium\">\n          Lorem ipsum dolor sit amet consectetur.\n        </h2>\n        <Separator className=\"my-16\" />\n        <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n          {features.map((feature, idx) => (\n            <div key={idx} className=\"flex gap-3\">\n              <span className=\"flex size-11 shrink-0 items-center justify-center rounded-full bg-accent\">\n                {feature.icon}\n              </span>\n              <div>\n                <h3 className=\"text-lg font-medium\">{feature.title}</h3>\n                <p className=\"leading-7 text-muted-foreground\">\n                  {feature.description}\n                </p>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature26 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/separator.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SeparatorPrimitive from \"@radix-ui/react-separator\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Separator({\n  className,\n  orientation = \"horizontal\",\n  decorative = true,\n  ...props\n}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {\n  return (\n    <SeparatorPrimitive.Root\n      data-slot=\"separator\"\n      decorative={decorative}\n      orientation={orientation}\n      className={cn(\n        \"bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Separator }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

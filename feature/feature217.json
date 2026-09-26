@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature217",
+  "title": "Feature",
+  "description": "A component focused on inclusive design features, with a two-column layout for a header and an image, followed by a three-column section showcasing features with icons, titles, and summaries.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-aspect-ratio"
+  ],
+  "registryDependencies": [
+    "aspect-ratio"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature217.tsx",
+      "content": "import { Eye, Keyboard, LucideIcon, Volume2 } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { AspectRatio } from \"@/components/ui/aspect-ratio\";\n\ninterface Item {\n  title: string;\n  summary: string;\n  icon: LucideIcon;\n}\n\nconst FEATURES: Array<Item> = [\n  {\n    title: \"Keyboard Navigation\",\n    summary:\n      \"Ensure all interactive elements are accessible via keyboard alone, allowing users with motor impairments to navigate easily and efficiently without a mouse.\",\n    icon: Keyboard,\n  },\n  {\n    title: \"Screen Reader Friendly\",\n    summary:\n      \"Use semantic HTML and proper ARIA labels to help screen readers convey structure and meaning clearly to users with visual impairments.\",\n    icon: Volume2,\n  },\n  {\n    title: \"Color Contrast Check\",\n    summary:\n      \"Maintain strong color contrast between text and background to support users with low vision and improve readability across different lighting conditions.\",\n    icon: Eye,\n  },\n];\n\nconst FeatureItem = ({ title, summary, icon: Icon }: Item) => {\n  return (\n    <div className=\"flex flex-col items-center justify-center gap-4\">\n      <Icon className=\"size-7 stroke-muted-foreground\" />\n      <div className=\"max-w-xs text-center text-xl font-semibold\">{title}</div>\n      <div className=\"max-w-lg text-center text-base text-muted-foreground\">\n        {summary}\n      </div>\n    </div>\n  );\n};\n\ninterface Feature217Props {\n  className?: string;\n}\n\nconst Feature217 = ({ className }: Feature217Props) => {\n  return (\n    <section className={cn(\"\", className)}>\n      <div\n        className=\"relative bg-cover bg-center bg-no-repeat py-10 after:absolute after:inset-0 after:z-10 after:block after:size-full after:bg-black/40 after:content-[''] md:py-16 xl:px-6 xl:py-28\"\n        style={{\n          backgroundImage:\n            \"url('https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/futuristic-device-design-qcufu.png')\",\n        }}\n      >\n        <div className=\"relative z-20 container\">\n          <div className=\"grid items-start justify-start gap-14 xl:grid-cols-2 xl:items-center xl:justify-center\">\n            <div className=\"flex flex-col gap-8\">\n              <h2 className=\"text-2xl tracking-tight text-white md:text-7xl\">\n                Incredible AI-powered video editing\n              </h2>\n              <div className=\"text-lg font-medium tracking-tight text-white\">\n                Accessibility ensures digital content is usable by all,\n                including people with disabilities, by following inclusive\n                design practices and meeting standards like WCAG for equal user\n                experience.\n              </div>\n            </div>\n            <div className=\"flex items-center justify-end\">\n              <div className=\"max-w-xl xl:w-full\">\n                <AspectRatio\n                  ratio={0.80239521}\n                  className=\"w-full overflow-hidden rounded-xl shadow-xl\"\n                >\n                  <img\n                    src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\"\n                    alt=\"\"\n                    className=\"block size-full object-cover object-center\"\n                  />\n                </AspectRatio>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div className=\"container\">\n        <div className=\"grid items-start gap-16 py-20 lg:grid-cols-3\">\n          {FEATURES.map((item) => (\n            <FeatureItem key={item.title} {...item} />\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature217 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/aspect-ratio.tsx",
+      "content": "\"use client\"\n\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\"\n\nfunction AspectRatio({\n  ...props\n}: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {\n  return <AspectRatioPrimitive.Root data-slot=\"aspect-ratio\" {...props} />\n}\n\nexport { AspectRatio }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

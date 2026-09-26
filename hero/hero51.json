@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero51",
+  "title": "Hero",
+  "description": "A component featuring a hero section with a catchy headline, subtitle, button, and unique background graphics. It includes multiple angled images for visual depth.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/hero51.tsx",
+      "content": "import { Globe } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface Hero51Props {\n  className?: string;\n}\n\nconst Hero51 = ({ className }: Hero51Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"\">\n        <div className=\"relative container mx-auto max-w-xl py-10 text-center\">\n          <div className=\"absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,hsl(var(--muted))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted))_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_50%_100%_at_50%_50%,#000_60%,transparent_100%)] bg-[size:64px_64px]\"></div>\n          <h1 className=\"mb-3 text-4xl lg:text-7xl\">\n            Explore a World of Digital Assets\n          </h1>\n          <p className=\"mb-5 text-sm text-muted-foreground md:text-base\">\n            Discover the future of asset management, tokenization, and liquidity\n            with our comprehensive marketplace.\n          </p>\n          <Button>Marketplace</Button>\n          <div className=\"mt-7 flex items-start justify-center gap-2 font-medium md:text-xl\">\n            <Globe className=\"mt-0.5 h-auto w-5\" />\n            Global Partnerships and Innovation\n          </div>\n        </div>\n        <div className=\"mx-auto mt-14 max-w-7xl overflow-hidden py-8\">\n          <div className=\"relative w-full\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n              alt=\"placeholder\"\n              className=\"relative left-1/2 mx-auto max-h-[480px] w-full rounded-xl object-cover shadow-md lg:static lg:max-w-[60vw] xl:max-w-3xl\"\n            />\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\"\n              alt=\"placeholder\"\n              className=\"absolute top-0 right-20 -z-10 hidden max-h-60 -rotate-12 rounded-xl object-cover shadow-md lg:block\"\n            />\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\"\n              alt=\"placeholder\"\n              className=\"absolute right-20 bottom-0 hidden rotate-12 rounded-xl object-cover shadow-md md:max-h-60 lg:block\"\n            />\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\"\n              alt=\"placeholder\"\n              className=\"absolute top-0 left-1/4 -z-10 max-h-44 -rotate-12 rounded-xl object-cover shadow-md min-[450px]:max-h-52 sm:left-1/3 md:max-h-60 lg:left-20\"\n            />\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg\"\n              alt=\"placeholder\"\n              className=\"absolute bottom-0 left-1/4 max-h-44 rotate-12 rounded-xl object-cover shadow-md min-[450px]:max-h-52 sm:left-1/3 md:max-h-60 lg:left-20\"\n            />\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero51 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

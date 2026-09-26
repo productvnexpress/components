@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature182",
+  "title": "Feature",
+  "description": "A component showcasing three feature cards with images, titles, descriptions, and icons, plus a section with two action buttons and a descriptive heading.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature182.tsx",
+      "content": "\"use client\";\nimport { ArrowRight, BadgeCheck, Pyramid, Sparkle, Zap } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface DataItem {\n  title: string;\n  description: string;\n  image: string;\n  icon: React.ReactNode;\n}\n\nconst DATA: DataItem[] = [\n  {\n    title: \"Seamless Integrations\",\n    description:\n      \"Connect your favorite tools and services effortlessly for a unified workflow.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\",\n    icon: <Zap className=\"size-6\" />,\n  },\n  {\n    title: \"Advanced Analytics\",\n    description:\n      \"Gain deep insights with powerful analytics to make data-driven decisions.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\",\n    icon: <Pyramid className=\"size-6\" />,\n  },\n  {\n    title: \"Smart Search & Filters\",\n    description:\n      \"Find exactly what you need with intelligent search and filtering options.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\",\n    icon: <Sparkle className=\"size-6\" />,\n  },\n];\n\ninterface Feature182Props {\n  className?: string;\n}\n\nconst Feature182 = ({ className }: Feature182Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        {/* Title and Buttons Section */}\n        <div className=\"text-center\">\n          <h2 className=\"mb-6 text-2xl font-semibold sm:mb-9 sm:text-3xl lg:mb-14 lg:text-4xl\">\n            Discover Powerful Features\n          </h2>\n          <div className=\"flex flex-col justify-center gap-4 sm:flex-row\">\n            <Button className=\"w-full sm:w-auto\">\n              Explore Features <ArrowRight className=\"size-4\" />\n            </Button>\n            <Button variant=\"outline\" className=\"w-full shadow-sm sm:w-auto\">\n              Get Started <BadgeCheck className=\"size-4\" />\n            </Button>\n          </div>\n        </div>\n\n        {/* Feature Cards Section */}\n        <div className=\"mt-12 grid gap-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8\">\n          {DATA.map((feature, index) => (\n            <div key={index} className=\"flex flex-col\">\n              <img\n                src={feature.image}\n                alt={feature.title}\n                className=\"h-64 w-full rounded-lg object-cover\"\n              />\n              <p className=\"mt-4 mb-2 text-xl font-bold\">{feature.title}</p>\n              <p className=\"mb-6 text-sm text-muted-foreground\">\n                {feature.description}\n              </p>\n              <div className=\"w-fit rounded-lg border p-2 shadow-sm\">\n                {feature.icon}\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature182 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

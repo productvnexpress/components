@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature138",
+  "title": "Feature",
+  "description": "A component featuring three sections, each with an image and text side-by-side, headers, and a \"Learn more\" link. Alternates image/text order between sections.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature138.tsx",
+      "content": "\"use client\";\n\nimport { MoveRight } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Feature138Props {\n  className?: string;\n}\n\nconst Feature138 = ({ className }: Feature138Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <h2 className=\"text-4xl font-semibold\">\n          Built by the best and brightest\n        </h2>\n        <p className=\"mt-3 text-xl font-medium text-muted-foreground\">\n          Lorem ipsum dolor, sit amet\n        </p>\n\n        <div className=\"mt-16 flex flex-col overflow-hidden rounded-2xl bg-muted md:flex-row\">\n          <div className=\"flex w-full items-center bg-muted md:w-1/2\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\"\n              alt=\"placeholder\"\n              className=\"max-h-64 w-full object-cover\"\n            />\n          </div>\n          <div className=\"flex w-full flex-col justify-center gap-6 px-8 py-7 md:w-1/2 md:px-12 md:py-10\">\n            <h6 className=\"text-lg font-semibold md:text-2xl\">\n              Proven methodologies\n            </h6>\n\n            <div className=\"h-px w-full bg-muted-foreground\" />\n\n            <p className=\"text-muted-foreground\">\n              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit\n              architecto atque consequuntur perferendis ratione dolorem vitae,\n              doloribus facere.\n            </p>\n            <a\n              href=\"#\"\n              className=\"inline-flex items-center font-medium hover:underline\"\n            >\n              <span>Learn more</span>\n              <MoveRight strokeWidth={2} className=\"ml-2 size-4\" />\n            </a>\n          </div>\n        </div>\n\n        <div className=\"mt-16 flex flex-col overflow-hidden rounded-2xl bg-muted md:flex-row\">\n          <div className=\"flex w-full flex-col justify-center gap-6 px-8 py-7 md:w-1/2 md:px-12 md:py-10\">\n            <h6 className=\"text-lg font-semibold md:text-2xl\">\n              Technologies to scale\n            </h6>\n\n            <div className=\"h-px w-full bg-muted-foreground\" />\n\n            <p className=\"text-muted-foreground\">\n              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit\n              architecto atque consequuntur perferendis ratione dolorem vitae,\n              doloribus facere.\n            </p>\n            <a\n              href=\"#\"\n              className=\"inline-flex items-center font-medium hover:underline\"\n            >\n              <span>Learn more</span>\n              <MoveRight strokeWidth={2} className=\"ml-2 size-4\" />\n            </a>\n          </div>\n          <div className=\"flex w-full items-center bg-muted md:w-1/2\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg\"\n              alt=\"placeholder\"\n              className=\"max-h-64 w-full object-cover\"\n            />\n          </div>\n        </div>\n\n        <div className=\"mt-16 flex flex-col overflow-hidden rounded-2xl bg-muted md:flex-row\">\n          <div className=\"flex w-full items-center bg-muted md:w-1/2\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg\"\n              alt=\"placeholder\"\n              className=\"max-h-64 w-full object-cover\"\n            />\n          </div>\n          <div className=\"flex w-full flex-col justify-center gap-6 px-8 py-7 md:w-1/2 md:px-12 md:py-10\">\n            <h6 className=\"text-lg font-semibold md:text-2xl\">\n              A culture of innovation\n            </h6>\n\n            <div className=\"h-px w-full bg-muted-foreground\" />\n\n            <p className=\"text-muted-foreground\">\n              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit\n              architecto atque consequuntur perferendis ratione dolorem vitae,\n              doloribus facere.\n            </p>\n            <a\n              href=\"#\"\n              className=\"inline-flex items-center font-medium hover:underline\"\n            >\n              <span>Learn more</span>\n              <MoveRight strokeWidth={2} className=\"ml-2 size-4\" />\n            </a>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature138 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

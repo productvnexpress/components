@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline19",
+  "title": "Timeline 19 - Vertical Phase Timeline",
+  "description": "A vertical timeline with four project phases, dot markers, and an animated progress line showing current completion status.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "utils",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "block/timeline19/timeline19.tsx",
+      "content": "\"use client\";\n\nimport { motion } from \"framer-motion\";\n\nimport { Separator } from \"@/components/ui/separator\";\nimport { cn } from \"@/lib/utils\";\n\ninterface Timeline19Props {\n  className?: string;\n}\n\nconst Timeline19 = ({ className }: Timeline19Props) => {\n  const currentPhase = 2;\n\n  const timelinePhases = [\n    {\n      id: 0,\n      date: \"January 15, 2024\",\n      title: \"Phase I\",\n      description:\n        \"Initial data collection and model architecture design for the AI system.\",\n    },\n    {\n      id: 1,\n      date: \"March 30, 2024\",\n      title: \"Phase II\",\n      description:\n        \"Model training and validation with core dataset implementation.\",\n    },\n    {\n      id: 2,\n      date: \"June 15, 2024\",\n      title: \"Phase III\",\n      description:\n        \"Integration of advanced features and performance optimization.\",\n    },\n    {\n      id: 3,\n      date: \"September 1, 2024\",\n      title: \"Phase IV\",\n      description:\n        \"Final testing, deployment, and continuous improvement system launch.\",\n    },\n  ];\n\n  return (\n    <section className={cn(\"bg-background py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"mx-auto max-w-3xl\">\n          <h1 className=\"mb-6 text-2xl font-bold tracking-tighter text-foreground sm:text-4xl\">\n            Timeline\n          </h1>\n          <div className=\"relative w-full\">\n            <Separator\n              orientation=\"vertical\"\n              className=\"absolute top-2.5 bottom-2.5 left-0\"\n            />\n            <motion.div\n              initial={{ height: 0 }}\n              whileInView={{\n                height: `${(currentPhase / timelinePhases.length) * 100}%`,\n              }}\n              transition={{ ease: \"easeOut\", duration: 0.5 }}\n              className=\"absolute top-2.5 left-0 z-10 w-0.5 origin-top bg-foreground\"\n              style={{ maxHeight: \"calc(100% - 1.25rem)\" }}\n            />\n            <div className=\"flex flex-col gap-10\">\n              {timelinePhases.map((phase) => (\n                <div key={phase.id} className=\"relative pl-7\">\n                  <div className=\"absolute top-0 -left-[9px] z-10 flex size-5 items-center justify-center rounded-full bg-foreground p-1\">\n                    <div className=\"size-full rounded-full bg-background\" />\n                  </div>\n                  <p className=\"text-sm text-muted-foreground\">{phase.date}</p>\n                  <h2 className=\"text-xl font-bold tracking-tighter text-foreground\">\n                    {phase.title}\n                  </h2>\n                  <p className=\"text-sm text-muted-foreground\">\n                    {phase.description}\n                  </p>\n                </div>\n              ))}\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Timeline19 };\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

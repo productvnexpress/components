@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature32",
+  "title": "Feature",
+  "description": "A component with a title and a 3-column layout for testimonials, one large featured testimonial spans two columns and rows.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature32.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Feature32Props {\n  className?: string;\n}\n\nconst Feature32 = ({ className }: Feature32Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <h2 className=\"mb-14 text-center text-4xl font-medium lg:text-7xl\">\n          Loved by clients\n        </h2>\n        <div className=\"grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3\">\n          <div className=\"rounded-lg bg-accent p-16 md:col-span-2 lg:col-span-2 lg:row-span-2\">\n            <div className=\"flex h-full flex-col justify-between gap-14\">\n              <q className=\"pt-8 text-2xl font-medium lg:pt-14 lg:text-4xl\">\n                Lorem ipsum dolor sit amet consectetur adipisicing elit.\n                Dignissimos ipsum perspiciatis consectetur assumenda incidunt.\n              </q>\n              <div className=\"text-sm\">\n                <p className=\"font-semibold\">John Doe</p>\n                <p>CEO, Company Example</p>\n              </div>\n            </div>\n          </div>\n          <div className=\"rounded-lg bg-accent p-10\">\n            <div className=\"flex flex-col gap-14\">\n              <q className=\"text-lg font-medium\">\n                Lorem ipsum dolor sit amet consecte adipisicing elit.\n              </q>\n              <div className=\"text-sm\">\n                <p className=\"font-semibold\">John Doe</p>\n                <p>CEO, Company Example</p>\n              </div>\n            </div>\n          </div>\n          <div className=\"rounded-lg bg-accent p-10\">\n            <div className=\"flex flex-col gap-14\">\n              <q className=\"text-lg font-medium\">\n                Lorem ipsum dolor sit amet consecte adipisicing elit.\n              </q>\n              <div className=\"text-sm\">\n                <p className=\"font-semibold\">John Doe</p>\n                <p>CEO, Company Example</p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature32 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature56",
+  "title": "Feature",
+  "description": "A component displaying a primary feature block followed by a 3-column layout, each containing a feature description and image.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature56.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Feature56Props {\n  className?: string;\n}\n\nconst Feature56 = ({ className }: Feature56Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container flex flex-col gap-6 lg:px-32\">\n        <div className=\"flex flex-col rounded-lg border border-border bg-accent p-8\">\n          <p className=\"mb-2 text-sm font-semibold md:text-base\">\n            Feature description\n          </p>\n          <p className=\"mb-8 text-sm text-muted-foreground md:text-base\">\n            Nam vitae molestie arcu. Quisque eu libero orci. Aliquam imperdiet\n            magna nec massa consectetur, id interdum ante congue. Nam leo elit,\n            convallis luctus tincidunt et, ullamcorper sed justo.\n          </p>\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-8-wide.svg\"\n            alt=\"placeholder\"\n            className=\"rounded-md lg:mt-auto lg:w-full\"\n          />\n        </div>\n        <div className=\"grid gap-6 lg:grid-cols-3\">\n          <div className=\"grid-cols-2 gap-x-20 rounded-lg border border-border bg-accent p-6 md:grid md:p-8 lg:flex lg:flex-col\">\n            <div className=\"flex flex-col\">\n              <p className=\"mb-2 text-sm font-semibold md:text-base\">\n                Feature description\n              </p>\n              <p className=\"mb-8 text-sm text-muted-foreground md:text-base\">\n                Nam vitae molestie arcu. Quisque eu libero orci.\n              </p>\n            </div>\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\"\n              alt=\"placeholder\"\n              className=\"rounded-md lg:mt-auto lg:w-full\"\n            />\n          </div>\n          <div className=\"grid-cols-2 gap-x-20 rounded-lg border border-border bg-accent p-6 md:grid md:p-8 lg:flex lg:flex-col\">\n            <div className=\"flex flex-col\">\n              <p className=\"mb-2 text-sm font-semibold md:text-base\">\n                Feature description\n              </p>\n              <p className=\"mb-8 text-sm text-muted-foreground md:text-base\">\n                Nam vitae molestie arcu. Quisque eu libero orci.\n              </p>\n            </div>\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg\"\n              alt=\"placeholder\"\n              className=\"rounded-md lg:mt-auto lg:w-full\"\n            />\n          </div>\n          <div className=\"grid-cols-2 gap-x-20 rounded-lg border border-border bg-accent p-6 md:grid md:p-8 lg:flex lg:flex-col\">\n            <div className=\"flex flex-col\">\n              <p className=\"mb-2 text-sm font-semibold md:text-base\">\n                Feature description\n              </p>\n              <p className=\"mb-8 text-sm text-muted-foreground md:text-base\">\n                Nam vitae molestie arcu. Quisque eu libero orci.\n              </p>\n            </div>\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg\"\n              alt=\"placeholder\"\n              className=\"rounded-md lg:mt-auto lg:w-full\"\n            />\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature56 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

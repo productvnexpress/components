@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero24",
+  "title": "Hero",
+  "description": "A marketing block with an image, title, button, and 4 columns highlighting features with icons.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/hero24.tsx",
+      "content": "import { Expand, Globe, MoveRight, Rocket, Wrench } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface Hero24Props {\n  className?: string;\n}\n\nconst Hero24 = ({ className }: Hero24Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"text-center\">\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg\"\n            alt=\"placeholder\"\n            className=\"mx-auto mb-5 w-16 md:mb-6 md:w-24 lg:mb-7 lg:w-28\"\n          />\n          <span className=\"mb-3 text-sm tracking-widest text-muted-foreground md:text-base\">\n            PLATFORM\n          </span>\n          <h1 className=\"mt-4 text-4xl font-semibold text-balance lg:text-6xl\">\n            Develop, launch, and grow your service with our platform\n          </h1>\n          <Button className=\"mt-8\" size=\"lg\">\n            Start now for free\n            <MoveRight className=\"ml-2\" strokeWidth={1} />\n          </Button>\n        </div>\n        <div className=\"mt-16 grid gap-px overflow-hidden rounded-lg border bg-input md:grid-cols-2 lg:grid-cols-4\">\n          <div className=\"flex flex-col gap-3 bg-background p-5 md:gap-6\">\n            <Globe className=\"size-6 shrink-0\" />\n            <div>\n              <h2 className=\"text-sm font-semibold md:text-base\">\n                Robust Infrastructure\n              </h2>\n              <p className=\"text-sm text-muted-foreground md:text-base\">\n                Reliable and scalable infrastructure, easy to manage.\n              </p>\n            </div>\n          </div>\n          <div className=\"flex flex-col gap-3 bg-background p-5 md:gap-6\">\n            <Rocket className=\"size-6 shrink-0\" />\n            <div>\n              <h2 className=\"text-sm font-semibold md:text-base\">Easy Setup</h2>\n              <p className=\"text-sm text-muted-foreground md:text-base\">\n                Quick and simple configuration for any use case.\n              </p>\n            </div>\n          </div>\n          <div className=\"flex flex-col gap-3 bg-background p-5 md:gap-6\">\n            <Expand className=\"size-6 shrink-0\" />\n            <div>\n              <h2 className=\"text-sm font-semibold md:text-base\">\n                Effortless Scaling\n              </h2>\n              <p className=\"text-sm text-muted-foreground md:text-base\">\n                Built to handle increased demand with ease.\n              </p>\n            </div>\n          </div>\n          <div className=\"flex flex-col gap-3 bg-background p-5 md:gap-6\">\n            <Wrench className=\"size-6 shrink-0\" />\n            <div>\n              <h2 className=\"text-sm font-semibold md:text-base\">\n                Low Maintenance\n              </h2>\n              <p className=\"text-sm text-muted-foreground md:text-base\">\n                Focus on building, not on maintenance tasks.\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero24 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

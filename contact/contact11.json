@@ -1,0 +1,58 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact11",
+  "title": "Contact",
+  "description": "A component featuring a contact form with fields for personal and company details, alongside sections for corporate information, email contacts, and social media links.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "@radix-ui/react-label"
+  ],
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "code/block/contact11.tsx",
+      "content": "import { Facebook, Linkedin, Twitter } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport { Textarea } from \"@/components/ui/textarea\";\n\nconst formFields = [\n  {\n    label: \"Full name\",\n    name: \"fullName\",\n    placeholder: \"First and last name\",\n    type: \"text\",\n  },\n  {\n    label: \"Work email address\",\n    name: \"email\",\n    placeholder: \"me@company.com\",\n    type: \"email\",\n  },\n  {\n    label: \"Company name\",\n    name: \"company\",\n    placeholder: \"Company name\",\n    type: \"text\",\n    optional: true,\n  },\n  {\n    label: \"Number of employees\",\n    name: \"employees\",\n    placeholder: \"Company name\",\n    type: \"text\",\n    optional: true,\n  },\n  {\n    label: \"Your message\",\n    name: \"message\",\n    placeholder: \"Write your message\",\n    type: \"textarea\",\n  },\n];\n\ninterface Contact11Props {\n  className?: string;\n}\n\nconst Contact11 = ({ className }: Contact11Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container max-w-4xl\">\n        <h1 className=\"text-center text-4xl font-semibold tracking-tight sm:text-5xl\">\n          Contact us\n        </h1>\n        <p className=\"mt-4 text-center text-muted-foreground\">\n          Hopefully this form gets through our spam filters.\n        </p>\n\n        <div className=\"mt-8 flex gap-10 max-md:flex-col md:mt-12 md:divide-x\">\n          {/* Contact Information */}\n          <div className=\"space-y-10 pr-10 md:gap-20\">\n            <div>\n              <h2 className=\"text-lg font-semibold\">Corporate office</h2>\n              <p className=\"mt-3 font-medium tracking-tight text-muted-foreground\">\n                1 Carlsberg Close\n                <br />\n                1260 Hillview, Australia\n              </p>\n            </div>\n\n            <div>\n              <h2 className=\"text-lg font-semibold\">Email us</h2>\n              <div className=\"mt-3 space-y-2\">\n                <div>\n                  <p className=\"text-primary\">Careers</p>\n                  <a\n                    href=\"#\"\n                    className=\"mt-3 tracking-tight text-muted-foreground\"\n                  >\n                    careers@example.com\n                  </a>\n                </div>\n                <div>\n                  <p className=\"text-primary\">Press</p>\n                  <a\n                    href=\"#\"\n                    className=\"mt-3 tracking-tight text-muted-foreground\"\n                  >\n                    press@example.com\n                  </a>\n                </div>\n              </div>\n            </div>\n\n            <div>\n              <h2 className=\"text-lg font-semibold\">Follow us</h2>\n              <div className=\"mt-3 flex gap-6\">\n                <a\n                  href=\"#\"\n                  className=\"text-muted-foreground hover:text-foreground\"\n                >\n                  <Facebook className=\"size-6\" />\n                </a>\n                <a\n                  href=\"#\"\n                  className=\"text-muted-foreground hover:text-foreground\"\n                >\n                  <Twitter className=\"size-6\" />\n                </a>\n                <a\n                  href=\"#\"\n                  className=\"text-muted-foreground hover:text-foreground\"\n                >\n                  <Linkedin className=\"size-6\" />\n                </a>\n              </div>\n            </div>\n          </div>\n\n          {/* Inquiry Form */}\n          <div className=\"flex-1\">\n            <h2 className=\"text-lg font-semibold\">Inquiries</h2>\n            <form className=\"mt-5 space-y-5\">\n              {formFields.map((field) => (\n                <div key={field.name} className=\"space-y-2\">\n                  <Label>\n                    {field.label}\n                    {field.optional && (\n                      <span className=\"text-muted-foreground/60\">\n                        {\" \"}\n                        (optional)\n                      </span>\n                    )}\n                  </Label>\n                  {field.type === \"textarea\" ? (\n                    <Textarea\n                      name={field.name}\n                      placeholder={field.placeholder}\n                      className=\"min-h-[120px] resize-none\"\n                    />\n                  ) : (\n                    <Input\n                      type={field.type}\n                      name={field.name}\n                      placeholder={field.placeholder}\n                    />\n                  )}\n                </div>\n              ))}\n\n              <div className=\"flex justify-end\">\n                <Button type=\"submit\" size=\"lg\">\n                  Submit\n                </Button>\n              </div>\n            </form>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Contact11 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/input.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\n  return (\n    <input\n      type={type}\n      data-slot=\"input\"\n      className={cn(\n        \"file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\n        \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\",\n        \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/label.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as LabelPrimitive from \"@radix-ui/react-label\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Label({\n  className,\n  ...props\n}: React.ComponentProps<typeof LabelPrimitive.Root>) {\n  return (\n    <LabelPrimitive.Root\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Label }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/textarea.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Textarea({ className, ...props }: React.ComponentProps<\"textarea\">) {\n  return (\n    <textarea\n      data-slot=\"textarea\"\n      className={cn(\n        \"border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "projects4",
+  "title": "Projects",
+  "description": "This component displays projects with a 2-column grid, including images, titles, categories, and dates. Features a large title and descriptive text section.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/projects4.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Projects4Props {\n  className?: string;\n}\n\nconst Projects4 = ({ className }: Projects4Props) => {\n  const projects = [\n    {\n      id: 1,\n      title: \"Design Workflow Optimization\",\n      category: \"UI/UX\",\n      date: \"06/20/25\",\n      image:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/illustrations/tokyo-browser-window-with-settings-and-design-panels.svg\",\n    },\n    {\n      id: 2,\n      title: \"Seamless Global Access\",\n      category: \"Cloud Tech\",\n      date: \"06/18/25\",\n      image:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/illustrations/tokyo-exchange-between-the-user-and-the-global-network.svg\",\n    },\n    {\n      id: 3,\n      title: \"Next Page Loading UI\",\n      category: \"Frontend Dev\",\n      date: \"06/15/25\",\n      image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/illustrations/tokyo-loading-the-next-page.svg\",\n    },\n    {\n      id: 4,\n      title: \"Web Traffic Analytics\",\n      category: \"Data Visualization\",\n      date: \"06/10/25\",\n      image:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/illustrations/tokyo-volumetric-analytics-of-different-types-in-web-browsers.svg\",\n    },\n  ];\n\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container space-y-16\">\n        <div className=\"flex flex-col justify-start gap-5 md:gap-12 lg:flex-row lg:items-center lg:justify-between\">\n          <h1 className=\"text-4xl font-medium md:text-5xl lg:text-7xl\">\n            Explore Our Projects\n          </h1>\n\n          <div className=\"flex flex-col items-start gap-6 text-left md:flex-row\">\n            <p className=\"max-w-xs text-lg font-medium text-muted-foreground\">\n              A curated collection of visuals showcasing our approach to clean\n              design, thoughtful UX, and modern web experiences.\n            </p>\n\n            <div className=\"max-w-xs\">\n              <span className=\"font-medium text-foreground\">\n                Visual Identity\n              </span>\n              <p className=\"text-base text-muted-foreground\">\n                Each project captures a unique story built with precision,\n                performance, and purpose.\n              </p>\n            </div>\n          </div>\n        </div>\n\n        <div className=\"grid grid-cols-1 gap-10 sm:grid-cols-2\">\n          {projects.map((project) => (\n            <div key={project.id} className=\"group\">\n              <img\n                src={project.image}\n                alt={project.title}\n                className=\"h-96 w-full rounded-lg bg-accent object-contain transition-transform duration-300 group-hover:scale-105\"\n              />\n              <div className=\"mt-4 flex items-start justify-between\">\n                <div>\n                  <h2 className=\"text-xl font-semibold\">{project.title}</h2>\n                  <p className=\"mt-2 text-sm text-muted-foreground\">\n                    {project.category}\n                  </p>\n                </div>\n                <div>\n                  <p className=\"text-xl font-medium text-muted-foreground\">\n                    {project.date}\n                  </p>\n                </div>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Projects4 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

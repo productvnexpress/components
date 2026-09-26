@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gallery18",
+  "title": "Gallery",
+  "description": "A card-carousel gallery with autoplay, displaying portraits with annotated names in a looping mode.",
+  "dependencies": [
+    "react",
+    "swiper",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/gallery18.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { Autoplay, EffectCards } from \"swiper/modules\";\nimport { Swiper, SwiperSlide } from \"swiper/react\";\nimport \"swiper/css\";\nimport \"swiper/css/effect-cards\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Gallery18Props {\n  className?: string;\n}\n\nconst Gallery18 = ({ className }: Gallery18Props) => {\n  const images = [\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random11.jpeg\",\n      alt: \"Portrait of Joanna Doe in urban setting\",\n      name: \"Joanna Doe\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random6.jpeg\",\n      alt: \"Portrait of Joan Doe in natural lighting\",\n      name: \"Joan Doe\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random1.jpeg\",\n      alt: \"Portrait of Sarah Chen in studio setting\",\n      name: \"Sarah Chen\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random2.jpeg\",\n      alt: \"Portrait of Michael Park in outdoor setting\",\n      name: \"Michael Park\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random11.jpeg\",\n      alt: \"Portrait of Emma Wilson in urban setting\",\n      name: \"Emma Wilson\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random6.jpeg\",\n      alt: \"Portrait of David Kim in natural lighting\",\n      name: \"David Kim\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random1.jpeg\",\n      alt: \"Portrait of Lisa Martinez in studio setting\",\n      name: \"Lisa Martinez\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random2.jpeg\",\n      alt: \"Portrait of James Thompson in outdoor setting\",\n      name: \"James Thompson\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random11.jpeg\",\n      alt: \"Portrait of Sophia Lee in urban setting\",\n      name: \"Sophia Lee\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random6.jpeg\",\n      alt: \"Portrait of Alex Rodriguez in natural lighting\",\n      name: \"Alex Rodriguez\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random1.jpeg\",\n      alt: \"Portrait of Maya Patel in studio setting\",\n      name: \"Maya Patel\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random2.jpeg\",\n      alt: \"Portrait of Noah Johnson in outdoor setting\",\n      name: \"Noah Johnson\",\n    },\n  ];\n\n  const css = `\n  .mySwiper18 {\n  width: 260px;\n  height: 340px;\n}\n\n.mySwiper18 .swiper-slide {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 25px;\n}\n\n.mySwiper18 .swiper-slide-active {\n  overflow: visible !important;\n}\n\n`;\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <style>{css}</style>\n      <div className=\"container flex flex-col items-center gap-10\">\n        <div className=\"relative w-full\">\n          <Swiper\n            effect=\"cards\"\n            autoplay={{\n              delay: 1000,\n              disableOnInteraction: false,\n            }}\n            loop={true}\n            grabCursor={true}\n            modules={[EffectCards, Autoplay]}\n            className=\"mySwiper18\"\n          >\n            {images.map((image, index) => (\n              <SwiperSlide key={index}>\n                <img\n                  className=\"h-full w-full overflow-hidden rounded-3xl object-cover\"\n                  src={image.src}\n                  alt={image.alt}\n                />\n                <div className=\"absolute right-0 -bottom-12 left-0 flex h-12 items-end justify-center text-center font-mono text-xs font-light\">\n                  @ {image.name}\n                </div>\n              </SwiperSlide>\n            ))}\n          </Swiper>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Gallery18 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

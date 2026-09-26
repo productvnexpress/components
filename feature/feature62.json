@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature62",
+  "title": "Feature",
+  "description": "A three-row component featuring alternating image-text layouts with descriptive text blocks and images in bordered, rounded frames.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature62.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Feature62Props {\n  className?: string;\n}\n\nconst Feature62 = ({ className }: Feature62Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"flex flex-col space-y-10 md:space-y-16\">\n          <div className=\"lg:flex lg:gap-x-4\">\n            <div className=\"lg:w-1/2\">\n              <div className=\"mb-6 md:mb-8 lg:mb-0\">\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n                  alt=\"placeholder hero\"\n                  className=\"aspect-4/3 w-full rounded-md border border-border object-cover\"\n                />\n              </div>\n            </div>\n            <div className=\"lg:flex lg:w-1/2 lg:items-center lg:pl-24 2xl:pl-32\">\n              <div>\n                <h3 className=\"mb-3 text-xl font-semibold md:mb-4 md:text-4xl lg:mb-6\">\n                  Feature name\n                </h3>\n                <p className=\"text-muted-foreground lg:text-lg\">\n                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig\n                  doloremque mollitia fugiat omnis! Porro facilis quo animi\n                  consequatur. Explicabo.\n                </p>\n              </div>\n            </div>\n          </div>\n          <div className=\"flex-row-reverse lg:flex lg:gap-x-4\">\n            <div className=\"lg:w-1/2\">\n              <div className=\"mb-6 md:mb-8 lg:mb-0\">\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n                  alt=\"placeholder hero\"\n                  className=\"aspect-4/3 w-full rounded-md border border-border object-cover\"\n                />\n              </div>\n            </div>\n            <div className=\"lg:flex lg:w-1/2 lg:items-center lg:pr-24 2xl:pr-32\">\n              <div>\n                <h3 className=\"mb-3 text-xl font-semibold md:mb-4 md:text-4xl lg:mb-6\">\n                  Feature name\n                </h3>\n                <p className=\"text-muted-foreground lg:text-lg\">\n                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig\n                  doloremque mollitia fugiat omnis! Porro facilis quo animi\n                  consequatur. Explicabo.\n                </p>\n              </div>\n            </div>\n          </div>\n          <div className=\"lg:flex lg:gap-x-4\">\n            <div className=\"lg:w-1/2\">\n              <div className=\"mb-6 md:mb-8 lg:mb-0\">\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n                  alt=\"placeholder hero\"\n                  className=\"aspect-4/3 w-full rounded-md border border-border object-cover\"\n                />\n              </div>\n            </div>\n            <div className=\"lg:flex lg:w-1/2 lg:items-center lg:pl-24 2xl:pl-32\">\n              <div>\n                <h3 className=\"mb-3 text-xl font-semibold md:mb-4 md:text-4xl lg:mb-6\">\n                  Feature name\n                </h3>\n                <p className=\"text-muted-foreground lg:text-lg\">\n                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig\n                  doloremque mollitia fugiat omnis! Porro facilis quo animi\n                  consequatur. Explicabo.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature62 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

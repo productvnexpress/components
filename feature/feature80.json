@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature80",
+  "title": "Feature",
+  "description": "A component displaying an image next to descriptive text, links with icons, and overlapping avatars, arranged in a flex layout with a 2-column format for widescreens.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-avatar"
+  ],
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature80.tsx",
+      "content": "import { ArrowRight, ChevronRight } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\ninterface Feature80Props {\n  className?: string;\n}\n\nconst Feature80 = ({ className }: Feature80Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"flex flex-col gap-8 md:flex-row\">\n          <div className=\"aspect-5/6 overflow-clip rounded-3xl bg-accent\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n              alt=\"placeholder\"\n              className=\"h-full w-full object-cover object-center\"\n            />\n          </div>\n          <div className=\"flex shrink-0 flex-col justify-center md:w-1/2 md:py-16 lg:mr-8 lg:pl-24 lg:text-left 2xl:pl-32\">\n            <p className=\"mb-6 text-xs font-medium tracking-wider uppercase\">\n              Tag Line\n            </p>\n            <h2 className=\"mb-6 text-3xl font-bold text-pretty lg:text-5xl\">\n              Feature Description\n            </h2>\n            <p className=\"mb-6 text-muted-foreground lg:text-xl\">\n              Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig\n              doloremque mollitia fugiat omnis! Porro facilis quo animi\n              consequatur. Explicabo.\n            </p>\n            <a\n              href=\"#\"\n              className=\"group mb-12 flex items-center pb-3 text-accent-foreground lg:text-xl\"\n            >\n              Learn more{\" \"}\n              <ArrowRight className=\"ml-2 size-4 transition-transform group-hover:translate-x-1\" />\n            </a>\n            <div className=\"flex flex-col gap-6 md:flex-row\">\n              <a\n                href=\"#\"\n                className=\"group flex-1 rounded-xl border border-border p-6\"\n              >\n                <div className=\"flex items-start justify-between\">\n                  <div className=\"flex items-center\">\n                    <Avatar className=\"size-10\">\n                      <AvatarImage src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp\" />\n                      <AvatarFallback>SB</AvatarFallback>\n                    </Avatar>\n                    <Avatar className=\"-ml-3 size-10\">\n                      <AvatarImage src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-3.webp\" />\n                      <AvatarFallback>RA</AvatarFallback>\n                    </Avatar>\n                    <Avatar className=\"-ml-3 size-10\">\n                      <AvatarImage src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-2.webp\" />\n                      <AvatarFallback>JS</AvatarFallback>\n                    </Avatar>\n                  </div>\n                  <ChevronRight className=\"mt-2 size-5 transition-transform group-hover:translate-x-1\" />\n                </div>\n                <p className=\"mt-8 font-medium lg:text-lg\">Action 1</p>\n              </a>\n              <a\n                href=\"#\"\n                className=\"group flex-1 rounded-xl border border-border p-6\"\n              >\n                <div className=\"flex items-start justify-between\">\n                  <div className=\"flex items-center\">\n                    <img\n                      src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg\"\n                      alt=\"placeholder hero\"\n                      className=\"size-12 object-cover object-center\"\n                    />\n                  </div>\n                  <ChevronRight className=\"mt-2 size-5 transition-transform group-hover:translate-x-1\" />\n                </div>\n                <p className=\"mt-8 font-medium lg:text-lg\">Action 2</p>\n              </a>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature80 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/avatar.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as AvatarPrimitive from \"@radix-ui/react-avatar\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Avatar({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Root>) {\n  return (\n    <AvatarPrimitive.Root\n      data-slot=\"avatar\"\n      className={cn(\n        \"relative flex size-8 shrink-0 overflow-hidden rounded-full\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarImage({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Image>) {\n  return (\n    <AvatarPrimitive.Image\n      data-slot=\"avatar-image\"\n      className={cn(\"aspect-square size-full\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarFallback({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {\n  return (\n    <AvatarPrimitive.Fallback\n      data-slot=\"avatar-fallback\"\n      className={cn(\n        \"bg-muted flex size-full items-center justify-center rounded-full\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Avatar, AvatarImage, AvatarFallback }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

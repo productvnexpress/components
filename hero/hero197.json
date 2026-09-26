@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero197",
+  "title": "Hero 197 - Announcement hero dotted grid backdrop",
+  "description": "Outline Launching Soon badge with sparkle icon, oversized gradient-clipped headline, supporting copy, and paired large Buttons over subtle dotted mesh background.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "badge",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "block/hero197/hero197.tsx",
+      "content": "import { Sparkles } from \"lucide-react\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface Hero197Props {\n  className?: string;\n}\n\nconst Hero197 = ({ className }: Hero197Props) => {\n  return (\n    <section className={cn(\"relative overflow-hidden py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:20px_20px] opacity-25\" />\n\n        <div className=\"flex flex-col gap-6 md:flex-row md:items-center md:justify-between\">\n          <div className=\"max-w-2xl\">\n            <Badge\n              variant=\"outline\"\n              className=\"mb-6 bg-background px-4 py-1.5 text-sm\"\n            >\n              Launching Soon <Sparkles className=\"ml-1 size-3.5\" />\n            </Badge>\n\n            <h1 className=\"bg-linear-to-r from-foreground to-foreground/70 bg-clip-text text-5xl font-bold text-transparent md:text-6xl lg:text-7xl\">\n              Accelerate your development workflow\n            </h1>\n\n            <p className=\"mt-6 max-w-xl text-xl text-muted-foreground\">\n              Our intelligent platform helps teams automate routine tasks,\n              streamline collaboration, and deliver higher quality code faster.\n            </p>\n\n            <div className=\"mt-8 flex flex-col gap-6 sm:flex-row sm:items-center\">\n              <Button size=\"lg\" className=\"w-full sm:w-auto\">\n                Get started for free\n              </Button>\n              <Button size=\"lg\" variant=\"outline\" className=\"w-full sm:w-auto\">\n                Book a demo\n              </Button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero197 };\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

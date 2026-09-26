@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-card4",
+  "title": "Stats-card",
+  "description": "A metric card displaying current and previous period values side by side for easy comparison.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "card"
+  ],
+  "files": [
+    {
+      "path": "code/block/stats-card4.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\n\ninterface StatsCard4Props {\n  title?: string;\n  currentValue?: string;\n  currentLabel?: string;\n  previousValue?: string;\n  previousLabel?: string;\n  className?: string;\n}\n\nconst StatsCard4 = ({\n  title = \"Revenue\",\n  currentValue = \"$12,450\",\n  currentLabel = \"This month\",\n  previousValue = \"$10,230\",\n  previousLabel = \"Last month\",\n  className,\n}: StatsCard4Props) => {\n  return (\n    <Card className={cn(\"w-full max-w-xs\", className)}>\n      <CardHeader className=\"pb-2\">\n        <CardTitle className=\"text-sm font-medium text-muted-foreground\">\n          {title}\n        </CardTitle>\n      </CardHeader>\n      <CardContent>\n        <div className=\"grid grid-cols-2 gap-4\">\n          <div>\n            <div className=\"text-2xl font-bold\">{currentValue}</div>\n            <div className=\"text-sm text-muted-foreground\">{currentLabel}</div>\n          </div>\n          <div className=\"border-l pl-4\">\n            <div className=\"text-2xl font-bold text-muted-foreground\">\n              {previousValue}\n            </div>\n            <div className=\"text-sm text-muted-foreground\">{previousLabel}</div>\n          </div>\n        </div>\n      </CardContent>\n    </Card>\n  );\n};\n\nexport { StatsCard4 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-header\"\n      className={cn(\n        \"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-title\"\n      className={cn(\"leading-none font-semibold\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-description\"\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-action\"\n      className={cn(\n        \"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-content\"\n      className={cn(\"px-6\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-footer\"\n      className={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardAction,\n  CardDescription,\n  CardContent,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

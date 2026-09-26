@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature229",
+  "title": "Feature",
+  "description": "A component with 3 columns, listing features under \"Security,\" \"Integration & APIs,\" and \"Support\" categories, each with their icons and items marked by check icons.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature229.tsx",
+      "content": "import {\n  CheckIcon,\n  HeadphonesIcon,\n  PuzzleIcon,\n  ShieldCheckIcon,\n} from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst featureGroups = [\n  {\n    title: \"Security\",\n    icon: ShieldCheckIcon,\n    features: [\n      \"Two-factor authentication\",\n      \"End-to-end encryption\",\n      \"Regular security audits\",\n      \"Role-based access control\",\n      \"Data backup & recovery\",\n    ],\n  },\n  {\n    title: \"Integration & APIs\",\n    icon: PuzzleIcon,\n    features: [\n      \"REST API access\",\n      \"Webhook support\",\n      \"Third-party integrations\",\n      \"Custom API endpoints\",\n      \"Developer documentation\",\n    ],\n  },\n  {\n    title: \"Support & Resources\",\n    icon: HeadphonesIcon,\n    features: [\n      \"Priority email support\",\n      \"Video tutorials library\",\n      \"Knowledge base access\",\n      \"Community forums\",\n      \"Regular webinars\",\n    ],\n  },\n];\n\ninterface Feature229Props {\n  className?: string;\n}\n\nconst Feature229 = ({ className }: Feature229Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <h2 className=\"max-w-5xl text-4xl text-balance md:text-6xl\">\n          Security, Integration, and Expert Support\n        </h2>\n        <div className=\"mt-16 grid gap-16 md:mt-20 md:grid-cols-3 md:gap-6\">\n          {featureGroups.map((group, idx) => (\n            <div key={idx}>\n              <span className=\"flex size-12 items-center justify-center rounded-xl bg-muted\">\n                <group.icon className=\"size-5\" />\n              </span>\n              <h3 className=\"my-6 font-semibold\">{group.title}</h3>\n              <ul className=\"space-y-4\">\n                {group.features.map((feature) => (\n                  <li key={feature} className=\"flex items-center gap-2\">\n                    <CheckIcon className=\"size-4 shrink-0\" />\n                    {feature}\n                  </li>\n                ))}\n              </ul>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature229 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

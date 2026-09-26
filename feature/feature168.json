@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature168",
+  "title": "Feature",
+  "description": "A component that showcases 3 productivity features with titles, descriptions, and visuals in a 3-column layout, including a highlighted \"Features\" Badge and a main heading.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature168.tsx",
+      "content": "import { PocketKnife } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"@/components/ui/badge\";\n\nconst DATA = [\n  {\n    title: \"Unified Scheduling\",\n    description:\n      \"Keep all your appointments and events in sync with seamless cross-platform calendar connectivity.\",\n    icon: \"CircleHelp\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg\",\n  },\n  {\n    title: \"Insightful Performance\",\n    description:\n      \"Get clear, real-time analytics tracking your progress, key milestones, focus hours, and completed tasks.\",\n    icon: \"Volume2\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg\",\n  },\n  {\n    title: \"Effortless Tool Integrations\",\n    description:\n      \"Link your favorite apps and services to streamline work without switching between platforms.\",\n    icon: \"Lightbulb\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg\",\n  },\n];\ninterface Feature168Props {\n  className?: string;\n}\n\nconst Feature168 = ({ className }: Feature168Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"border-y\">\n        <div className=\"container flex flex-col gap-6 border-x py-4 max-lg:border-x lg:py-8\">\n          <Badge\n            variant=\"outline\"\n            className=\"w-fit gap-1 bg-card px-3 text-sm font-normal tracking-tight shadow-sm\"\n          >\n            <PocketKnife className=\"size-4\" />\n            <span>Features</span>\n          </Badge>\n          <h2 className=\"text-3xl leading-tight tracking-tight md:text-4xl lg:text-6xl\">\n            Smart productivity with AI\n          </h2>\n          <p className=\"max-w-[600px] tracking-[-0.32px] text-muted-foreground\">\n            Unlock smarter productivity with features that help you manage\n            tasks, time, and focus—seamlessly.\n          </p>\n        </div>\n      </div>\n      <div className=\"container border-x lg:px-0!\">\n        <div className=\"items-center\">\n          <div className=\"grid flex-1 bg-border max-lg:divide-y max-lg:border-x lg:grid-cols-3 lg:gap-px\">\n            {DATA.map((item, index) => (\n              <div\n                key={index}\n                className=\"relative isolate flex flex-col bg-background pt-5 text-start lg:pt-20\"\n              >\n                <div className=\"flex-1 border-b border-border\">\n                  <h3 className=\"mt-2 px-4 text-lg font-semibold tracking-tight lg:px-8\">\n                    {item.title}\n                  </h3>\n                  <p className=\"px-4 pt-2 pb-6 text-muted-foreground lg:px-8\">\n                    {item.description}\n                  </p>\n                </div>\n                <div className=\"bg-muted\">\n                  <img\n                    src={item.image}\n                    alt={item.title}\n                    className=\"p-12 dark:invert\"\n                  />\n                </div>\n              </div>\n            ))}\n          </div>\n        </div>\n      </div>\n      <div className=\"h-8 w-full border-y md:h-12 lg:h-[112px]\">\n        <div className=\"container h-full w-full border-x\"></div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature168 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

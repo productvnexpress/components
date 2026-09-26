@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature280",
+  "title": "Feature 280 - Checklist and testimonial card stack",
+  "description": "A split row pairs a large heading, labeled feature checklist with check icons, and a horizontally divided list against a stacked deck of testimonial cards with inline emphasized phrases.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "https://ui.aceternity.com/registry/card-stack.json"
+  ],
+  "files": [
+    {
+      "path": "block/feature280/feature280.tsx",
+      "content": "import { BadgeCheck } from \"lucide-react\";\nimport React from \"react\";\n\nimport { CardStack } from \"@/components/aceternity/card-stack\";\nimport { cn } from \"@/lib/utils\";\n\ninterface Feature280Props {\n  className?: string;\n}\n\nconst Feature280 = ({ className }: Feature280Props) => {\n  const features = [\n    \"Instant Implementation\",\n    \"One-Time Payment\",\n    \"Developer Friendly\",\n    \"Fully Responsive\",\n    \"Production Ready\",\n    \"Premium Support\",\n    \"Regular Updates\",\n    \"Customizable Design\",\n    \"Performance Optimized\",\n    \"Accessibility Compliant\",\n    \"Cross-Browser \",\n    \"Documentation Included\",\n  ];\n\n  return (\n    <section className={cn(\"h-full overflow-hidden py-32\", className)}>\n      <div className=\"container flex w-full max-w-6xl flex-col items-center justify-between lg:flex-row\">\n        <div className=\"relative flex h-full flex-col items-center justify-center gap-15 text-center lg:items-start lg:text-left\">\n          <h1 className=\"w-full max-w-md text-5xl font-medium font-semibold tracking-tighter lg:text-6xl\">\n            What our Users say Proudly\n          </h1>\n\n          <div className=\"flex w-full max-w-lg items-center gap-4 px-5\">\n            <span className=\"h-px w-full bg-muted-foreground/20\" />\n            <p className=\"text-sm text-muted-foreground/50\">FEATURES</p>\n            <span className=\"h-px w-full bg-muted-foreground/20\" />\n          </div>\n          <ul className=\"grid grid-cols-2 gap-3\">\n            {features.map((feature) => (\n              <li key={feature} className=\"flex gap-2 lg:items-center\">\n                <BadgeCheck className=\"size-4 text-muted-foreground/80\" />\n                <p className=\"tracking-tight text-muted-foreground/80\">\n                  {feature}\n                </p>\n              </li>\n            ))}\n          </ul>\n        </div>\n        <div className=\"mt-24 flex items-center justify-center lg:mt-0\">\n          <CardStack items={CARDS} />\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature280 };\n\nexport const Highlight = ({\n  children,\n  className,\n}: {\n  children: React.ReactNode;\n  className?: string;\n}) => {\n  return (\n    <span\n      className={cn(\n        \"bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500\",\n        className,\n      )}\n    >\n      {children}\n    </span>\n  );\n};\n\nconst CARDS = [\n  {\n    id: 0,\n    name: \"Sarah Chen\",\n    designation: \"Product Manager\",\n    content: (\n      <p>\n        The implementation was incredibly smooth.{\" \"}\n        <Highlight>We deployed in under 2 hours</Highlight> and the team loves\n        how intuitive the interface is. The responsive design works perfectly\n        across all devices.\n      </p>\n    ),\n  },\n  {\n    id: 1,\n    name: \"Marcus Rodriguez\",\n    designation: \"Frontend Developer\",\n    content: (\n      <p>\n        As a developer, I appreciate the clean code structure.{\" \"}\n        <Highlight>Easy to customize</Highlight> and the documentation is\n        comprehensive. The performance optimizations are noticeable in\n        production.\n      </p>\n    ),\n  },\n  {\n    id: 2,\n    name: \"Emily Watson\",\n    designation: \"UX Designer\",\n    content: (\n      <p>\n        The accessibility features are outstanding.{\" \"}\n        <Highlight>WCAG compliant out of the box</Highlight> and the design\n        system is consistent. Our users with disabilities have given us\n        excellent feedback.\n      </p>\n    ),\n  },\n];\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

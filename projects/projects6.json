@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "projects6",
+  "title": "Projects",
+  "description": "A gallery component with a 2-column layout showcasing 4 project cards that animate on hover and reveal details.",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/projects6.tsx",
+      "content": "\"use client\";\n\nimport { motion, Variants } from \"framer-motion\";\nimport { ArrowUpRight } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst projects6Props = [\n  {\n    id: 1,\n    category: \"NATURE\",\n    title: \"Puma\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw1.jpeg\",\n    description: \"Capturing the essence of wildlife in their habitat.\",\n  },\n  {\n    id: 2,\n    category: \"CULTURE\",\n    title: \"Afterparty\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw5.jpeg\",\n    description: \"What a party!\",\n  },\n  {\n    id: 3,\n    category: \"CULTURE\",\n    title: \"Rider\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw2.jpeg\",\n    description: \"Artistic movements that define our generation.\",\n  },\n  {\n    id: 4,\n    category: \"FASHION\",\n    title: \"Elegance\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw3.jpeg\",\n    description: \"Bold statements and timeless style.\",\n  },\n];\n\nconst containerVariants: Variants = {\n  hidden: { opacity: 0 },\n  visible: {\n    opacity: 1,\n    transition: {\n      staggerChildren: 0.2,\n    },\n  },\n};\n\nconst itemVariants: Variants = {\n  hidden: { opacity: 0, y: 20 },\n  visible: {\n    opacity: 1,\n    y: 0,\n    transition: {\n      duration: 0.6,\n      ease: \"easeOut\",\n    },\n  },\n};\n\nconst ProjectCard = ({\n  project,\n}: {\n  project: (typeof projects6Props)[0];\n  index: number;\n}) => {\n  return (\n    <motion.div\n      variants={itemVariants}\n      whileHover={{ scale: 1.02 }}\n      whileTap={{ scale: 0.98 }}\n      className=\"group relative cursor-pointer overflow-hidden rounded-3xl bg-black shadow-2xl\"\n    >\n      <div className=\"relative aspect-[5/5] overflow-hidden\">\n        <img\n          src={project.image}\n          alt={project.title}\n          className=\"h-full w-full object-cover transition-transform duration-700 group-hover:scale-110\"\n        />\n\n        <div className=\"absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent\" />\n\n        <div className=\"absolute top-4 left-4\">\n          <span className=\"inline-block rounded-full border border-white/20 bg-black/50 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm\">\n            {project.category}\n          </span>\n        </div>\n\n        <div className=\"absolute top-4 right-4 translate-x-2 transform opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100\">\n          <div className=\"flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-white/20 backdrop-blur-sm\">\n            <ArrowUpRight className=\"h-4 w-4 text-white\" />\n          </div>\n        </div>\n\n        <div className=\"absolute right-4 bottom-4 left-4\">\n          <h3 className=\"mb-1 text-2xl font-bold tracking-tight text-white md:text-3xl\">\n            {project.title}\n          </h3>\n          <p className=\"text-sm text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100\">\n            {project.description}\n          </p>\n        </div>\n      </div>\n    </motion.div>\n  );\n};\n\ninterface Projects6Props {\n  className?: string;\n}\n\nconst Projects6 = ({ className }: Projects6Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <motion.div\n          initial={{ opacity: 0, y: -20 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: 0.8, ease: \"easeOut\" }}\n          className=\"mb-20 text-center\"\n        >\n          <div className=\"mb-6\">\n            <span className=\"inline-flex items-center gap-2 text-sm font-medium tracking-wide text-muted-foreground\">\n              <div className=\"h-2 w-2 rounded-full bg-foreground\"></div>\n              PROJECT SHOWCASE\n            </span>\n          </div>\n          <h1 className=\"text-6xl leading-none font-black tracking-tight md:text-8xl lg:text-9xl\">\n            <span className=\"block\">CAPTURING</span>\n            <span className=\"block\">MOMENTS</span>\n          </h1>\n        </motion.div>\n\n        <motion.div\n          variants={containerVariants}\n          initial=\"hidden\"\n          animate=\"visible\"\n          className=\"mx-auto grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-2\"\n        >\n          {projects6Props.map((project, index) => (\n            <ProjectCard key={project.id} project={project} index={index} />\n          ))}\n        </motion.div>\n      </div>\n    </section>\n  );\n};\n\nexport { Projects6 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

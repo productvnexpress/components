@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "download20",
+  "title": "Download 20 - Mobile app download promo with QR and device frame",
+  "description": "This component is designed to promote a mobile application by showcasing its features and providing a download link. It features interactive elements such as badges, buttons, and a QR code for easy access to the app, complete with visual support from an image of a smartphone.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "badge",
+    "button",
+    "https://magicui.design/r/iphone"
+  ],
+  "files": [
+    {
+      "path": "block/download20/download20.tsx",
+      "content": "import { Download, Smartphone } from \"lucide-react\";\n\nimport { Iphone } from \"@/components/magicui/iphone\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface Download20Props {\n  className?: string;\n}\n\nconst Download20 = ({ className }: Download20Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container mx-auto max-w-7xl\">\n        <div className=\"grid items-center gap-12 lg:grid-cols-2 lg:gap-16\">\n          <div className=\"flex flex-col gap-5 text-center lg:max-w-xl lg:gap-6 lg:text-left\">\n            <Badge\n              variant=\"outline\"\n              className=\"mx-auto w-fit gap-1.5 px-3 py-1 text-xs font-medium lg:mx-0\"\n            >\n              <Smartphone className=\"size-3.5\" />\n              Mobile app\n            </Badge>\n            <h1 className=\"text-4xl font-bold tracking-tight text-balance text-foreground md:text-5xl\">\n              Close more deals from anywhere\n            </h1>\n            <p className=\"text-pretty text-muted-foreground md:text-lg\">\n              Your pipeline, contacts, and quotes in one place. Update deals on\n              the road, get alerts when leads respond, and never miss a\n              follow-up.\n            </p>\n            <div className=\"flex flex-col items-center gap-6 lg:items-start\">\n              <Button\n                size=\"lg\"\n                className=\"gap-2 shadow-lg shadow-primary/20\"\n                asChild\n              >\n                <a href=\"#\">\n                  <Download className=\"size-4\" />\n                  Download the app\n                </a>\n              </Button>\n              <div className=\"hidden w-fit flex-col gap-2 rounded-lg border border-border bg-card/50 p-3 shadow-sm md:flex\">\n                <span className=\"text-center text-xs font-medium text-muted-foreground\">\n                  Scan to download\n                </span>\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/qr-code.png\"\n                  alt=\"Scan to download\"\n                  className=\"size-24 rounded sm:size-28\"\n                />\n              </div>\n            </div>\n          </div>\n          <div className=\"dark relative mx-auto w-full max-w-80 drop-shadow-2xl\">\n            <Iphone\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/dashboard-mobile-light-1.png\"\n              className=\"w-full\"\n            />\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Download20 };\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

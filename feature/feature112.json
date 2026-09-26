@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature112",
+  "title": "Feature",
+  "description": "This component displays a section with a title, subtitle, and a link followed by a 3-column layout of cards, each featuring an image, title, and link.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature112.tsx",
+      "content": "import { ChevronRight } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"@/components/ui/badge\";\n\ninterface Feature112Props {\n  className?: string;\n}\n\nconst Feature112 = ({ className }: Feature112Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"mx-auto flex max-w-xl flex-col items-center gap-5 text-center\">\n          <Badge variant=\"outline\">High Standards</Badge>\n          <h2 className=\"text-3xl font-semibold md:text-5xl\">\n            Create, Motivate, and Succeed\n          </h2>\n          <p className=\"text-muted-foreground md:text-lg\">\n            Join the journey to build intricately crafted digital solutions.\n          </p>\n          <a\n            href=\"#\"\n            className=\"flex items-center gap-1 text-sm font-medium md:text-base\"\n          >\n            View all capabilities\n            <ChevronRight className=\"h-auto w-4\" />\n          </a>\n        </div>\n        <div className=\"mt-20 grid gap-6 md:grid-cols-3 lg:gap-10\">\n          <div className=\"flex flex-col rounded-lg border\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n              alt=\"placeholder\"\n              className=\"aspect-video size-full rounded-t-lg object-cover\"\n            />\n            <div className=\"p-6\">\n              <h3 className=\"mb-2.5 font-semibold md:text-xl\">\n                Innovative Communication\n              </h3>\n              <a href=\"#\" className=\"flex items-center gap-1 text-sm\">\n                Lear more\n                <ChevronRight className=\"h-auto w-4\" />\n              </a>\n            </div>\n          </div>\n          <div className=\"flex flex-col rounded-lg border\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\"\n              alt=\"placeholder\"\n              className=\"aspect-video size-full rounded-t-lg object-cover\"\n            />\n            <div className=\"p-6\">\n              <h3 className=\"mb-2.5 font-semibold md:text-xl\">\n                High-Quality Resources\n              </h3>\n              <a href=\"#\" className=\"flex items-center gap-1 text-sm\">\n                Lear more\n                <ChevronRight className=\"h-auto w-4\" />\n              </a>\n            </div>\n          </div>\n          <div className=\"flex flex-col rounded-lg border\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\"\n              alt=\"placeholder\"\n              className=\"aspect-video size-full rounded-t-lg object-cover\"\n            />\n            <div className=\"p-6\">\n              <h3 className=\"mb-2.5 font-semibold md:text-xl\">\n                Grow Your Audience\n              </h3>\n              <a href=\"#\" className=\"flex items-center gap-1 text-sm\">\n                Lear more\n                <ChevronRight className=\"h-auto w-4\" />\n              </a>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature112 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

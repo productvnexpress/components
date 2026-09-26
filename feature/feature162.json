@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature162",
+  "title": "Feature",
+  "description": "A component featuring 1 row with text and an image, followed by 2 more images below, each in a rounded border.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature162.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Feature162Props {\n  className?: string;\n}\n\nconst Feature162 = ({ className }: Feature162Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"mb-4 flex flex-col gap-16 rounded-[36px] border border-gray-200 pt-10 pl-10 md:flex-row\">\n          <div className=\"max-w-96 text-lg\">\n            <span className=\"font-semibold\">\n              Always connected to your data.\n            </span>{\" \"}\n            Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, cum!\n          </div>\n          <div className=\"w-full rounded-tl-[36px] rounded-br-[36px] p-1 pr-0 pb-0\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n              alt=\"logo\"\n              className=\"max-h-[450px] w-full rounded-tl-[36px] rounded-br-[36px] object-cover object-bottom transition-all duration-500\"\n            />\n          </div>\n        </div>\n        <div className=\"grid grid-cols-1 grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1\">\n          <div className=\"flex flex-col rounded-[36px] border border-gray-200\">\n            <div className=\"p-10 text-lg\">\n              <span className=\"font-semibold\">A CRM for any use case.</span>{\" \"}\n              Lorem ipsum dolor sit amet consectetur adipisicing elit.\n              Praesentium officiis nam et deserunt, eos neque.\n            </div>\n            <div className=\"flex-1 basis-auto\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\"\n                alt=\"logo\"\n                className=\"h-full w-full rounded-b-[36px] object-cover transition-all duration-500\"\n              />\n            </div>\n          </div>\n          <div className=\"flex flex-col gap-4\">\n            <div className=\"flex-1 basis-auto rounded-[36px]\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\"\n                alt=\"logo\"\n                className=\"h-full w-full rounded-[36px] object-cover transition-all duration-500\"\n              />\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature162 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

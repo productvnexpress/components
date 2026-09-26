@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero27",
+  "title": "Hero",
+  "description": "A component with a decorative background, a large, interactive 3-column heading, a subheading, descriptive text, and a button. Features hover effects on headings and button.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/hero27.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface Hero27Props {\n  className?: string;\n}\n\nconst Hero27 = ({ className }: Hero27Props) => {\n  return (\n    <section className={cn(\"relative overflow-hidden py-32\", className)}>\n      {/* Decorative background element */}\n      <div className=\"absolute inset-0 -z-10 bg-linear-to-br from-background to-background/80\" />\n      <div className=\"absolute top-1/2 right-0 h-96 w-96 translate-x-1/3 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl\" />\n\n      <div className=\"relative container\">\n        <div className=\"mx-auto flex max-w-6xl flex-col items-start justify-between gap-10 md:gap-20 lg:flex-row lg:items-end\">\n          <h1 className=\"relative text-6xl font-bold tracking-tighter md:text-[8vw] lg:w-3/5 2xl:text-9xl\">\n            <span className=\"relative inline-block transition-transform duration-300 hover:translate-x-1\">\n              High\n            </span>\n            <br />\n            <span className=\"relative inline-block transition-transform duration-300 hover:translate-x-1\">\n              Scale\n            </span>\n            <br />\n            <span className=\"relative inline-block transition-transform duration-300 hover:translate-x-1\">\n              Heading.\n            </span>\n          </h1>\n          <div className=\"lg:max-w-auto max-w-lg space-y-5 lg:mb-4 lg:w-2/5\">\n            <p className=\"text-xl font-bold md:text-4xl\">\n              Small\n              <br />\n              Subheading\n              <br />\n            </p>\n            <p className=\"text-lg text-muted-foreground\">\n              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,\n              optio quis? Veniam accusamus quaerat illum dolorem eos atque\n              reiciendis numquam. Veniam accusamus quaerat illum\n            </p>\n            <Button className=\"group relative mt-8 overflow-hidden\" size=\"lg\">\n              <span className=\"relative z-10\">Get Started</span>\n              <span className=\"absolute inset-0 translate-y-full bg-primary/10 transition-transform duration-300 group-hover:translate-y-0\" />\n            </Button>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero27 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature111",
+  "title": "Feature",
+  "description": "A component showcasing features with 2 columns, badges, headings, descriptions, links, and images. Unique for its centered content and outlined badges.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature111.tsx",
+      "content": "import { ChevronRight } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"@/components/ui/badge\";\n\ninterface Feature111Props {\n  className?: string;\n}\n\nconst Feature111 = ({ className }: Feature111Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"mx-auto flex max-w-xl flex-col items-center gap-5 text-center\">\n          <Badge variant=\"outline\">High Standards</Badge>\n          <h2 className=\"text-3xl font-semibold md:text-5xl\">\n            Create, Motivate, and Succeed\n          </h2>\n          <p className=\"text-muted-foreground md:text-lg\">\n            Join the journey to build intricately crafted digital solutions.\n          </p>\n          <a\n            href=\"#\"\n            className=\"flex items-center gap-1 text-sm font-medium md:text-base\"\n          >\n            View all capabilities\n            <ChevronRight className=\"h-auto w-4\" />\n          </a>\n        </div>\n        <div className=\"mt-20 grid gap-10 md:grid-cols-2\">\n          <div className=\"-mx-7 rounded-lg bg-muted px-14 pt-7 md:mx-0\">\n            <div className=\"mx-auto flex flex-col items-center gap-2.5 text-center md:gap-5\">\n              <Badge variant=\"outline\" className=\"bg-background\">\n                Premium\n              </Badge>\n              <h2 className=\"text-lg font-semibold md:text-3xl\">\n                For Entrepreneurs\n              </h2>\n              <p className=\"text-muted-foreground md:text-lg\">\n                Discover the potential of innovative web design.\n              </p>\n              <a\n                href=\"#\"\n                className=\"flex items-center gap-1 text-sm font-medium md:text-base\"\n              >\n                Sign Up\n                <ChevronRight className=\"h-auto w-4\" />\n              </a>\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\"\n                alt=\"placeholder\"\n                className=\"mt-5 max-h-[400px] rounded-t-lg\"\n              />\n            </div>\n          </div>\n          <div className=\"-mx-7 rounded-lg bg-muted px-14 pt-7 md:mx-0\">\n            <div className=\"mx-auto flex flex-col items-center gap-2.5 text-center md:gap-5\">\n              <Badge variant=\"outline\" className=\"bg-background\">\n                Featured\n              </Badge>\n              <h2 className=\"text-lg font-semibold md:text-3xl\">\n                For Businesses\n              </h2>\n              <p className=\"text-muted-foreground md:text-lg\">\n                Build an exceptional digital presence today.\n              </p>\n              <a\n                href=\"#\"\n                className=\"flex items-center gap-1 text-sm font-medium md:text-base\"\n              >\n                Get Started\n                <ChevronRight className=\"h-auto w-4\" />\n              </a>\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg\"\n                alt=\"placeholder\"\n                className=\"mt-5 max-h-[400px] rounded-t-lg\"\n              />\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature111 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

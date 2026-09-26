@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature5",
+  "title": "Feature",
+  "description": "A component with a 3-column layout on large screens, shrinking to 2 and then 1 column. Features 2 cards, one double the width of the other, each with icons, text, and images.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "card"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature5.tsx",
+      "content": "import { AppWindowMac, Zap } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Card } from \"@/components/ui/card\";\n\ninterface Feature5Props {\n  className?: string;\n}\n\nconst Feature5 = ({ className }: Feature5Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n          <Card className=\"p-6 lg:col-span-2\">\n            <div className=\"text-left\">\n              <AppWindowMac className=\"mb-1 w-7\" />\n              <h2 className=\"mt-4 mb-1 text-lg font-semibold\">\n                Get your team on the same page.\n              </h2>\n              <p className=\"text-muted-foreground\">\n                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut\n                odit pariatur, ullam delectus modi excepturi ea dignissimos\n                mollitia minima unde animi qui omnis.\n              </p>\n            </div>\n            <div className=\"mt-7\">\n              <img\n                className=\"aspect-square max-h-[500px] w-full rounded-t-md object-cover object-center\"\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n                alt=\"placeholder\"\n              />\n            </div>\n          </Card>\n          <Card className=\"flex flex-col justify-between p-6\">\n            <div className=\"text-left\">\n              <Zap className=\"mb-1 w-7\" />\n              <h2 className=\"mt-4 mb-1 text-lg font-semibold\">\n                Fast and easy to use.\n              </h2>\n              <p className=\"text-muted-foreground\">\n                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque\n                corrupti sed.\n              </p>\n            </div>\n            <img\n              className=\"mt-7 aspect-square rounded-t-md object-cover lg:aspect-auto lg:h-full\"\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\"\n              alt=\"placeholder\"\n            />\n          </Card>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature5 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-header\"\n      className={cn(\n        \"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-title\"\n      className={cn(\"leading-none font-semibold\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-description\"\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-action\"\n      className={cn(\n        \"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-content\"\n      className={cn(\"px-6\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-footer\"\n      className={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardAction,\n  CardDescription,\n  CardContent,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact8",
+  "title": "Contact",
+  "description": "A component featuring a \"Contact\" header, subtext, an image, email addresses, and office locations in a 2-column layout with styled divs.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/contact8.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Contact8Props {\n  className?: string;\n}\n\nconst Contact8 = ({ className }: Contact8Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"text-center\">\n          <h1 className=\"mb-3 text-5xl font-bold\">Contact</h1>\n          <p className=\"text-lg text-muted-foreground\">\n            Find the right solution\n          </p>\n        </div>\n        <div className=\"mx-auto mt-24 grid max-w-7xl gap-4 md:grid-cols-2\">\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n            alt=\"placeholder\"\n            className=\"h-full rounded-lg object-cover\"\n          />\n          <div className=\"flex flex-col gap-2 rounded-lg bg-accent p-2\">\n            <div className=\"flex h-full flex-col justify-between gap-6 rounded-lg bg-background p-6\">\n              <p className=\"text-2xl\">Email</p>\n              <div className=\"flex flex-col\">\n                <a>help@example.com</a>\n                <a>support@example.com</a>\n              </div>\n            </div>\n            <div className=\"flex h-full flex-col justify-between gap-6 rounded-md bg-background p-6\">\n              <p className=\"text-2xl\">Offices</p>\n              <div className=\"grid gap-8 md:grid-cols-2 md:gap-4\">\n                <div>\n                  <p className=\"mb-2 text-xl text-muted-foreground md:mb-4\">\n                    New York\n                  </p>\n                  <p>123 6th St. Melbourne, FL 32904, USA</p>\n                </div>\n                <div>\n                  <p className=\"mb-2 text-xl text-muted-foreground md:mb-4\">\n                    London\n                  </p>\n                  <p>123 3rd St. London, TL 32904, UK</p>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Contact8 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

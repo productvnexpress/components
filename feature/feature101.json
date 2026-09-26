@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature101",
+  "title": "Feature",
+  "description": "A layout showcasing capabilities with a title, description, and 5 feature blocks in a 3-column grid. Unique elements include icons, hover animations on images, and varied block sizing.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature101.tsx",
+      "content": "import { Blocks, ChartPie, Filter, UsersRound } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Feature101Props {\n  className?: string;\n}\n\nconst Feature101 = ({ className }: Feature101Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"gap mx-auto flex max-w-xl flex-col justify-center gap-4 text-center\">\n          <h1 className=\"text-4xl font-bold md:text-5xl\">Our Capabilities</h1>\n          <p className=\"text-xl text-muted-foreground\">\n            Discover the full potential of our platform&apos;s advanced\n            capabilities\n          </p>\n        </div>\n        <div className=\"mx-auto mt-20 grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3\">\n          <div className=\"flex flex-col justify-between gap-6 rounded-lg bg-muted/70 p-8 md:col-span-2 lg:row-span-2\">\n            <div>\n              <Blocks className=\"mb-6 h-auto w-11\" strokeWidth={1.5} />\n              <h2 className=\"mb-1 text-2xl font-medium\">\n                Seamless Integration\n              </h2>\n              <p className=\"text-muted-foreground\">\n                Connect effortlessly with various data sources.\n              </p>\n            </div>\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-aspect-video-1.svg\"\n              alt=\"integration feature\"\n              className=\"ml-auto max-h-80 w-full rounded-lg object-cover transition-transform duration-300 hover:-translate-y-3 sm:w-11/12\"\n            />\n          </div>\n          <div className=\"flex h-80 flex-col justify-between gap-4 rounded-lg bg-muted/70 p-8\">\n            <Filter className=\"mb-6 h-auto w-11\" strokeWidth={1.5} />\n            <div>\n              <h2 className=\"mb-1 text-2xl font-medium\">Data Refinement</h2>\n              <p className=\"text-muted-foreground\">\n                Ensure clean and reliable data for actionable insights.\n              </p>\n            </div>\n          </div>\n          <div className=\"flex h-80 flex-col justify-between gap-4 rounded-lg bg-muted/70 p-8\">\n            <ChartPie className=\"mb-6 h-auto w-11\" strokeWidth={1.5} />\n            <div>\n              <h2 className=\"mb-1 text-2xl font-medium\">Visual Analytics</h2>\n              <p className=\"text-muted-foreground\">\n                Transform data into impactful visual stories.\n              </p>\n            </div>\n          </div>\n          <div className=\"flex h-80 flex-col justify-between gap-4 rounded-lg bg-muted/70 p-8\">\n            <UsersRound className=\"mb-6 h-auto w-11\" strokeWidth={1.5} />\n            <div>\n              <h2 className=\"mb-1 text-2xl font-medium\">Team Collaboration</h2>\n              <p className=\"text-muted-foreground\">\n                Work together to make informed decisions.\n              </p>\n            </div>\n          </div>\n          <div className=\"flex h-80 flex-col-reverse justify-between gap-4 rounded-lg bg-muted/70 p-8 lg:col-span-2 lg:grid lg:grid-cols-2\">\n            <div className=\"lg:self-end\">\n              <h2 className=\"mb-1 text-2xl font-medium\">Unified Platform</h2>\n              <p className=\"text-muted-foreground\">\n                Centralize your processes and optimize efficiency.\n              </p>\n            </div>\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-aspect-video-1.svg\"\n              alt=\"platform feature\"\n              className=\"h-full min-h-0 rounded-lg object-cover transition-transform duration-300 hover:-translate-y-3\"\n            />\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature101 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

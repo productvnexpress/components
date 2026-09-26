@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature97",
+  "title": "Feature",
+  "description": "A component showcasing platform highlights in a two-column grid with icons, titles, and texts for each feature. Includes a title, description, and buttons above the grid.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature97.tsx",
+      "content": "import { BarChart, Heart, Monitor, Plus, TrendingUp } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface Feature97Props {\n  className?: string;\n}\n\nconst Feature97 = ({ className }: Feature97Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"mx-auto flex max-w-xl flex-col gap-6 text-center\">\n          <h2 className=\"text-4xl font-semibold\">Platform Highlights</h2>\n          <p className=\"text-lg\">\n            Built with cutting-edge insights, offering a complete perspective on\n            the connection between lifestyle, behavior, and health. Our platform\n            delivers an all-encompassing health overview.\n          </p>\n          <div className=\"flex flex-col justify-center gap-2 sm:flex-row\">\n            <Button variant=\"outline\">View All Features</Button>\n            <Button>\n              <Plus className=\"mr-2 h-auto w-4\" />\n              Schedule Consultation\n            </Button>\n          </div>\n        </div>\n        <div className=\"mx-auto mt-20 grid max-w-5xl gap-20 md:grid-cols-2\">\n          <div className=\"text-center\">\n            <Heart className=\"mx-auto h-auto w-7\" />\n            <h3 className=\"mt-4 mb-2 text-xl font-semibold\">Health Overview</h3>\n            <p>\n              Discover key health insights tailored to your lifestyle, delivered\n              in a clear and actionable format.\n            </p>\n          </div>\n          <div className=\"text-center\">\n            <BarChart className=\"mx-auto h-auto w-7\" />\n            <h3 className=\"mt-4 mb-2 text-xl font-semibold\">\n              Personalized Insights\n            </h3>\n            <p>\n              Gain tailored health insights based on your unique data, helping\n              you make informed decisions.\n            </p>\n          </div>\n          <div className=\"text-center\">\n            <TrendingUp className=\"mx-auto h-auto w-7\" />\n            <h3 className=\"mt-4 mb-2 text-xl font-semibold\">\n              Comprehensive Analytics\n            </h3>\n            <p>\n              Deep dive into your health data with comprehensive analytics\n              designed to offer actionable outcomes.\n            </p>\n          </div>\n          <div className=\"text-center\">\n            <Monitor className=\"mx-auto h-auto w-7\" />\n            <h3 className=\"mt-4 mb-2 text-xl font-semibold\">\n              Continuous Monitoring\n            </h3>\n            <p>\n              Stay updated on your health with continuous monitoring that tracks\n              progress in real-time.\n            </p>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature97 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

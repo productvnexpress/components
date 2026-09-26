@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature66",
+  "title": "Feature",
+  "description": "A component featuring a title and a 2-column grid of large, hover-zoom image cards with overlaid text and logos, scaling to 1-column on smaller screens.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature66.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Feature66Props {\n  className?: string;\n}\n\nconst Feature66 = ({ className }: Feature66Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container flex flex-col items-start gap-8 lg:gap-12 lg:px-16\">\n        <h3 className=\"text-3xl font-semibold text-pretty md:text-4xl lg:max-w-3xl lg:text-5xl\">\n          Feature group\n        </h3>\n        <div className=\"grid w-full grid-cols-1 gap-4 max-md:grid-rows-[1fr_1fr] md:grid-cols-2 lg:gap-6\">\n          <a href=\"#\" className=\"h-full\">\n            <div className=\"group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl bg-red-100 md:aspect-5/4 lg:aspect-16/9\">\n              <img\n                src=\"https://images.unsplash.com/photo-1548324215-9133768e4094?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI3NzN8MHwxfGFsbHwxMzF8fHx8fHwyfHwxNzIzNDM1MzA1fA&ixlib=rb-4.0.3&q=80&w=1080\"\n                alt=\"placeholder\"\n                className=\"absolute h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105\"\n              />\n              <div className=\"absolute inset-x-0 bottom-0 mt-auto max-h-[50%] min-h-[50%] bg-[linear-gradient(transparent,var(--primary)_80%)] mix-blend-multiply\" />\n              <div className=\"absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-primary-foreground md:p-8\">\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-wordmark.svg\"\n                  alt=\"placeholder logo\"\n                  className=\"mb-3 h-8 invert\"\n                />\n                <p className=\"text-xl font-semibold text-white\">\n                  Lorem ipsum dolor sit amet consectetur adipisicing elit.\n                </p>\n              </div>\n            </div>\n          </a>\n          <a href=\"#\" className=\"h-full\">\n            <div className=\"group relative h-full min-h-[27rem] w-full overflow-hidden rounded-xl md:aspect-5/4 lg:aspect-16/9\">\n              <img\n                src=\"https://images.unsplash.com/photo-1550070881-a5d71eda5800?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI3NzN8MHwxfGFsbHwxMjV8fHx8fHwyfHwxNzIzNDM1Mjk4fA&ixlib=rb-4.0.3&q=80&w=1080\"\n                alt=\"placeholder\"\n                className=\"absolute h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105\"\n              />\n\n              <div className=\"absolute inset-x-0 bottom-0 mt-auto max-h-[50%] min-h-[50%] bg-[linear-gradient(transparent,var(--primary)_80%)] mix-blend-multiply\" />\n              <div className=\"absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-primary-foreground md:p-8\">\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/nextjs-wordmark.svg\"\n                  alt=\"placeholder logo\"\n                  className=\"mb-3 h-8 invert\"\n                />\n                <p className=\"text-xl font-semibold text-white\">\n                  Lorem ipsum dolor sit amet consectetur adipisicing elit.\n                </p>\n              </div>\n            </div>\n          </a>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature66 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

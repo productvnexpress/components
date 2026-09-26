@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature14",
+  "title": "Feature",
+  "description": "A two-column component featuring secure payments and automated invoicing, with text descriptions and check-marked features, complemented by numbered image placeholders.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature14.tsx",
+      "content": "import { CheckCircle } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Feature14Props {\n  className?: string;\n}\n\nconst Feature14 = ({ className }: Feature14Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"space-y-10 rounded-lg border py-10 md:px-4\">\n          <div className=\"grid rounded-lg border md:grid-cols-2\">\n            <div className=\"flex flex-col px-6 py-8 lg:px-8 lg:py-12 xl:px-12 xl:py-20\">\n              <h3 className=\"mb-3 text-2xl font-medium sm:mb-5 md:text-3xl lg:text-4xl\">\n                Secure Payments\n              </h3>\n              <div className=\"mb-8 text-sm text-muted-foreground sm:mb-10 md:text-base\">\n                Lorem ipsum dolor sit amet consectetur, adipisicing elit.\n                Pariatur modi et recusandae ducimus eligendi eveniet soluta\n                reprehenderit nostrum expedita omnis.\n              </div>\n              <ul className=\"mt-auto space-y-2 sm:space-y-3\">\n                <li className=\"flex gap-x-3\">\n                  <CheckCircle className=\"mt-0.5 size-4 shrink-0 sm:mt-1\" />\n                  <p className=\"text-sm md:text-base\">\n                    Secure payment gateway integration with Stripe\n                  </p>\n                </li>\n                <li className=\"flex gap-x-3\">\n                  <CheckCircle className=\"mt-0.5 size-4 shrink-0 sm:mt-1\" />\n                  <p className=\"text-sm md:text-base\">\n                    SSL encryption for secure transactions\n                  </p>\n                </li>\n              </ul>\n            </div>\n            <div className=\"relative order-first max-h-80 md:order-last md:max-h-[500px]\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n                alt=\"placeholder\"\n                className=\"h-full w-full object-cover\"\n              />\n              <span className=\"absolute top-5 left-5 flex size-6 items-center justify-center rounded-sm bg-primary font-mono text-xs text-primary-foreground md:top-10 md:left-10\">\n                01\n              </span>\n            </div>\n          </div>\n          <div className=\"grid rounded-lg border md:grid-cols-2\">\n            <div className=\"flex flex-col px-6 py-8 lg:px-8 lg:py-12 xl:px-12 xl:py-20\">\n              <h3 className=\"mb-3 text-2xl font-medium sm:mb-5 md:text-3xl lg:text-4xl\">\n                Automated Invoicing\n              </h3>\n              <div className=\"mb-8 text-sm text-muted-foreground sm:mb-10 md:text-base\">\n                Lorem ipsum dolor sit amet consectetur, adipisicing elit.\n                Pariatur modi et recusandae ducimus eligendi eveniet soluta\n                reprehenderit nostrum expedita omnis.\n              </div>\n              <ul className=\"mt-auto space-y-2 sm:space-y-3\">\n                <li className=\"flex gap-x-3\">\n                  <CheckCircle className=\"mt-0.5 size-4 shrink-0 sm:mt-1\" />\n                  <p className=\"text-sm md:text-base\">\n                    Automated invoicing for easy billing\n                  </p>\n                </li>\n              </ul>\n            </div>\n            <div className=\"relative order-first max-h-80 md:order-last md:max-h-[500px]\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\"\n                alt=\"placeholder\"\n                className=\"h-full w-full object-cover\"\n              />\n              <span className=\"absolute top-5 left-5 flex size-6 items-center justify-center rounded-sm bg-primary font-mono text-xs text-primary-foreground md:top-10 md:left-10\">\n                02\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature14 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

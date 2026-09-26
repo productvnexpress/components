@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero107",
+  "title": "Hero",
+  "description": "A component with a dual-column layout, featuring an attention-grabbing headline, a decorative button with unique animation, and a side image embellished with a \"Hire Me\" call-to-action button.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-aspect-ratio",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "aspect-ratio",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/hero107.tsx",
+      "content": "import { MoonStar, Sparkles } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { AspectRatio } from \"@/components/ui/aspect-ratio\";\nimport { Button } from \"@/components/ui/button\";\n\ninterface Hero107Props {\n  className?: string;\n}\n\nconst Hero107 = ({ className }: Hero107Props) => {\n  return (\n    <section\n      className={cn(\"bg-muted bg-cover bg-center py-12 md:py-20\", className)}\n    >\n      <div className=\"container\">\n        <div className=\"flex flex-col justify-between gap-12 lg:flex-row lg:gap-8\">\n          <div className=\"mx-auto flex max-w-[43.75rem] flex-col gap-8 lg:mx-0\">\n            <div className=\"flex flex-col gap-6\">\n              <div className=\"m-auto flex w-fit flex-nowrap items-center gap-2 rounded-3xl border px-4 py-2 lg:m-0\">\n                <Sparkles className=\"size-5\" />\n                <div className=\"text-base font-light\">\n                  Free Portfolio Template\n                </div>\n              </div>\n              <h1 className=\"to-muted2 inline-block bg-linear-to-br from-foreground bg-clip-text text-center font-serif text-4xl text-transparent md:text-6xl md:leading-snug lg:text-left\">\n                Your Trusted Collaborator for Digital Services\n              </h1>\n            </div>\n            <div>\n              <div className=\"mx-auto w-fit lg:mx-0\">\n                <Button\n                  asChild\n                  className=\"group relative grid h-fit overflow-hidden rounded-full px-7 py-5 shadow-[0_1000px_0_0_hsl(0_0%_20%)_inset]\"\n                >\n                  <a href=\"#\">\n                    <span className=\"spark mask-gradient absolute inset-0 h-[100%] w-[100%] animate-flip-btn overflow-hidden rounded-full [mask:linear-gradient(white,transparent_50%)] before:absolute before:[inset:0_auto_auto_50%] before:aspect-square before:w-[200%] before:[translate:-50%_-15%] before:rotate-[-90deg] before:animate-rotate-btn before:bg-[conic-gradient(from_0deg,transparent_0_340deg,var(--color-muted)_360deg)] before:content-['']\" />\n                    <span className=\"backdrop absolute inset-[2.5px] rounded-full bg-black transition-colors duration-200 group-hover:bg-slate-900\" />\n                    <span className=\"text z-10 text-center font-medium text-white\">\n                      Click Here\n                    </span>\n                  </a>\n                </Button>\n              </div>\n              <div\n                className=\"my-9 h-[1px] w-full bg-black\"\n                style={{\n                  background:\n                    \"linear-gradient(270deg, rgba(234, 232, 225, .2) 0%, rgba(17, 16, 17, .2) 50%, rgba(17, 16, 17, 0) 100%)\",\n                }}\n              />\n              <p className=\"mx-auto w-full max-w-[30rem] text-center text-lg font-light text-foreground lg:mx-0 lg:text-left\">\n                Assisting startups and brands in creating impactful and engaging\n                solutions for their software requirements.\n              </p>\n            </div>\n          </div>\n          <div className=\"mx-auto w-full max-w-[31.25rem]\">\n            <div className=\"relative mx-auto w-full max-w-full lg:mx-0\">\n              <div className=\"w-full overflow-hidden rounded-3xl\">\n                <AspectRatio ratio={1}>\n                  <img\n                    src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\"\n                    alt=\"Responsive square image\"\n                    className=\"size-full object-cover\"\n                  />\n                </AspectRatio>\n              </div>\n              <div className=\"absolute right-0 bottom-0\">\n                <Button\n                  asChild\n                  variant=\"secondary\"\n                  className=\"m-4 flex h-fit items-center gap-2 rounded-xl px-5 py-4 text-xl font-semibold shadow-md\"\n                >\n                  <a href=\"#\">\n                    <MoonStar className=\"size-6!\" />\n                    <div>Hire Me</div>\n                  </a>\n                </Button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero107 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/aspect-ratio.tsx",
+      "content": "\"use client\"\n\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\"\n\nfunction AspectRatio({\n  ...props\n}: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {\n  return <AspectRatioPrimitive.Root data-slot=\"aspect-ratio\" {...props} />\n}\n\nexport { AspectRatio }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

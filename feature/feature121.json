@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature121",
+  "title": "Feature",
+  "description": "A component displays features in a grid, each with an icon, title, and description. Interactive blocks reveal descriptions on click.",
+  "dependencies": [
+    "lucide-react",
+    "react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature121.tsx",
+      "content": "\"use client\";\n\nimport {\n  DollarSign,\n  MessagesSquare,\n  PersonStanding,\n  Timer,\n  Zap,\n  ZoomIn,\n} from \"lucide-react\";\nimport React, { useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface IFeatures {\n  title: string;\n  description: string;\n  icon: React.ReactNode;\n}\n\nconst features: IFeatures[] = [\n  {\n    title: \"Performance\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n    icon: <Timer className=\"size-8 invert md:size-10\" />,\n  },\n  {\n    title: \"Innovation\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n    icon: <Zap className=\"size-8 invert md:size-10\" />,\n  },\n  {\n    title: \"Quality\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n    icon: <ZoomIn className=\"size-8 invert md:size-10\" />,\n  },\n  {\n    title: \"Accessibility\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n    icon: <PersonStanding className=\"size-8 invert md:size-10\" />,\n  },\n  {\n    title: \"Affordability\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n    icon: <DollarSign className=\"size-8 invert md:size-10\" />,\n  },\n  {\n    title: \"Customer Support\",\n    description:\n      \"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!\",\n    icon: <MessagesSquare className=\"size-8 invert md:size-10\" />,\n  },\n];\n\ninterface Feature121Props {\n  className?: string;\n}\n\nconst Feature121 = ({ className }: Feature121Props) => {\n  return (\n    <section className={cn(\"relative container py-32\", className)}>\n      <div className=\"m-auto grid w-full gap-px overflow-hidden rounded-md bg-border sm:max-w-[600px] sm:grid-cols-2\">\n        {features.map((feature) => (\n          <Block\n            key={feature.title}\n            title={feature.title}\n            description={feature.description}\n            icon={feature.icon}\n          />\n        ))}\n      </div>\n    </section>\n  );\n};\n\nexport { Feature121 };\n\nconst Block: React.FC<IFeatures> = ({ title, description, icon }) => {\n  const [isBlockHover, setBlockHover] = useState<boolean>(false);\n  const [isBlockClick, setBlockClick] = useState<boolean>(false);\n  return (\n    <section\n      className=\"relative aspect-square h-auto cursor-pointer overflow-hidden bg-accent px-6 py-3.5 transition duration-300 hover:bg-[#e9e9e9] sm:aspect-auto sm:h-[300px]\"\n      onMouseOver={() => setBlockHover(true)}\n      onMouseOut={() => setBlockHover(false)}\n      onClick={() => setBlockClick((prev) => !prev)}\n    >\n      <p className=\"mr-auto text-lg text-balance uppercase\">{title}</p>\n\n      <div\n        className={`absolute top-0 right-0 bottom-0 left-0 m-auto flex size-36 min-h-36 min-w-36 shrink-0 items-center justify-center rounded-full bg-primary transition duration-300 sm:h-28 sm:min-h-28 sm:w-28 sm:min-w-28 ${isBlockHover && \"scale-110 shadow-xl\"} ${isBlockClick ? \"-translate-y-40 transform opacity-0\" : \"\"} md:size-12`}\n      >\n        {icon}\n      </div>\n\n      <p\n        className={`absolute top-0 right-0 bottom-0 left-0 m-auto h-fit translate-y-40 transform px-6 py-3.5 opacity-0 transition duration-300 ${isBlockClick ? \"translate-y-0! opacity-100!\" : \"\"} `}\n      >\n        {description}\n      </p>\n    </section>\n  );\n};\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

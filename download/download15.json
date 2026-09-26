@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "download15",
+  "title": "Download 15 - Centered downloads for Windows, macOS, and iOS",
+  "description": "This component allows users to download applications for various platforms, including Windows, macOS, and iOS, enhanced with icons for easy platform identification. It features large buttons for Windows and informative links for macOS and iOS, providing compatibility details and additional information on supported devices.",
+  "dependencies": [
+    "react-icons"
+  ],
+  "registryDependencies": [
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "block/download15/download15.tsx",
+      "content": "import { FaApple, FaWindows } from \"react-icons/fa\";\nimport { IoIosAppstore } from \"react-icons/io\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface Download15Props {\n  className?: string;\n}\n\nconst Download15 = ({ className }: Download15Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container flex flex-col items-center gap-8\">\n        <img\n          src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg\"\n          alt=\"logo\"\n          className=\"w-32 dark:invert\"\n        />\n        <h1 className=\"text-center text-3xl font-bold md:text-5xl\">\n          Download for <br /> Your Platform\n        </h1>\n        <div className=\"flex flex-col items-center gap-3\">\n          <Button size=\"lg\">\n            <FaWindows />\n            Download App for Windows\n          </Button>\n          <p className=\"text-xs text-muted-foreground\">\n            Compatible with Windows 10 and 11\n          </p>\n        </div>\n        <div className=\"mt-16 flex flex-col items-center gap-8\">\n          <p className=\"text-sm font-semibold uppercase\">Also Available On</p>\n          <div className=\"grid w-full gap-4 md:grid-cols-2\">\n            <a\n              href=\"#\"\n              className=\"flex items-center gap-4 rounded-lg transition-colors duration-200 md:p-3 md:hover:bg-accent\"\n            >\n              <FaApple className=\"size-14\" />\n              <div className=\"flex flex-col\">\n                <p className=\"text-sm font-semibold\">Mac OS</p>\n                <p className=\"text-xs text-muted-foreground underline\">\n                  Download App for macOS\n                </p>\n              </div>\n            </a>\n            <a\n              href=\"#\"\n              className=\"flex items-center gap-4 rounded-lg transition-colors duration-200 md:p-3 md:hover:bg-accent\"\n            >\n              <IoIosAppstore className=\"size-14\" />\n              <div className=\"flex flex-col\">\n                <p className=\"text-sm font-semibold\">IOS</p>\n                <p className=\"text-xs text-muted-foreground underline\">\n                  Get in the App Store\n                </p>\n              </div>\n            </a>\n          </div>\n          <a\n            href=\"#\"\n            className=\"flex items-center gap-1 text-center text-xs text-muted-foreground hover:underline\"\n          >\n            More info on supported and unsupported devices →\n          </a>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Download15 };\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

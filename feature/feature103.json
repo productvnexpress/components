@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature103",
+  "title": "Feature",
+  "description": "A component showcasing core capabilities with a badge, a heading, and links in a 2-column layout expanding to 3 columns. Features interactive elements and an arrow icon.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature103.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"@/components/ui/badge\";\n\ninterface Feature103Props {\n  className?: string;\n}\n\nconst Feature103 = ({ className }: Feature103Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"flex flex-col gap-3\">\n          <Badge variant=\"outline\" className=\"w-fit\">\n            CORE CAPABILITIES\n          </Badge>\n          <h2 className=\"text-2xl md:text-4xl\">Discover our advanced tools</h2>\n        </div>\n        <div className=\"mt-10 grid gap-6 md:grid-cols-2\">\n          <a\n            href=\"#\"\n            className=\"flex flex-col gap-4 rounded-xl border p-6 hover:border-primary\"\n          >\n            <div className=\"flex items-center justify-between gap-4\">\n              <h3 className=\"text-lg font-medium\">\n                Seamless Updates & Reversions\n              </h3>\n              <span className=\"flex size-8 shrink-0 items-center justify-center rounded-full border\">\n                <ArrowRight className=\"h-auto w-4\" />\n              </span>\n            </div>\n            <p className=\"text-muted-foreground\">\n              Gain complete insight into your deployment configurations and live\n              performance.\n            </p>\n          </a>\n          <a\n            href=\"#\"\n            className=\"flex flex-col gap-4 rounded-xl border p-6 hover:border-primary\"\n          >\n            <div className=\"flex items-center justify-between gap-4\">\n              <h3 className=\"text-lg font-medium\">Effortless Rollbacks</h3>\n              <span className=\"flex size-8 shrink-0 items-center justify-center rounded-full border\">\n                <ArrowRight className=\"h-auto w-4\" />\n              </span>\n            </div>\n            <p className=\"text-muted-foreground\">\n              Quickly revert to previous versions for smooth recovery.\n            </p>\n          </a>\n          <div className=\"grid gap-6 md:col-span-2 md:grid-cols-3\">\n            <a\n              href=\"#\"\n              className=\"flex flex-col gap-4 rounded-xl border p-6 hover:border-primary\"\n            >\n              <div className=\"flex items-center justify-between gap-4\">\n                <h3 className=\"text-lg font-medium\">Configuration Insights</h3>\n                <span className=\"flex size-8 shrink-0 items-center justify-center rounded-full border\">\n                  <ArrowRight className=\"h-auto w-4\" />\n                </span>\n              </div>\n              <p className=\"text-muted-foreground\">\n                Monitor and evaluate your system settings for optimal\n                performance.\n              </p>\n            </a>\n            <a\n              href=\"#\"\n              className=\"flex flex-col gap-4 rounded-xl border p-6 hover:border-primary\"\n            >\n              <div className=\"flex items-center justify-between gap-4\">\n                <h3 className=\"text-lg font-medium\">Automated Monitoring</h3>\n                <span className=\"flex size-8 shrink-0 items-center justify-center rounded-full border\">\n                  <ArrowRight className=\"h-auto w-4\" />\n                </span>\n              </div>\n              <p className=\"text-muted-foreground\">\n                Leverage automated tracking to detect issues instantly.\n              </p>\n            </a>\n            <a\n              href=\"#\"\n              className=\"flex flex-col gap-4 rounded-xl border p-6 hover:border-primary\"\n            >\n              <div className=\"flex items-center justify-between gap-4\">\n                <h3 className=\"text-lg font-medium\">Performance Metrics</h3>\n                <span className=\"flex size-8 shrink-0 items-center justify-center rounded-full border\">\n                  <ArrowRight className=\"h-auto w-4\" />\n                </span>\n              </div>\n              <p className=\"text-muted-foreground\">\n                Analyze detailed metrics to fine-tune your application’s\n                efficiency.\n              </p>\n            </a>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature103 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

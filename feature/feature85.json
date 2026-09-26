@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature85",
+  "title": "Feature",
+  "description": "A block highlighting features of a project management app with icons, titles, and descriptions arranged in up to 3 columns.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature85.tsx",
+      "content": "import {\n  BarChartHorizontal,\n  BatteryCharging,\n  CircleHelp,\n  Layers,\n  WandSparkles,\n  ZoomIn,\n} from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst reasons = [\n  {\n    title: \"Quality\",\n    description:\n      \"Our app prioritizes high-quality performance, ensuring a smooth and reliable experience for all users.\",\n    icon: <ZoomIn className=\"size-7 shrink-0 md:size-8\" strokeWidth={1.5} />,\n  },\n  {\n    title: \"Experience\",\n    description:\n      \"With years of expertise, we offer a polished platform designed for your success and satisfaction.\",\n    icon: (\n      <BarChartHorizontal\n        className=\"size-7 shrink-0 md:size-8\"\n        strokeWidth={1.5}\n      />\n    ),\n  },\n  {\n    title: \"Support\",\n    description:\n      \"Our dedicated support team is always available to help you get the most out of the platform.\",\n    icon: (\n      <CircleHelp className=\"size-7 shrink-0 md:size-8\" strokeWidth={1.5} />\n    ),\n  },\n  {\n    title: \"Innovation\",\n    description:\n      \"Constantly evolving with the latest technology, we stay ahead of the curve to keep you competitive.\",\n    icon: (\n      <WandSparkles className=\"size-7 shrink-0 md:size-8\" strokeWidth={1.5} />\n    ),\n  },\n  {\n    title: \"Results\",\n    description:\n      \"We focus on delivering measurable results, helping your team meet goals faster and more efficiently.\",\n    icon: <Layers className=\"size-7 shrink-0 md:size-8\" strokeWidth={1.5} />,\n  },\n  {\n    title: \"Efficiency\",\n    description:\n      \"Our platform is built for speed and efficiency, optimizing every task for peak performance.\",\n    icon: (\n      <BatteryCharging\n        className=\"size-7 shrink-0 md:size-8\"\n        strokeWidth={1.5}\n      />\n    ),\n  },\n];\n\ninterface Feature85Props {\n  className?: string;\n}\n\nconst Feature85 = ({ className }: Feature85Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"border-t\">\n        <div>\n          <div className=\"relative container overflow-hidden border-x border-muted-foreground/20 py-32\">\n            <div className=\"isolate mx-auto flex max-w-3xl flex-col gap-20\">\n              <div className=\"bg absolute -top-1 -left-[1px] -z-10 h-full w-full bg-[linear-gradient(to_right,hsl(var(--muted-foreground))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground))_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_100%_120%_at_50%_50%,transparent_20%,#000_100%)] bg-[size:64px_64px] opacity-20 [clip-path:inset(0px_0px_50%_0px)]\"></div>\n              <h2 className=\"text-center text-3xl md:text-5xl\">\n                A Project Management App You&apos;ll Love Using\n              </h2>\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-aspect-video-1.svg\"\n                alt=\"placeholder\"\n                className=\"max-h-64 w-full rounded-xl object-cover\"\n              />\n              <p className=\"text-center text-xl md:text-3xl\">\n                It combines intuitive design with powerful features to help your\n                team thrive.\n              </p>\n            </div>\n          </div>\n          <div className=\"border-t border-muted-foreground/20\">\n            <div className=\"container border-x border-muted-foreground/20 px-0\">\n              <div className=\"grid gap-px bg-muted-foreground/20 md:grid-cols-2 lg:grid-cols-3\">\n                {reasons.map((reason, i) => (\n                  <div\n                    key={i}\n                    className=\"flex gap-4 bg-muted px-6 pt-8 pb-8 md:flex-col md:gap-0 md:px-8 md:pt-16\"\n                  >\n                    {reason.icon}\n                    <div>\n                      <h3 className=\"mb-2 md:mt-6 md:text-lg\">\n                        {reason.title}\n                      </h3>\n                      <p className=\"text-muted-foreground\">\n                        {reason.description}\n                      </p>\n                    </div>\n                  </div>\n                ))}\n              </div>\n            </div>\n          </div>\n          <div>\n            <div className=\"border-x border-t border-muted-foreground/20\">\n              <div className=\"container border-x border-muted-foreground/20 py-16\"></div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature85 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

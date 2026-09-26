@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature44",
+  "title": "Feature",
+  "description": "A component displaying a grid of integration options with images and descriptions, adaptable from 1 to 3 columns.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "card"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature44.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Card } from \"@/components/ui/card\";\n\nconst integrations = [\n  {\n    title: \"Slack\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg\",\n  },\n  {\n    title: \"Google Drive\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg\",\n  },\n  {\n    title: \"Dropbox\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg\",\n  },\n  {\n    title: \"Github\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-4.svg\",\n  },\n  {\n    title: \"Figma\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-5.svg\",\n  },\n  {\n    title: \"Trello\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-6.svg\",\n  },\n  {\n    title: \"Asana\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg\",\n  },\n  {\n    title: \"Jira\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg\",\n  },\n];\n\ninterface Feature44Props {\n  className?: string;\n}\n\nconst Feature44 = ({ className }: Feature44Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <h2 className=\"mb-4 text-2xl font-semibold lg:text-4xl\">\n          Integrations\n        </h2>\n        <p className=\"text-muted-foreground lg:text-lg\">\n          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate qui\n          dignissimos odit.\n        </p>\n        <ul className=\"mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3\">\n          {integrations.map((integration, i) => (\n            <li key={i}>\n              <Card className=\"p-6\">\n                <img\n                  src={integration.image}\n                  alt={integration.title}\n                  className=\"w-14\"\n                />\n                <h3 className=\"mt-4 mb-1 text-lg font-medium\">\n                  {integration.title}\n                </h3>\n                <p className=\"text-sm text-muted-foreground\">\n                  {integration.description}\n                </p>\n              </Card>\n            </li>\n          ))}\n        </ul>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature44 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-header\"\n      className={cn(\n        \"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-title\"\n      className={cn(\"leading-none font-semibold\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-description\"\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-action\"\n      className={cn(\n        \"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-content\"\n      className={cn(\"px-6\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-footer\"\n      className={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardAction,\n  CardDescription,\n  CardContent,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

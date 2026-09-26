@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature6",
+  "title": "Feature",
+  "description": "A 2-column layout component featuring an icon, a bold headline, descriptive text, a list with checkmarks, and a full-width image.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature6.tsx",
+      "content": "import { Check } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Feature6Props {\n  className?: string;\n}\n\nconst Feature6 = ({ className }: Feature6Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"grid items-center gap-8 lg:grid-cols-2\">\n          <div className=\"flex flex-col lg:items-start lg:text-left\">\n            <h1 className=\"my-6 text-3xl font-semibold text-pretty lg:text-5xl\">\n              Blocks built with Shadcn & Tailwind\n            </h1>\n            <p className=\"mb-8 max-w-xl text-muted-foreground lg:text-lg\">\n              Hundreds of finely crafted components built with React, Tailwind\n              and Shadcn UI. Developers can copy and paste these blocks directly\n              into their project.\n            </p>\n            <ul className=\"ml-4 space-y-4 text-left\">\n              <li className=\"flex items-center gap-3\">\n                <Check className=\"size-5\" />\n                <p className=\"text-muted-foreground\">\n                  Ready-to-use components built with Shadcn/ui\n                </p>\n              </li>\n              <li className=\"flex items-center gap-3\">\n                <Check className=\"size-5\" />\n                <p className=\"text-muted-foreground\">\n                  Fully responsive and accessible by default\n                </p>\n              </li>\n              <li className=\"flex items-center gap-3\">\n                <Check className=\"size-5\" />\n                <p className=\"text-muted-foreground\">\n                  Easy customization with Tailwind CSS classes\n                </p>\n              </li>\n            </ul>\n          </div>\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n            alt=\"Website components showcase\"\n            className=\"max-h-96 w-full rounded-md object-cover\"\n          />\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature6 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

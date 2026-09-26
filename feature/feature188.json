@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature188",
+  "title": "Feature",
+  "description": "A component displaying 3 resources with titles, descriptions, and images, structured in a bordered container with horizontal dividers.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature188.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Feature188Props {\n  className?: string;\n}\n\nconst Feature188 = ({ className }: Feature188Props) => {\n  const resources = [\n    {\n      title: \"Explore ready-to-use templates\",\n      description:\n        \"Choose from hundreds of pre-designed templates tailored to your needs\",\n      href: \"#\",\n      imageSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-8-wide.svg\",\n    },\n    {\n      title: \"Discover the power of No Code\",\n      description:\n        \"Understand how no-code platforms are revolutionizing software development\",\n      href: \"#\",\n      imageSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-8-wide.svg\",\n    },\n    {\n      title: \"Connect with a certified expert\",\n      description:\n        \"Get professional help from our network of certified experts\",\n      href: \"#\",\n      imageSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-8-wide.svg\",\n    },\n  ];\n\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <h2 className=\"text-center text-4xl font-medium sm:text-5xl lg:text-6xl\">\n          Kickstart your journey with us\n        </h2>\n\n        <div className=\"mx-auto mt-12 max-w-5xl rounded-2xl border\">\n          {resources.map((resource, index) => (\n            <div\n              key={index}\n              className={`${index !== resources.length - 1 ? \"border-b\" : \"\"}`}\n            >\n              <a\n                href={resource.href}\n                className=\"flex flex-col p-4 md:flex-row md:items-center md:justify-between lg:p-6\"\n              >\n                <div className=\"flex items-center\">\n                  <div className=\"flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted p-2 lg:h-14 lg:w-14\">\n                    <ArrowRight className=\"h-6 w-6 text-muted-foreground\" />\n                  </div>\n                  <div className=\"ml-6\">\n                    <h3 className=\"text-lg font-semibold lg:text-xl\">\n                      {resource.title}\n                    </h3>\n                    <p className=\"text-sm text-muted-foreground lg:text-lg\">\n                      {resource.description}\n                    </p>\n                  </div>\n                </div>\n\n                <div className=\"mt-4 shrink-0 md:mt-0 md:w-60\">\n                  <div className=\"aspect-w-16 aspect-h-9 rounded-lg bg-muted\">\n                    <img\n                      src={resource.imageSrc}\n                      alt={resource.title}\n                      className=\"h-full w-full rounded-md object-cover\"\n                    />\n                  </div>\n                </div>\n              </a>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature188 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

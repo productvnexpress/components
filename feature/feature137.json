@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature137",
+  "title": "Feature",
+  "description": "A component displays values/principles in 2 sections: 4 with images, 4 with icons, in a mix of single and dual-column layouts.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature137.tsx",
+      "content": "\"use client\";\n\nimport { Infinity as InfinityIcon, Laptop, Zap, ZoomIn } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst items1 = [\n  {\n    title: \"Team Spirit\",\n    description: \"Lorem ipsum dolor sit amet consectetur adipisicing elit.\",\n    imgSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\",\n  },\n  {\n    title: \"Innovation\",\n    description: \"Lorem ipsum dolor sit amet consectetur adipisicing elit.\",\n    imgSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg\",\n  },\n  {\n    title: \"Quality\",\n    description: \"Lorem ipsum dolor sit amet consectetur adipisicing elit.\",\n    imgSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg\",\n  },\n  {\n    title: \"Integrity\",\n    description: \"Lorem ipsum dolor sit amet consectetur adipisicing elit.\",\n    imgSrc: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\",\n  },\n];\n\nconst items2 = [\n  {\n    title: \"Support\",\n    description:\n      \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe est aliquid exercitationem, quos explicabo repellat\",\n    icon: <InfinityIcon className=\"size-8\" />,\n  },\n  {\n    title: \"Efficiency\",\n    description:\n      \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe est aliquid exercitationem, quos explicabo repellat\",\n    icon: <Laptop className=\"size-8\" />,\n  },\n  {\n    title: \"Results\",\n    description:\n      \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe est aliquid exercitationem, quos explicabo repellat\",\n    icon: <Zap className=\"size-8\" />,\n  },\n  {\n    title: \"Experience\",\n    description:\n      \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe est aliquid exercitationem, quos explicabo repellat\",\n    icon: <ZoomIn className=\"size-8\" />,\n  },\n];\n\ninterface Feature137Props {\n  className?: string;\n}\n\nconst Feature137 = ({ className }: Feature137Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <h2 className=\"text-4xl font-semibold\">Our Values and Principles</h2>\n\n        <div className=\"mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2\">\n          {items1.map((item) => (\n            <div\n              className=\"overflow-hidden rounded-2xl bg-muted pb-8\"\n              key={item.title}\n            >\n              <img\n                src={item.imgSrc}\n                alt=\"placeholder\"\n                className=\"h-40 w-full object-cover\"\n              />\n              <p className=\"mt-8 mb-4 px-10 text-2xl font-semibold\">\n                {item.title}\n              </p>\n              <p className=\"px-10 text-base text-muted-foreground\">\n                {item.description}\n              </p>\n            </div>\n          ))}\n        </div>\n\n        <div className=\"mt-12\">\n          {items2.map((item, index) => (\n            <div\n              key={item.title}\n              className={`flex flex-col items-center justify-between gap-4 rounded-2xl p-8 sm:flex-row sm:gap-10 ${index % 2 !== 0 ? \"bg-muted\" : \"\"}`}\n            >\n              <div className=\"flex w-full gap-4\">\n                {item.icon}\n                <p className=\"text-base font-semibold\">{item.title}</p>\n              </div>\n              <p className=\"w-full text-base text-muted-foreground\">\n                {item.description}\n              </p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature137 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature207",
+  "title": "Feature",
+  "description": "A component showcasing a 3-step workflow with titles, descriptions, and separators, styled in 2 columns for larger screens.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-separator"
+  ],
+  "registryDependencies": [
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature207.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Separator } from \"@/components/ui/separator\";\n\ninterface Feature207Props {\n  className?: string;\n}\n\nconst Feature207 = ({ className }: Feature207Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <p className=\"text-sm font-light\">WORKFLOW</p>\n        <h2 className=\"mt-2 text-3xl font-medium md:text-5xl\">\n          Capturing Perfect Moments\n        </h2>\n        <div className=\"mt-14\">\n          <Separator />\n          <div className=\"py-8\">\n            <div className=\"flex gap-4 md:items-center\">\n              <span className=\"mt-0.5 font-mono text-muted-foreground md:mt-0\">\n                01\n              </span>\n              <div className=\"grid items-center gap-3 md:grid-cols-2 md:gap-8\">\n                <h3 className=\"text-2xl\">Vision & Preparation</h3>\n                <p className=\"text-muted-foreground\">\n                  We discuss your photographic goals, scout locations, and\n                  develop a detailed shot list to ensure we capture your perfect\n                  moments.\n                </p>\n              </div>\n            </div>\n          </div>\n          <Separator />\n          <div className=\"py-8\">\n            <div className=\"flex gap-4 md:items-center\">\n              <span className=\"mt-0.5 font-mono text-muted-foreground md:mt-0\">\n                02\n              </span>\n              <div className=\"grid items-center gap-3 md:grid-cols-2 md:gap-8\">\n                <h3 className=\"text-2xl\">Shooting & Direction</h3>\n                <p className=\"text-muted-foreground\">\n                  Our skilled photographers utilize professional equipment,\n                  creative composition techniques, and expert lighting to create\n                  stunning imagery.\n                </p>\n              </div>\n            </div>\n          </div>\n          <Separator />\n          <div className=\"py-8\">\n            <div className=\"flex gap-4 md:items-center\">\n              <span className=\"mt-0.5 font-mono text-muted-foreground md:mt-0\">\n                03\n              </span>\n              <div className=\"grid items-center gap-3 md:grid-cols-2 md:gap-8\">\n                <h3 className=\"text-2xl\">Editing & Delivery</h3>\n                <p className=\"text-muted-foreground\">\n                  We meticulously process each image with professional\n                  retouching techniques to deliver a polished collection that\n                  exceeds your expectations.\n                </p>\n              </div>\n            </div>\n          </div>\n          <Separator />\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature207 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/separator.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SeparatorPrimitive from \"@radix-ui/react-separator\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Separator({\n  className,\n  orientation = \"horizontal\",\n  decorative = true,\n  ...props\n}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {\n  return (\n    <SeparatorPrimitive.Root\n      data-slot=\"separator\"\n      decorative={decorative}\n      orientation={orientation}\n      className={cn(\n        \"bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Separator }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

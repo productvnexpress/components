@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer6",
+  "title": "Footer",
+  "description": "A footer component with a logo, description, navigation links across two columns, a newsletter sign-up form, and copyright/terms section.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/footer6.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nconst sitemap = [\n  {\n    title: \"Company\",\n    links: [\n      {\n        title: \"About Us\",\n        href: \"#\",\n      },\n      {\n        title: \"Careers\",\n        href: \"#\",\n      },\n      {\n        title: \"Contact\",\n        href: \"#\",\n      },\n      {\n        title: \"Press\",\n        href: \"#\",\n      },\n    ],\n  },\n  {\n    title: \"Support\",\n    links: [\n      {\n        title: \"Help Center\",\n        href: \"#\",\n      },\n      {\n        title: \"Community\",\n        href: \"#\",\n      },\n      {\n        title: \"Status\",\n        href: \"#\",\n      },\n      {\n        title: \"API Docs\",\n        href: \"#\",\n      },\n    ],\n  },\n];\n\ninterface Footer6Props {\n  className?: string;\n}\n\nconst Footer6 = ({ className }: Footer6Props) => {\n  return (\n    <section className={cn(\"py-16\", className)}>\n      <div className=\"container\">\n        <footer>\n          <div className=\"relative mb-8 flex w-full flex-col gap-x-28 gap-y-8 md:flex-row md:justify-between md:gap-y-0\">\n            <div className=\"max-w-96\">\n              <div className=\"mb-6 flex items-center gap-3\">\n                <div className=\"flex size-12 items-center justify-center rounded-lg border border-border bg-accent p-2\">\n                  <img\n                    src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg\"\n                    alt=\"placeholder logo\"\n                    className=\"size-12 h-full w-full object-contain object-center\"\n                  />\n                </div>\n                <h3 className=\"text-xl font-bold\">Shadcnblocks.com</h3>\n              </div>\n              <p className=\"text-base font-medium text-muted-foreground\">\n                Components made easy.\n              </p>\n            </div>\n            <div className=\"flex flex-col items-start gap-x-20 gap-y-14 xl:flex-row\">\n              <div className=\"inline-grid w-fit grid-cols-1 gap-x-20 gap-y-14 sm:grid-cols-2\">\n                {sitemap.map((section) => (\n                  <div key={section.title} className=\"h-fit w-min\">\n                    <h4 className=\"mb-6 text-base font-semibold whitespace-nowrap\">\n                      {section.title}\n                    </h4>\n                    <ul className=\"space-y-3 text-base font-medium text-muted-foreground\">\n                      {section.links.map((link) => (\n                        <li key={link.title}>\n                          <a\n                            href={link.href}\n                            className=\"text-base whitespace-nowrap hover:text-accent-foreground\"\n                          >\n                            {link.title}\n                          </a>\n                        </li>\n                      ))}\n                    </ul>\n                  </div>\n                ))}\n              </div>\n            </div>\n          </div>\n          <div className=\"flex flex-col items-baseline justify-between gap-8 border-t border-border pt-8 md:flex-row md:gap-16\">\n            <div className=\"text-xs text-muted-foreground sm:text-sm\">\n              &copy; Shadcnblocks.com 2024\n            </div>\n            <div className=\"flex flex-col items-start gap-4 text-xs text-muted-foreground sm:text-sm md:flex-row lg:items-center\">\n              <a href=\"#\" className=\"hover:text-accent-foreground\">\n                Terms & Conditions\n              </a>\n              <a href=\"#\" className=\"hover:text-accent-foreground\">\n                Privacy Policy\n              </a>\n            </div>\n          </div>\n        </footer>\n      </div>\n    </section>\n  );\n};\n\nexport { Footer6 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

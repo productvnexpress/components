@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature18",
+  "title": "Feature",
+  "description": "A grid of customizable UI feature cards, each with an icon, title, description, and a \"Learn more\" link, arranged in up to 3 columns.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature18.tsx",
+      "content": "import {\n  Blocks,\n  ChevronRight,\n  Infinity as InfinityIcon,\n  Laptop,\n  ListEnd,\n  Zap,\n  ZoomIn,\n} from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst features = [\n  {\n    title: \"Quality\",\n    description:\n      \"Our UI blocks are designed with quality in mind. We make sure that every block is pixel perfect and visually appealing.\",\n    icon: <ZoomIn className=\"size-6\" />,\n    link: \"#\",\n  },\n  {\n    title: \"Customizable\",\n    description:\n      \"You can easily customize our UI blocks to fit your needs. Change colors, fonts, and more with our easy-to-use interface.\",\n    icon: <Blocks className=\"size-6\" />,\n    link: \"#\",\n  },\n  {\n    title: \"Responsive\",\n    description:\n      \"Our UI blocks are fully responsive and look great on any device. No matter the screen size, your website will look amazing.\",\n    icon: <Laptop className=\"size-6\" />,\n    link: \"#\",\n  },\n  {\n    title: \"Easy to Use\",\n    description:\n      \"Our UI blocks are easy to use and require no coding knowledge. Simply drag and drop the blocks you want and you are good to go.\",\n    icon: <ListEnd className=\"size-6\" />,\n    link: \"#\",\n  },\n  {\n    title: \"Fast\",\n    description:\n      \"Our UI blocks are optimized for speed and performance. Your website will load fast and provide a great user experience.\",\n    icon: <Zap className=\"size-6\" />,\n    link: \"#\",\n  },\n  {\n    title: \"Modern\",\n    description:\n      \"Our UI blocks are designed with modern trends in mind. Your website will look fresh and up-to-date with our blocks.\",\n    icon: <InfinityIcon className=\"size-6\" />,\n    link: \"#\",\n  },\n];\n\ninterface Feature18Props {\n  className?: string;\n}\n\nconst Feature18 = ({ className }: Feature18Props) => {\n  return (\n    <section\n      className={cn(\n        \"relative py-32 before:absolute before:inset-0 before:bg-primary/10 before:[mask-image:url('https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/waves.svg')] before:[mask-size:64px_32px] before:[mask-repeat:repeat]\",\n        className,\n      )}\n    >\n      <div className=\"absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-transparent to-background\"></div>\n      <div className=\"relative container\">\n        <h2 className=\"mb-8 max-w-xl text-2xl font-semibold text-balance lg:text-4xl\">\n          Build your own website with our UI blocks\n        </h2>\n        <div className=\"z-30 grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n          {features.map((feature, index) => (\n            <div\n              key={index}\n              className=\"flex flex-col gap-10 rounded-lg border bg-background p-8\"\n            >\n              <div>\n                {feature.icon}\n                <h3 className=\"mt-6 mb-2 font-medium\">{feature.title}</h3>\n                <p className=\"text-sm text-muted-foreground\">\n                  {feature.description}\n                </p>\n              </div>\n              <a\n                href={feature.link}\n                className=\"flex items-center gap-2 text-sm font-medium\"\n              >\n                Learn more\n                <ChevronRight className=\"w-4\" />\n              </a>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature18 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "components-registry",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Internal shadcn/ui custom registry — shared components for all projects.",
+  "scripts": {
+    "build": "node scripts/build-registry.mjs"
+  }
+}

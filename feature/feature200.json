@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature200",
+  "title": "Feature",
+  "description": "A component displaying 3 columns of features, each with icons, titles, and lists, distinguished by unique background gradients.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature200.tsx",
+      "content": "import { BarChart, Check, Shield, Zap } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Feature200Props {\n  className?: string;\n}\n\nconst Feature200 = ({ className }: Feature200Props) => {\n  const features = [\n    {\n      title: \"Cloud Storage\",\n      icon: Zap,\n      iconColor: \"text-purple-400/90\",\n      bgGradient: \"from-purple-500\",\n      features: [\n        \"Unlimited storage space\",\n        \"Automatic file backup\",\n        \"Fast retrieval times\",\n      ],\n    },\n    {\n      title: \"Performance Scaling\",\n      icon: BarChart,\n      iconColor: \"text-teal-400/90\",\n      bgGradient: \"from-teal-500\",\n      features: [\n        \"Auto-scaling resources\",\n        \"Load balancing across servers\",\n        \"Real-time performance metrics\",\n      ],\n    },\n    {\n      title: \"Security Protection\",\n      icon: Shield,\n      iconColor: \"text-red-400/90\",\n      bgGradient: \"from-red-500\",\n      features: [\n        \"DDoS attack prevention\",\n        \"SSL certificate management\",\n        \"Daily security scanning\",\n      ],\n    },\n  ];\n\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-2 lg:grid-cols-3\">\n          {features.map((feature, index) => (\n            <div\n              key={index}\n              className={`relative h-full rounded-xl bg-radial-[at_80%_14%] ${feature.bgGradient} overflow-hidden from-[-50%] via-zinc-950 via-75% to-zinc-950 p-6`}\n            >\n              <div className=\"absolute inset-0 h-full w-full bg-[radial-gradient(white_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_80%_14%,#000,transparent_40%)] [background-size:3px_3px] opacity-35\"></div>\n              <div\n                className={`relative grid size-11 place-items-center rounded-full bg-gradient-to-b ${feature.bgGradient}/50 via-transparent to-${feature.bgGradient.split(\"-\")[1]}/50 p-[2px]`}\n              >\n                <div\n                  className={`grid size-full place-items-center rounded-full bg-zinc-950 bg-gradient-to-b ${feature.bgGradient}/30 via-transparent to-${feature.bgGradient.split(\"-\")[1]}/30`}\n                >\n                  <feature.icon className={feature.iconColor} />\n                </div>\n              </div>\n              <h3 className=\"relative mt-10 text-lg font-semibold text-background dark:text-primary\">\n                {feature.title}\n              </h3>\n              <ul className=\"relative mt-4 space-y-3.5 text-sm text-background/70 dark:text-primary/70\">\n                {feature.features.map((item, itemIndex) => (\n                  <li key={itemIndex} className=\"flex items-center gap-2\">\n                    <Check className=\"mt-0.5 size-4 shrink-0\" />\n                    {item}\n                  </li>\n                ))}\n              </ul>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature200 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

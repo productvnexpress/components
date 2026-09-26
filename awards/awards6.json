@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "awards6",
+  "title": "Awards 6 - Milestones grid with separator rows",
+  "description": "A display-size milestones heading over a labeled grid of milestone title, type, and year with horizontal separators between entries.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "block/awards6/awards6.tsx",
+      "content": "import React from \"react\";\n\nimport { Separator } from \"@/components/ui/separator\";\nimport { cn } from \"@/lib/utils\";\n\nconst awards = [\n  {\n    title: \"Launched mobile app\",\n    nomination: \"Product Release Milestone\",\n    year: \"2025\",\n  },\n  {\n    title: \"Reached 1M users\",\n    nomination: \"Growth Achievement\",\n    year: \"2024\",\n  },\n  {\n    title: \"Opened new office\",\n    nomination: \"Expansion Milestone\",\n    year: \"2024\",\n  },\n  {\n    title: \"Completed Series B\",\n    nomination: \"Funding Success\",\n    year: \"2020\",\n  },\n];\n\ninterface Awards6Props {\n  className?: string;\n}\n\nconst Awards6 = ({ className }: Awards6Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"grid-cols-4 items-start gap-4 lg:grid\">\n          <div className=\"flex items-center gap-1\"></div>\n          <h1 className=\"col-span-3 font-semibold tracking-tight\">\n            <span className=\"text-7xl md:text-8xl lg:text-9xl\">Milestones</span>\n            <br />\n            <span className=\"text-xl md:text-2xl lg:text-3xl\">\n              & Achievements.\n            </span>\n          </h1>\n        </div>\n        <div className=\"mt-16 flex flex-col gap-6 md:mt-20\">\n          <div className=\"grid grid-cols-3 gap-2 text-sm text-muted-foreground lg:grid-cols-4\">\n            <div className=\"hidden lg:block\" />\n            <p className=\"lg:col-span-2\">Milestone</p>\n            <div className=\"col-span-2 flex items-center justify-between gap-4 lg:col-span-1\">\n              <p>Type</p>\n              <p>Year</p>\n            </div>\n          </div>\n          <Separator />\n          {awards.map((award, index) => (\n            <React.Fragment key={index}>\n              <div className=\"grid grid-cols-3 gap-2 lg:grid-cols-4\">\n                <span className=\"hidden font-mono text-xs text-muted-foreground lg:block\">\n                  {String(index + 1).padStart(2, \"0\")}\n                </span>\n                <p className=\"font-medium lg:col-span-2 lg:text-lg\">\n                  {award.title}\n                </p>\n                <div className=\"col-span-2 flex items-center justify-between gap-4 lg:col-span-1\">\n                  <p className=\"font-medium text-muted-foreground\">\n                    {award.nomination}\n                  </p>\n                  <p>{award.year}</p>\n                </div>\n              </div>\n              <Separator />\n            </React.Fragment>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Awards6 };\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature63",
+  "title": "Feature",
+  "description": "A component showcasing a group of 6 features, each with a title, description, and image, arranged in up to 3 columns.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature63.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nconst features = [\n  {\n    id: \"feature-1\",\n    title: \"Feature 1\",\n    description: \"Nam vitae molestie arcu. Quisque eu libero orci.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\",\n  },\n  {\n    id: \"feature-2\",\n    title: \"Feature 2\",\n    description: \"Nam vitae molestie arcu. Quisque eu libero orci.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\",\n  },\n  {\n    id: \"feature-3\",\n    title: \"Feature 3\",\n    description: \"Nam vitae molestie arcu. Quisque eu libero orci.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\",\n  },\n  {\n    id: \"feature-4\",\n    title: \"Feature 4\",\n    description: \"Nam vitae molestie arcu. Quisque eu libero orci.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg\",\n  },\n  {\n    id: \"feature-5\",\n    title: \"Feature 5\",\n    description: \"Nam vitae molestie arcu. Quisque eu libero orci.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg\",\n  },\n  {\n    id: \"feature-6\",\n    title: \"Feature 6\",\n    description: \"Nam vitae molestie arcu. Quisque eu libero orci.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-6.svg\",\n  },\n];\n\ninterface Feature63Props {\n  className?: string;\n}\n\nconst Feature63 = ({ className }: Feature63Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container flex flex-col items-center gap-16 lg:px-16\">\n        <div className=\"text-center\">\n          <h3 className=\"mb-3 text-3xl font-semibold text-pretty md:mb-4 md:text-4xl lg:mb-6 lg:max-w-3xl lg:text-5xl\">\n            Feature group\n          </h3>\n          <p className=\"text-muted-foreground lg:max-w-3xl lg:text-lg\">\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig\n            doloremque mollitia fugiat omnis! Porro facilis quo animi\n            consequatur. Explicabo.\n          </p>\n        </div>\n        <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n          {features.map((feature) => (\n            <div\n              key={feature.id}\n              className=\"rounded-lg border border-border bg-accent p-6 md:p-8\"\n            >\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n                alt=\"placeholder\"\n                className=\"mb-6 aspect-16/9 md:mb-8 lg:w-full\"\n              />\n              <div className=\"flex flex-col\">\n                <p className=\"mb-2 text-sm font-semibold md:text-base\">\n                  {feature.title}\n                </p>\n                <p className=\"text-sm text-muted-foreground md:text-base\">\n                  {feature.description}\n                </p>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature63 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

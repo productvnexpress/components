@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial3",
+  "title": "Testimonial",
+  "description": "A testimonial component with a quote, image logo, and author attribution centered in a bordered block with adjustable padding.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/testimonial3.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Testimonial3Props {\n  className?: string;\n}\n\nconst Testimonial3 = ({ className }: Testimonial3Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"flex flex-col items-center gap-6 border-y py-14 text-center md:py-20\">\n          <q className=\"block max-w-4xl text-2xl font-medium lg:text-3xl\">\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo\n            nesciunt iste distinctio corporis, alias illum.\n          </q>\n          <div className=\"flex flex-col items-center gap-2 sm:flex-row\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcn-ui-wordmark.svg\"\n              alt=\"shadcn\"\n              className=\"h-5 dark:invert\"\n            />\n            <p className=\"font-medium\">John Doe, Founder & CEO of Company</p>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Testimonial3 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "projects9",
+  "title": "Projects",
+  "description": "A component displaying a 1 or 2-column grid of images with hover effects revealing titles and descriptions.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/projects9.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Projects9Props {\n  className?: string;\n}\n\nconst Projects9 = ({ className }: Projects9Props) => {\n  const images = [\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw1.jpeg\",\n      alt: \"Woman with flowers\",\n      title: \"Spring Blossoms\",\n      description: \"A moment of tranquility captured in nature's embrace\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw2.jpeg\",\n      alt: \"Red rock formations\",\n      title: \"Desert Canyon\",\n      description: \"Ancient stones carved by time and wind\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw3.jpeg\",\n      alt: \"Mountain landscape\",\n      title: \"Highland Vista\",\n      description: \"Where earth meets sky in perfect harmony\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw4.jpeg\",\n      alt: \"Torii gates\",\n      title: \"Sacred Path\",\n      description: \"Traditional gates leading to spiritual awakening\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw5.jpeg\",\n      alt: \"Zen garden\",\n      title: \"Meditation Garden\",\n      description: \"Raked sand patterns creating inner peace\",\n    },\n    {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw6.jpeg\",\n      alt: \"Campfire flames\",\n      title: \"Evening Fire\",\n      description: \"Warmth and light dancing in the darkness\",\n    },\n  ];\n\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"grid grid-cols-1 md:grid-cols-2\">\n          {images.map((image, index) => (\n            <div\n              key={index}\n              className=\"group relative aspect-square overflow-hidden\"\n            >\n              <img\n                src={image.src}\n                alt={image.alt}\n                className=\"h-full w-full object-cover transition-transform duration-300 group-hover:scale-105\"\n              />\n              <div className=\"absolute inset-0 bg-background/0 transition-all duration-300 group-hover:bg-background/10\" />\n              <div className=\"absolute right-0 bottom-0 left-0 translate-y-full transform p-6 transition-transform duration-300 group-hover:translate-y-0\">\n                <div className=\"text-center\">\n                  <h3 className=\"mb-2 text-xl font-semibold text-muted\">\n                    {image.title}\n                  </h3>\n                  <p className=\"text-sm text-muted\">{image.description}</p>\n                </div>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Projects9 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "user-profile10",
+  "title": "User-profile",
+  "description": "A profile card with large portrait image, verification badge, and follow button.",
+  "dependencies": [
+    "lucide-react",
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "code/block/user-profile10.tsx",
+      "content": "import { BadgeCheck, LayoutGrid, Plus, Users } from 'lucide-react';\n\nimport { Button } from '@/components/ui/button';\nimport { Card, CardContent } from '@/components/ui/card';\nimport { cn } from '@/lib/utils';\n\ninterface User {\n  name: string;\n  image?: string;\n  bio?: string;\n  verified?: boolean;\n  followers?: number;\n  posts?: number;\n}\n\ninterface UserProfile10Props {\n  user?: User;\n  className?: string;\n}\n\nconst UserProfile10 = ({\n  user = {\n    name: 'Sarah Chen',\n    image:\n      'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/portraits/Elegant%20Woman%20Portrait.png',\n    bio: 'UX Engineer crafting intuitive experiences with code & design',\n    verified: true,\n    followers: 1248,\n    posts: 42,\n  },\n  className,\n}: UserProfile10Props) => {\n  return (\n    <Card\n      className={cn(\n        'w-full max-w-xs overflow-hidden pt-0 shadow-lg',\n        className,\n      )}\n    >\n      {/* Large portrait image */}\n      <div className=\"relative aspect-[4/5] w-full overflow-hidden\">\n        <img\n          src={user.image}\n          alt={user.name}\n          className=\"size-full object-cover\"\n        />\n      </div>\n\n      <CardContent className=\"space-y-4 p-5\">\n        {/* Name with verification badge */}\n        <div>\n          <div className=\"flex items-center gap-1.5\">\n            <h3 className=\"text-lg font-semibold\">{user.name}</h3>\n            {user.verified && (\n              <BadgeCheck className=\"size-5 fill-emerald-500 text-card\" />\n            )}\n          </div>\n          {user.bio && (\n            <p className=\"mt-1 text-sm text-muted-foreground\">{user.bio}</p>\n          )}\n        </div>\n\n        {/* Stats and follow button */}\n        <div className=\"flex items-center justify-between\">\n          <div className=\"flex items-center gap-4 text-sm text-muted-foreground\">\n            <span className=\"flex items-center gap-1.5\">\n              <Users className=\"size-4\" />\n              {user.followers?.toLocaleString()}\n            </span>\n            <span className=\"flex items-center gap-1.5\">\n              <LayoutGrid className=\"size-4\" />\n              {user.posts}\n            </span>\n          </div>\n          <Button size=\"sm\" className=\"gap-1.5\">\n            Follow\n            <Plus className=\"size-4\" />\n          </Button>\n        </div>\n      </CardContent>\n    </Card>\n  );\n};\n\nexport default UserProfile10;\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-header\"\n      className={cn(\n        \"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-title\"\n      className={cn(\"leading-none font-semibold\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-description\"\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-action\"\n      className={cn(\n        \"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-content\"\n      className={cn(\"px-6\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-footer\"\n      className={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardAction,\n  CardDescription,\n  CardContent,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

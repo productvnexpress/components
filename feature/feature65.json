@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature65",
+  "title": "Feature",
+  "description": "A component featuring a grid of four columns, displaying categorized items with expandable sections for detailed content and tags. Each item includes an icon, title, and customizable color bar.",
+  "dependencies": [
+    "clsx",
+    "lucide-react",
+    "react",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature65.tsx",
+      "content": "\"use client\";\n\nimport clsx from \"clsx\";\nimport {\n  ChevronDown,\n  ChevronUp,\n  GanttChartSquareIcon,\n  SwatchBook,\n} from \"lucide-react\";\nimport { GitBranch, Sparkles } from \"lucide-react\";\nimport { useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"@/components/ui/badge\";\n\nconst integrations = [\n  {\n    title: \"Design\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: <SwatchBook className=\"h-8 w-8\" />,\n    color: \"bg-red-400\",\n    tags: [\n      \"Deliverables\",\n      \"Research Insights\",\n      \"Hi-fi Product Screens\",\n      \"Vision Presentations\",\n      \"Animated Product Walk-through\",\n    ],\n  },\n  {\n    title: \"Develop\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: <GitBranch className=\"h-8 w-8\" />,\n    color: \"bg-blue-400\",\n    tags: [\n      \"Deliverables\",\n      \"Brand Audit\",\n      \"Look Book\",\n      \"Executive Decks\",\n      \"Style Guides\",\n      \"Design Systems\",\n    ],\n  },\n  {\n    title: \"UX\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: <Sparkles className=\"h-8 w-8\" />,\n    color: \"bg-yellow-400\",\n    tags: [\n      \"Deliverables\",\n      \"Weekly Sprints\",\n      \"Hi-fi Product Screens\",\n      \"Prototyping\",\n      \"Walk-through Videos\",\n    ],\n  },\n  {\n    title: \"Analytics\",\n    description:\n      \"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, corporis!\",\n    image: <GanttChartSquareIcon className=\"h-8 w-8\" />,\n    color: \"bg-green-400\",\n    tags: [\n      \"Deliverables\",\n      \"Workshops\",\n      \"Tool Kits\",\n      \"Communications Packages\",\n      \"Websites\",\n    ],\n  },\n];\n\ninterface Feature65Props {\n  className?: string;\n}\n\nconst Feature65 = ({ className }: Feature65Props) => {\n  const [activeTabId, setActiveTabId] = useState<number | null>(null);\n\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"grid grid-cols-1 gap-2 lg:grid-cols-4\">\n          {integrations.map((item, index) => (\n            <div\n              key={index}\n              className=\"flex h-full flex-col justify-between gap-2\"\n            >\n              <div className=\"flex items-center justify-between rounded-xl bg-muted-foreground/5 p-6\">\n                <div className=\"flex items-center gap-3\">\n                  <div className={clsx(\"h-16 w-3 rounded-md\", item.color)} />\n                  <h3 className=\"text-xl font-bold\">{item.title}</h3>\n                </div>\n                <div className=\"flex items-center gap-6\">\n                  {item.image}\n                  <div\n                    className=\"flex h-12 w-12 items-center justify-center rounded-lg bg-background lg:hidden\"\n                    onClick={() =>\n                      setActiveTabId(activeTabId === index ? null : index)\n                    }\n                  >\n                    {activeTabId === index ? (\n                      <ChevronUp className=\"h-8\" />\n                    ) : (\n                      <ChevronDown className=\"h-8\" />\n                    )}\n                  </div>\n                </div>\n              </div>\n              <div\n                className={` ${activeTabId === index ? \"flex\" : \"hidden\"} h-full flex-col items-start justify-between gap-64 rounded-xl bg-muted-foreground/5 p-6 transition-all duration-300 lg:flex`}\n              >\n                <div className=\"text-xl font-medium text-muted-foreground/90\">\n                  {item.description}\n                </div>\n                <div className=\"flex flex-col items-start gap-4\">\n                  {item.tags.map((tag, index) => (\n                    <Badge\n                      variant=\"outline\"\n                      className={`${index == 0 ? \"bg-muted/5\" : \"bg-background\"} rounded-2xl border-0 px-4 py-3 text-base font-medium`}\n                      key={tag}\n                    >\n                      {tag}\n                    </Badge>\n                  ))}\n                </div>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature65 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

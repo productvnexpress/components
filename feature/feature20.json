@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature20",
+  "title": "Feature",
+  "description": "A component showcasing a collection of utilities (like Integrations, Apps, etc.) with a header section that includes a title and a \"Learn more\" link. It features a two-column texts layout and a grid of cards (1, 2, or 3 columns based on screen size) that display the utility title, description, and image.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-separator"
+  ],
+  "registryDependencies": [
+    "card",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature20.tsx",
+      "content": "import { ChevronRight, SquareDashedMousePointer } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Card } from \"@/components/ui/card\";\nimport { Separator } from \"@/components/ui/separator\";\n\nconst utilities = [\n  {\n    title: \"Integrations\",\n    description: \"Lorem ipsum dolor, sit amet consectetur adipisicing elit.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\",\n  },\n  {\n    title: \"Apps\",\n    description: \"Lorem ipsum dolor, sit amet consectetur adipisicing elit.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\",\n  },\n  {\n    title: \"APIs\",\n    description: \"Lorem ipsum dolor, sit amet consectetur adipisicing elit.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\",\n  },\n  {\n    title: \"Plugins\",\n    description: \"Lorem ipsum dolor, sit amet consectetur adipisicing elit.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg\",\n  },\n  {\n    title: \"Extensions\",\n    description: \"Lorem ipsum dolor, sit amet consectetur adipisicing elit.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg\",\n  },\n  {\n    title: \"Widgets\",\n    description: \"Lorem ipsum dolor, sit amet consectetur adipisicing elit.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-6.svg\",\n  },\n];\n\ninterface Feature20Props {\n  className?: string;\n}\n\nconst Feature20 = ({ className }: Feature20Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container max-w-7xl\">\n        <div className=\"flex items-center justify-between text-sm\">\n          <div className=\"flex items-center gap-1 text-muted-foreground\">\n            <SquareDashedMousePointer className=\"size-5 text-primary\" />\n            <p>Utilities</p>\n          </div>\n          <a href=\"#\" className=\"hover:text-primary hover:underline\">\n            Learn more\n            <ChevronRight className=\"ml-2 inline-block size-4\" />\n          </a>\n        </div>\n        <Separator className=\"mt-3 mb-8\" />\n        <div className=\"flex flex-col justify-between gap-6 md:flex-row\">\n          <h2 className=\"text-3xl font-medium md:w-1/2\">\n            What you can do with our utilities?\n          </h2>\n          <p className=\"md:w-1/2\">\n            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae\n            praesent, ad ullam quis cupiditate atque maxime alias eaque\n            repellendus perferendis, nemo repudiandae.\n          </p>\n        </div>\n        <div className=\"mt-11 grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3\">\n          {utilities.map((utility, index) => (\n            <Card key={index} className=\"overflow-hidden pt-0\">\n              <img\n                src={utility.image}\n                alt={utility.title}\n                className=\"aspect-video w-full object-cover\"\n              />\n              <div className=\"p-5\">\n                <p className=\"mb-1 font-medium\">{utility.title}</p>\n                <p className=\"text-muted-foreground\">{utility.description}</p>\n              </div>\n            </Card>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature20 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-header\"\n      className={cn(\n        \"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-title\"\n      className={cn(\"leading-none font-semibold\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-description\"\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-action\"\n      className={cn(\n        \"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-content\"\n      className={cn(\"px-6\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-footer\"\n      className={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardAction,\n  CardDescription,\n  CardContent,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/separator.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SeparatorPrimitive from \"@radix-ui/react-separator\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Separator({\n  className,\n  orientation = \"horizontal\",\n  decorative = true,\n  ...props\n}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {\n  return (\n    <SeparatorPrimitive.Root\n      data-slot=\"separator\"\n      decorative={decorative}\n      orientation={orientation}\n      className={cn(\n        \"bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Separator }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature230",
+  "title": "Feature",
+  "description": "A component showcasing cloud service benefits using a large header, description, and 4 feature callouts with icons, arranged in a 4:6 column layout.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature230.tsx",
+      "content": "import { Cpu, Database, Globe, ShieldCheck } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst features = [\n  {\n    title: \"Globally Distributed\",\n    description:\n      \"Deploy applications close to your users. Our network spans multiple regions, ensuring low latency and high availability worldwide.\",\n    icon: Globe,\n  },\n  {\n    title: \"Scalable Compute\",\n    description:\n      \"Adapt resources on demand. Handle traffic spikes and complex workloads effortlessly with our flexible computing options.\",\n    icon: Cpu,\n  },\n  {\n    title: \"Managed Databases\",\n    description:\n      \"Focus on your application, not database administration. Reliable, scalable, and secure managed database solutions.\",\n    icon: Database,\n  },\n  {\n    title: \"Layered Security\",\n    description:\n      \"Protect your data and applications with comprehensive security measures, from network firewalls to DDoS mitigation.\",\n    icon: ShieldCheck,\n  },\n];\n\ninterface Feature230Props {\n  className?: string;\n}\n\nconst Feature230 = ({ className }: Feature230Props) => {\n  return (\n    <section className={cn(\"overflow-hidden py-32\", className)}>\n      <div className=\"relative container\">\n        <div className=\"absolute -top-px left-1/2 h-px w-screen -translate-x-1/2 bg-border\" />\n        <img\n          src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n          alt=\"placeholder\"\n          className=\"relative left-1/2 aspect-video max-h-[680px] w-screen max-w-none -translate-x-1/2 rounded-b-xl border-b border-border object-cover lg:static lg:max-w-full lg:translate-x-0 lg:border-x\"\n        />\n        <div className=\"mt-20 grid gap-8 lg:grid-cols-10\">\n          <div className=\"lg:col-span-4\">\n            <h2 className=\"mb-8 text-5xl font-medium text-balance md:text-7xl\">\n              Build Scalable Cloud Apps\n            </h2>\n            <p className=\"text-xl text-muted-foreground\">\n              Our platform provides the infrastructure and tools you need to\n              launch and grow your applications. Focus on innovation, we handle\n              the complexity.\n            </p>\n          </div>\n          <div className=\"grid gap-8 sm:grid-cols-2 lg:col-span-6\">\n            {features.map((feature, idx) => (\n              <div key={idx}>\n                <feature.icon className=\"size-6\" />\n                <h3 className=\"mt-4 text-lg font-medium\">{feature.title}</h3>\n                <p className=\"mt-2 text-muted-foreground\">\n                  {feature.description}\n                </p>\n              </div>\n            ))}\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature230 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

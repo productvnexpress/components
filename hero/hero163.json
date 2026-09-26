@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero163",
+  "title": "Hero",
+  "description": "A component featuring a title, subtitle, and a 2-4 column grid of images and a testimonial, with images in rounded containers.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/hero163.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Hero163Props {\n  className?: string;\n}\n\nconst Hero163 = ({ className }: Hero163Props) => {\n  return (\n    <section\n      className={cn(\"dark bg-background py-12 font-sans md:py-20\", className)}\n    >\n      <div className=\"container\">\n        <div className=\"mx-auto mb-24 flex max-w-[900px] flex-col items-center gap-3\">\n          <p className=\"text-center text-foreground\">Your Support Team</p>\n          <h1 className=\"text-center text-4xl leading-tight font-medium text-foreground sm:text-5xl md:text-6xl\">\n            Experienced Professionals Committed to Your Mental Health\n          </h1>\n        </div>\n        <div className=\"grid w-full max-w-[83.125rem] auto-cols-auto grid-cols-2 grid-rows-[auto_auto] justify-center gap-5 md:grid-cols-[repeat(4,1fr)]\">\n          <div className=\"col-[1/2] row-[1/2] w-full\">\n            <div className=\"h-full max-h-[19.375rem] w-full overflow-hidden rounded-2xl\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n                alt=\"\"\n                className=\"block h-full w-full object-cover object-center\"\n              />\n            </div>\n          </div>\n          <div className=\"col-[2/3] row-[1/2] w-full md:col-[2/3] md:row-[1/2]\">\n            <div className=\"h-full max-h-[19.375rem] w-full overflow-hidden rounded-2xl\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\"\n                alt=\"\"\n                className=\"block h-full w-full object-cover object-center\"\n              />\n            </div>\n          </div>\n          <div className=\"col-[1/3] row-[3/4] w-full md:col-[1/3] md:row-[2/3]\">\n            <div className=\"flex h-full min-h-[9.375rem] flex-col gap-3 overflow-hidden rounded-3xl bg-muted p-5 px-5 md:flex-row md:items-center md:gap-7 md:py-8\">\n              <div className=\"h-20 w-20 shrink-0 overflow-hidden rounded-xl md:h-[7.5rem] md:w-[7.5rem]\">\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp\"\n                  alt=\"\"\n                  className=\"h-full w-full object-cover object-center\"\n                />\n              </div>\n              <div className=\"flex h-full w-full flex-col justify-between gap-2\">\n                <p className=\"text-lg font-medium text-foreground\">\n                  &quot;Since beginning therapy here, I feel more grounded and\n                  at ease.&quot;\n                </p>\n                <p className=\"text-foreground\">John Doe</p>\n              </div>\n            </div>\n          </div>\n          <div className=\"col-[1/3] row-[2/3] h-[25rem] w-full md:col-[3/5] md:row-[1/3] md:h-auto\">\n            <div className=\"h-full max-h-[32.625rem] w-full overflow-hidden rounded-2xl\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\"\n                alt=\"\"\n                className=\"block h-full w-full object-cover object-center\"\n              />\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero163 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

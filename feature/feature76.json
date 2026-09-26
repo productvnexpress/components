@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature76",
+  "title": "Feature",
+  "description": "A component showcasing a UI Library&#x27;s features in a grid layout with 4 columns. Includes icons, titles, and descriptions for each feature.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature76.tsx",
+      "content": "import { Blocks, BookOpen, Palette, Zap } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst features = [\n  {\n    id: \"feature-1\",\n    title: \"Component Library\",\n    description:\n      \"Access over 50 beautifully designed components built with Tailwind CSS. Each component is fully customizable and ready for production.\",\n    icon: <Blocks className=\"size-10\" strokeWidth={1.5} />,\n  },\n  {\n    id: \"feature-2\",\n    title: \"Themeable\",\n    description:\n      \"Customize your design system with powerful theming. Create light and dark modes or match your brand colors with simple CSS variables.\",\n    icon: <Palette className=\"size-10\" strokeWidth={1.5} />,\n  },\n  {\n    id: \"feature-3\",\n    title: \"Performance\",\n    description:\n      \"Built with performance in mind. Minimal JavaScript and optimized CSS ensures your UI stays fast no matter how complex your design.\",\n    icon: <Zap className=\"size-10\" strokeWidth={1.5} />,\n  },\n  {\n    id: \"feature-4\",\n    title: \"Documentation\",\n    description:\n      \"Comprehensive documentation with examples and usage guidelines for every component. Get up and running quickly with our detailed guides.\",\n    icon: <BookOpen className=\"size-10\" strokeWidth={1.5} />,\n  },\n];\n\ninterface Feature76Props {\n  className?: string;\n}\n\nconst Feature76 = ({ className }: Feature76Props) => {\n  return (\n    <section className={cn(\"relative pt-32\", className)}>\n      <div className=\"relative z-10 container flex flex-col space-y-14\">\n        <h2 className=\"px-6 text-3xl font-semibold md:mb-4 md:text-5xl lg:mb-6 lg:max-w-md lg:px-10\">\n          UI Library Features\n        </h2>\n        <div className=\"relative mt-6 md:mt-10\">\n          <div className=\"absolute top-0 right-0 left-0 h-px bg-border\" />\n          <div className=\"grid divide-border md:grid-cols-4 md:divide-x\">\n            {features.map((feature) => (\n              <div\n                key={feature.id}\n                className=\"relative px-6 pb-20 md:pb-10 lg:px-10\"\n              >\n                <div className=\"absolute top-0 right-0 left-0 h-px bg-border md:hidden\" />\n                <div className=\"relative -mt-6 mb-10 flex aspect-square w-12 items-center justify-center bg-background md:-mt-10 md:mb-10 md:w-20\">\n                  {feature.icon}\n                </div>\n                <div>\n                  <h3 className=\"mb-3 max-w-[12rem] text-lg font-semibold md:mb-4 md:text-2xl lg:mb-6\">\n                    {feature.title}\n                  </h3>\n                  <p className=\"text-muted-foreground\">{feature.description}</p>\n                </div>\n              </div>\n            ))}\n          </div>\n          <div className=\"absolute right-0 bottom-0 left-0 h-px bg-border\" />\n        </div>\n      </div>\n      <div className=\"absolute inset-0 container hidden h-full md:block\">\n        <div className=\"relative h-full\">\n          <div className=\"absolute inset-y-0 left-0 h-full w-px bg-border\"></div>\n          <div className=\"absolute inset-y-0 right-0 h-full w-px bg-border\"></div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature76 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

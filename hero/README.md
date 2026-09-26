@@ -1,0 +1,145 @@
+# Hero блоки
+
+Блоки категории "hero" из shadcnblocks.com
+
+## Список блоков
+
+- `hero1` - Hero
+- `hero2` - Hero
+- `hero3` - Hero
+- `hero4` - Hero
+- `hero5` - Hero
+- `hero6` - Hero
+- `hero7` - Hero
+- `hero8` - Hero
+- `hero9` - Hero
+- `hero10` - Hero
+- `hero11` - Hero
+- `hero12` - Hero
+- `hero13` - Hero
+- `hero14` - Hero
+- `hero15` - Hero
+- `hero16` - Hero
+- `hero18` - Hero
+- `hero20` - Hero
+- `hero21` - Hero
+- `hero24` - Hero
+- `hero25` - Hero
+- `hero26` - Hero
+- `hero27` - Hero
+- `hero28` - Hero
+- `hero29` - Hero
+- `hero30` - Hero
+- `hero31` - Hero
+- `hero32` - Hero
+- `hero33` - Hero
+- `hero34` - Hero
+- `hero35` - Hero
+- `hero36` - Hero
+- `hero37` - Hero
+- `hero38` - Hero
+- `hero39` - Hero
+- `hero40` - Hero
+- `hero45` - Hero
+- `hero47` - Hero
+- `hero49` - Hero
+- `hero50` - Hero
+- `hero51` - Hero
+- `hero53` - Hero
+- `hero55` - Hero
+- `hero57` - Hero
+- `hero58` - Hero
+- `hero59` - Hero
+- `hero60` - Hero
+- `hero64` - Hero
+- `hero67` - Hero
+- `hero68` - Hero
+- `hero70` - Hero
+- `hero71` - Hero
+- `hero74` - Hero
+- `hero75` - Hero
+- `hero76` - Hero
+- `hero78` - Hero
+- `hero79` - Hero
+- `hero80` - Hero
+- `hero82` - Hero
+- `hero83` - Hero
+- `hero84` - Hero
+- `hero85` - Hero
+- `hero86` - Hero
+- `hero87` - Hero
+- `hero89` - Hero
+- `hero90` - Hero
+- `hero91` - Hero
+- `hero99` - Hero
+- `hero100` - Hero
+- `hero101` - Hero
+- `hero103` - Hero
+- `hero104` - Hero
+- `hero107` - Hero
+- `hero108` - Hero
+- `hero111` - Hero
+- `hero112` - Hero
+- `hero115` - Hero
+- `hero116` - Hero
+- `hero123` - Hero
+- `hero125` - Hero
+- `hero127` - Hero
+- `hero129` - Hero
+- `hero134` - Hero
+- `hero135` - Hero
+- `hero136` - Hero
+- `hero141` - Hero
+- `hero143` - Hero
+- `hero144` - Hero
+- `hero145` - Hero
+- `hero146` - Hero
+- `hero149` - Hero
+- `hero151` - Hero
+- `hero152` - Hero
+- `hero157` - Hero
+- `hero158` - Hero
+- `hero159` - Hero
+- `hero160` - Hero
+- `hero162` - Hero
+- `hero163` - Hero
+- `hero164` - Hero
+- `hero165` - Hero
+- `hero166` - Hero
+- `hero167` - Hero
+- `hero168` - Hero
+- `hero170` - Hero
+- `hero172` - Hero
+- `hero173` - Hero
+- `hero174` - Hero
+- `hero175` - Hero
+- `hero171` - Hero
+- `hero88` - Hero 88 - Gradient Statement Hero
+- `hero95` - Hero 95 - Centered hero with staggered portrait trio
+- `hero96` - Hero 96 - Split uptime hero with skewed product screenshot
+- `hero105` - Hero 105 - Split hero with stacked headline and product image
+- `hero117` - Hero 117 - Split hero with funding row and photo grid
+- `hero118` - Hero 118 - Coming Soon Hero With Logo Strip
+- `hero138` - Hero 138 - Dark hero with wide media rail and tinted blur bed
+- `hero139` - Hero 139 - Full-height insights hero with tech wordmarks
+- `hero140` - Hero 140 - Photo-shell hero with new badge and partner marks
+- `hero142` - Hero 142 - Product-planning hero with skewed canvas
+- `hero154` - Hero 154 - Spend Control Hero with Email
+- `hero177` - Hero 177 - Store-rating hero with proof row and split photos
+- `hero178` - Hero 178 - Support hero with mono label and triple photo stack
+- `hero179` - Hero 179 - Inbox hero with layered wide-and-tall frames
+- `hero180` - Hero 180 - Centered hero with gradient sandwich showcase
+- `hero183` - Hero 183 - Centered premium hero with framed trio and mobile carousel
+- `hero185` - Hero 185 - Split hero with bento photo grid
+- `hero186` - Hero 186 - Rounded shell hero with feature list and wide image
+- `hero187` - Hero 187 - Split hero with feature grid and autoplay carousel
+- `hero190` - Hero 190 - Wireframe-gated centerpiece hero rail
+- `hero192` - Hero 192 - Centered hero with medium image and announcement
+- `hero193` - Hero 193 - Centered fullscreen hero with serif headline
+- `hero194` - Hero 194 - Dark rounded hero auto-scrolling photo reels
+- `hero195` - Hero 195 - Hero with tabbed dashboard preview
+- `hero196` - Hero 196 - Hero with tabbed features and email form
+- `hero197` - Hero 197 - Announcement hero dotted grid backdrop
+- `hero198` - Hero 198 - Left-aligned fullscreen hero with serif headline
+- `hero199` - Hero 199 - Right-aligned fullscreen hero with serif headline
+- `hero200` - Hero 200 - Serif hero with rising phone mockup

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature39",
+  "title": "Feature",
+  "description": "A feature block with a heading and a 3-column layout, each containing an image, title, description, and link.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature39.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Feature39Props {\n  className?: string;\n}\n\nconst Feature39 = ({ className }: Feature39Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <h2 className=\"mb-9 text-3xl font-semibold lg:mb-14 lg:text-4xl\">\n          Awesome features to start with\n        </h2>\n        <div className=\"grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-6\">\n          <div>\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\"\n              alt=\"feature\"\n              className=\"aspect-video max-h-96 w-full rounded-lg object-cover\"\n            />\n            <p className=\"mt-8 mb-2 text-lg font-semibold\">Integrations</p>\n            <p className=\"mb-4 text-muted-foreground\">\n              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse\n              eaque corrupti illum sapiente!\n            </p>\n            <a href=\"#\" className=\"font-medium underline\">\n              Learn more\n            </a>\n          </div>\n          <div>\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\"\n              alt=\"feature\"\n              className=\"aspect-video max-h-96 w-full rounded-lg object-cover\"\n            />\n            <p className=\"mt-8 mb-2 text-lg font-semibold\">Analytics</p>\n            <p className=\"mb-4 text-muted-foreground\">\n              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse\n              eaque corrupti illum sapiente!\n            </p>\n            <a href=\"#\" className=\"font-medium underline\">\n              Learn more\n            </a>\n          </div>\n          <div>\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\"\n              alt=\"feature\"\n              className=\"aspect-video max-h-96 w-full rounded-lg object-cover\"\n            />\n            <p className=\"mt-8 mb-2 text-lg font-semibold\">Search & Filter</p>\n            <p className=\"mb-4 text-muted-foreground\">\n              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse\n              eaque corrupti illum sapiente!\n            </p>\n            <a href=\"#\" className=\"font-medium underline\">\n              Learn more\n            </a>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature39 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

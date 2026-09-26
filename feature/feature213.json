@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature213",
+  "title": "Feature",
+  "description": "A component showcasing features through tabs, detailing functionality with related images and summaries. Includes a main title, 3 tabbed descriptions, and images set in a 16:9 aspect ratio.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-aspect-ratio",
+    "@radix-ui/react-tabs"
+  ],
+  "registryDependencies": [
+    "aspect-ratio",
+    "tabs"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature213.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nimport { AspectRatio } from \"@/components/ui/aspect-ratio\";\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/components/ui/tabs\";\n\ninterface list {\n  title: string;\n  value: string;\n  summary: string;\n  image: {\n    src: string;\n    alt: string;\n  };\n}\n\nconst LIST: Array<list> = [\n  {\n    title: \"Edit your video simply by editing the text.\",\n    value: \"1\",\n    summary:\n      \"transcribes your recordings automatically. To edit the video, just edit the transcript—hit delete to cut parts and copy-paste to rearrange segments. It’s that easy.\",\n    image: {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\",\n      alt: \"\",\n    },\n  },\n  {\n    title: \"Crystal-clear audio delivered at lightning speed.\",\n    value: \"2\",\n    summary:\n      \"Eliminate filler words, close awkward pauses, and make it sound like a professional studio recording—all with our AI and just a click or two.\",\n    image: {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\",\n      alt: \"\",\n    },\n  },\n  {\n    title: \"No need to remember your lines—or tidy up your space.\",\n    value: \"3\",\n    summary:\n      \"Keep your gaze fixed on the camera, even if you were reading your script the entire time. Use AI green screen to swap out your messy background for a more professional one.\",\n    image: {\n      src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\",\n      alt: \"\",\n    },\n  },\n];\ninterface Feature213Props {\n  className?: string;\n}\n\nconst Feature213 = ({ className }: Feature213Props) => {\n  return (\n    <section className={cn(\"bg-background py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"mx-auto mb-8 flex max-w-[52.5rem] flex-col items-center justify-between gap-6 md:mb-20\">\n          <h2 className=\"text-center text-5xl text-foreground lg:text-7xl\">\n            Speed up production without sacrificing quality\n          </h2>\n        </div>\n        <div>\n          <Tabs defaultValue={LIST[0].value} className=\"gap-14 xl:flex-row\">\n            <TabsList className=\"h-fit w-fit flex-col gap-2.5 bg-transparent p-0\">\n              {LIST.map((item, i) => (\n                <TabsTrigger\n                  className=\"flex-col items-start rounded-[0.75rem] p-5 text-left whitespace-normal data-[state=active]:bg-muted xl:max-w-[34.0625rem]\"\n                  key={`tab-trigger-${i}`}\n                  value={item.value}\n                >\n                  <div className=\"leading-normal font-bold\">{item.title}</div>\n                  <div className=\"leading-normal text-muted-foreground\">\n                    {item.summary}\n                  </div>\n                </TabsTrigger>\n              ))}\n            </TabsList>\n            {LIST.map((item, i) => (\n              <TabsContent\n                className=\"w-full\"\n                key={`tab-content-${i}`}\n                value={item.value}\n              >\n                <AspectRatio\n                  ratio={16 / 9}\n                  className=\"overflow-hidden rounded-[0.75rem]\"\n                >\n                  <img\n                    src={item.image.src}\n                    alt={item.image.alt}\n                    className=\"block size-full object-cover object-center\"\n                  />\n                </AspectRatio>\n              </TabsContent>\n            ))}\n          </Tabs>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature213 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/aspect-ratio.tsx",
+      "content": "\"use client\"\n\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\"\n\nfunction AspectRatio({\n  ...props\n}: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {\n  return <AspectRatioPrimitive.Root data-slot=\"aspect-ratio\" {...props} />\n}\n\nexport { AspectRatio }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/tabs.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as TabsPrimitive from \"@radix-ui/react-tabs\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Tabs({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Root>) {\n  return (\n    <TabsPrimitive.Root\n      data-slot=\"tabs\"\n      className={cn(\"flex flex-col gap-2\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction TabsList({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.List>) {\n  return (\n    <TabsPrimitive.List\n      data-slot=\"tabs-list\"\n      className={cn(\n        \"bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsTrigger({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {\n  return (\n    <TabsPrimitive.Trigger\n      data-slot=\"tabs-trigger\"\n      className={cn(\n        \"data-[state=active]:bg-background dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsContent({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Content>) {\n  return (\n    <TabsPrimitive.Content\n      data-slot=\"tabs-content\"\n      className={cn(\"flex-1 outline-none\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Tabs, TabsList, TabsTrigger, TabsContent }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

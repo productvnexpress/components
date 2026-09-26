@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "user-profile11",
+  "title": "User-profile",
+  "description": "A profile card with full-bleed background image and overlay text.",
+  "dependencies": [
+    "lucide-react",
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/user-profile11.tsx",
+      "content": "import { BadgeCheck, LayoutGrid, Plus, Users } from 'lucide-react';\n\nimport { Button } from '@/components/ui/button';\nimport { cn } from '@/lib/utils';\n\ninterface User {\n  name: string;\n  image?: string;\n  bio?: string;\n  verified?: boolean;\n  followers?: number;\n  posts?: number;\n}\n\ninterface UserProfile11Props {\n  user?: User;\n  className?: string;\n}\n\nconst UserProfile11 = ({\n  user = {\n    name: 'Sarah Chen',\n    image:\n      'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/portraits/Elegant%20Woman%20Portrait.png',\n    bio: 'UX Engineer crafting intuitive experiences with code & design',\n    verified: true,\n    followers: 1248,\n    posts: 42,\n  },\n  className,\n}: UserProfile11Props) => {\n  return (\n    <div\n      className={cn(\n        'relative w-full max-w-xs overflow-hidden rounded-2xl shadow-lg',\n        className,\n      )}\n    >\n      {/* Full background image */}\n      <img\n        src={user.image}\n        alt={user.name}\n        className=\"aspect-[3/4] w-full object-cover\"\n      />\n\n      {/* Gradient overlay for text readability */}\n      <div className=\"absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent\" />\n\n      {/* Content overlay at bottom - uses explicit light colors since it's always on dark overlay */}\n      <div className=\"absolute inset-x-0 bottom-0 space-y-3 p-5 text-white\">\n        {/* Name with verification badge */}\n        <div>\n          <div className=\"flex items-center gap-1.5\">\n            <h3 className=\"text-lg font-semibold\">{user.name}</h3>\n            {user.verified && (\n              <BadgeCheck className=\"size-5 fill-emerald-500 text-white\" />\n            )}\n          </div>\n          {user.bio && (\n            <p className=\"mt-1 text-sm text-white/80\">{user.bio}</p>\n          )}\n        </div>\n\n        {/* Stats and follow button */}\n        <div className=\"flex items-center justify-between\">\n          <div className=\"flex items-center gap-4 text-sm text-white/80\">\n            <span className=\"flex items-center gap-1.5\">\n              <Users className=\"size-4\" />\n              {user.followers?.toLocaleString()}\n            </span>\n            <span className=\"flex items-center gap-1.5\">\n              <LayoutGrid className=\"size-4\" />\n              {user.posts}\n            </span>\n          </div>\n          <Button\n            size=\"sm\"\n            className=\"gap-1.5 bg-white/20 text-white backdrop-blur-sm hover:bg-white/30\"\n          >\n            Follow\n            <Plus className=\"size-4\" />\n          </Button>\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default UserProfile11;\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

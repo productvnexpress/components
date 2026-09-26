@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero25",
+  "title": "Hero",
+  "description": "A hero block featuring a centered title, subtitle, customizable buttons, and a list highlighting 3 key benefits with icons.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/hero25.tsx",
+      "content": "import { Blocks, MoveRight, Wrench, Zap } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface Hero25Props {\n  className?: string;\n}\n\nconst Hero25 = ({ className }: Hero25Props) => {\n  return (\n    <section className={cn(\"py-20 md:py-28 lg:py-36\", className)}>\n      <div className=\"container px-4 md:px-6\">\n        <div className=\"mx-auto max-w-4xl text-center\">\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-4.svg\"\n            alt=\"placeholder\"\n            className=\"mx-auto mb-6 w-14 md:mb-8 md:w-20 lg:mb-10 lg:w-24\"\n          />\n          <span className=\"mb-2 inline-block text-sm font-medium tracking-wider text-muted-foreground uppercase md:text-base\">\n            SYSTEMS\n          </span>\n          <h1 className=\"mt-4 text-4xl leading-tight font-bold text-balance md:text-5xl lg:text-7xl lg:leading-[1.1]\">\n            A system crafted for team success and growth\n          </h1>\n          <div className=\"mt-10 flex flex-col justify-center gap-4 sm:flex-row\">\n            <Button size=\"lg\" className=\"px-8 py-6 text-base font-medium\">\n              Get started\n              <MoveRight className=\"ml-2 size-5\" strokeWidth={1.5} />\n            </Button>\n            <Button\n              size=\"lg\"\n              variant=\"secondary\"\n              className=\"px-8 py-6 text-base font-medium\"\n            >\n              Read the docs\n              <MoveRight className=\"ml-2 size-5\" strokeWidth={1.5} />\n            </Button>\n          </div>\n          <div className=\"mt-10 lg:mt-12\">\n            <ul className=\"flex flex-wrap justify-center gap-6 text-sm text-muted-foreground lg:text-base\">\n              <li className=\"flex items-center gap-2.5 whitespace-nowrap\">\n                <Zap className=\"size-5 text-primary\" />\n                Quick setup guide\n              </li>\n              <li className=\"flex items-center gap-2.5 whitespace-nowrap\">\n                <Blocks className=\"size-5 text-primary\" />\n                Fully customizable\n              </li>\n              <li className=\"flex items-center gap-2.5 whitespace-nowrap\">\n                <Wrench className=\"size-5 text-primary\" />\n                Easy to use components\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero25 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

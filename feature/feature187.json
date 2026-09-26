@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature187",
+  "title": "Feature",
+  "description": "A component displays a 3-step process with titles and descriptions in a three-column layout. Each step is uniquely marked and connected by a visual guide.",
+  "dependencies": [
+    "react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature187.tsx",
+      "content": "import React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype DataItem = {\n  id: number;\n  title: string;\n  description: string;\n};\n\nconst DATA: DataItem[] = [\n  {\n    id: 1,\n    title: \"Step 1: Plan Your Strategy\",\n    description:\n      \"Define your goals and create a roadmap to achieve them efficiently.\",\n  },\n  {\n    id: 2,\n    title: \"Step 2: Execute Your Plan\",\n    description:\n      \"Implement your strategy with precision and monitor progress in real-time.\",\n  },\n  {\n    id: 3,\n    title: \"Step 3: Review and Improve\",\n    description:\n      \"Analyze results, gather feedback, and refine your approach for better outcomes.\",\n  },\n];\n\ntype StepItemProps = {\n  step: DataItem;\n  isLast: boolean;\n  className?: string;\n};\n\nconst StepItem: React.FC<StepItemProps> = ({ step, isLast, className }) => {\n  return (\n    <div className={cn(\"max-lg:flex max-lg:gap-4\", className)}>\n      <div className=\"relative lg:py-6\">\n        <div\n          className={`absolute h-full w-1 -translate-x-1/2 translate-y-11 bg-muted/50 bg-linear-to-b max-lg:left-1/2 lg:top-1/2 lg:h-1 lg:w-full lg:translate-x-6 lg:-translate-y-1/2 lg:bg-linear-to-r ${\n            isLast ? \"from-muted/50 to-white\" : \"\"\n          }`}\n        />\n        <div className=\"relative z-0 grid size-11 place-content-center rounded-full border-4 bg-background\">\n          <p className=\"text-lg font-bold\">{step.id}</p>\n        </div>\n      </div>\n      <div className=\"max-lg:mt-2\">\n        <p className=\"text-lg font-semibold text-black\">{step.title}</p>\n        <p className=\"mt-2 text-muted-foreground\">{step.description}</p>\n      </div>\n    </div>\n  );\n};\n\ninterface Feature187Props {\n  className?: string;\n}\n\nconst Feature187 = ({ className }: Feature187Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div>\n          <h2 className=\"text-4xl font-medium sm:text-5xl lg:text-6xl\">\n            Achieve Success with Ease\n          </h2>\n          <p className=\"mt-8 text-muted-foreground md:text-lg\">\n            Follow our proven steps to streamline your workflow and achieve your\n            goals with confidence.\n          </p>\n        </div>\n        <div className=\"mt-12 grid gap-10 lg:grid-cols-3 lg:gap-6\">\n          {DATA.map((step, index) => (\n            <StepItem\n              key={step.id}\n              step={step}\n              isLast={index === DATA.length - 1}\n            />\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature187 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

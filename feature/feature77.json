@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature77",
+  "title": "Feature",
+  "description": "This component showcases two key features with icons, titles, and descriptions, arranged in a 2-column grid with a decorative border.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature77.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Feature77Props {\n  className?: string;\n}\n\nconst Feature77 = ({ className }: Feature77Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container flex flex-col items-center\">\n        <div className=\"text-center\">\n          <h3 className=\"text-4xl font-semibold text-pretty md:mb-4 lg:mb-6 lg:max-w-3xl lg:text-5xl\">\n            Key Platform Features\n          </h3>\n        </div>\n      </div>\n      <div className=\"container mt-16\">\n        <div className=\"relative\">\n          <div className=\"grid border md:grid-cols-2 md:divide-x\">\n            <a\n              href=\"#\"\n              className=\"group relative flex flex-col items-center border-border pt-8 pb-8 text-center transition-all duration-200 md:border-t md:px-8 md:pt-12 md:pb-12 lg:px-12 lg:pt-16 lg:pb-20\"\n            >\n              <div className=\"absolute top-0 h-px w-full bg-border md:hidden\" />\n              <div className=\"mb-8 flex aspect-1/1 w-16 items-center justify-center md:w-[6.25rem] lg:mb-[3.25rem]\">\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg\"\n                  alt=\"Real-time Analytics\"\n                  className=\"h-full w-full object-contain object-center\"\n                />\n              </div>\n              <h2 className=\"mb-4 text-2xl font-semibold md:mb-5\">\n                Real-time Analytics\n              </h2>\n              <p className=\"mb-auto text-muted-foreground\">\n                Track your performance with instant insights. Our powerful\n                analytics engine processes data in real-time, providing\n                actionable metrics and customizable dashboards for informed\n                decision-making.\n              </p>\n            </a>\n            <a\n              href=\"#\"\n              className=\"group relative flex flex-col items-center border-border pt-8 pb-8 text-center transition-all duration-200 md:border-t md:px-8 md:pt-12 md:pb-12 lg:px-12 lg:pt-16 lg:pb-20\"\n            >\n              <div className=\"absolute top-0 h-px w-full bg-border md:hidden\" />\n              <div className=\"mb-8 flex aspect-1/1 w-16 items-center justify-center md:w-[6.25rem] lg:mb-[3.25rem]\">\n                <img\n                  src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg\"\n                  alt=\"AI-Powered Automation\"\n                  className=\"h-full w-full object-contain object-center\"\n                />\n              </div>\n              <h2 className=\"mb-4 text-2xl font-semibold md:mb-5\">\n                AI-Powered Automation\n              </h2>\n              <p className=\"mb-auto text-muted-foreground\">\n                Streamline your workflow with intelligent automation. Our AI\n                system learns from your patterns to automate repetitive tasks\n                and suggest optimizations for improved efficiency.\n              </p>\n            </a>\n          </div>\n          <div className=\"absolute -top-[5px] -left-[5px]\">\n            <div className=\"size-[12px] rounded-full bg-primary\"></div>\n          </div>\n          <div className=\"absolute -top-[5px] -right-[5px]\">\n            <div className=\"size-[12px] rounded-full bg-primary\"></div>\n          </div>\n          <div className=\"absolute -bottom-[5px] -left-[5px]\">\n            <div className=\"size-[12px] rounded-full bg-primary\"></div>\n          </div>\n          <div className=\"absolute -right-[5px] -bottom-[5px]\">\n            <div className=\"size-[12px] rounded-full bg-primary\"></div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature77 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact16",
+  "title": "Contact",
+  "description": "A contact component with a title, descriptive text, links for phone and email, and a form with name, email, and message input fields, plus a submit button.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "code/block/contact16.tsx",
+      "content": "import { CornerDownRight, Mail, Smartphone } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\n\ninterface Contact16Props {\n  className?: string;\n}\n\nconst Contact16 = ({ className }: Contact16Props) => {\n  return (\n    <section\n      className={cn(\"dark bg-background py-32 text-foreground\", className)}\n    >\n      <div className=\"container\">\n        <h1 className=\"text-5xl font-semibold tracking-tight lg:text-8xl\">\n          Get in Touch\n          <sup>*</sup>\n        </h1>\n        <div className=\"mt-20 flex flex-col justify-between gap-10 lg:flex-row\">\n          <div className=\"w-full max-w-md\">\n            <p className=\"tracking-tight text-muted-foreground/50\">\n              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum\n              vel ratione natus nihil harum, perferendis sint facilis possimus\n              reprehenderit optio!\n            </p>\n            <div className=\"mt-10 flex justify-between\">\n              <a\n                className=\"flex items-center gap-1 text-foreground/40 hover:text-foreground\"\n                href=\"tel:+1020020023\"\n              >\n                {\" \"}\n                <Smartphone className=\"h-4 w-4\" /> +102 002 0023\n              </a>\n              <a\n                className=\"flex items-center gap-1 text-foreground/40 hover:text-foreground\"\n                href=\"mailto:hello@company.com\"\n              >\n                {\" \"}\n                <Mail className=\"h-4 w-4\" /> hello@company.com\n              </a>\n            </div>\n          </div>\n          <form className=\"col-span-4 flex w-full flex-col gap-2 lg:pl-30\">\n            <Input\n              type=\"text\"\n              placeholder=\"Name*\"\n              className=\"h-19 rounded-none border-0 border-b border-b-foreground/15 !bg-transparent placeholder:text-foreground/20 focus-visible:ring-0\"\n            />\n            <Input\n              type=\"email\"\n              placeholder=\"Email*\"\n              className=\"h-19 rounded-none border-0 border-b border-b-foreground/15 !bg-transparent placeholder:text-foreground/20 focus-visible:ring-0\"\n            />\n            <Input\n              type=\"text\"\n              placeholder=\"Message (Tell us about your project)\"\n              className=\"h-19 rounded-none border-0 border-b border-b-foreground/15 !bg-transparent placeholder:text-foreground/20 focus-visible:ring-0\"\n            />\n            <Button\n              variant=\"ghost\"\n              className=\"mt-15 flex h-15 items-center justify-start gap-2 text-base\"\n            >\n              <CornerDownRight className=\"size-6\" />\n              Get in touch\n            </Button>\n          </form>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Contact16 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/input.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\n  return (\n    <input\n      type={type}\n      data-slot=\"input\"\n      className={cn(\n        \"file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\n        \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\",\n        \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

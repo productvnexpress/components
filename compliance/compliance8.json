@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "compliance8",
+  "title": "Compliance 8 - Certification logos with documentation button",
+  "description": "This component highlights an organization's adherence to top compliance standards by displaying certifications like ISO 27001, GDPR, CCPA, and AICPA SOC. It features a button linking to detailed compliance documentation, facilitating easy access to information on data security and regulatory compliance.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "block/compliance8/compliance8.tsx",
+      "content": "import { ArrowUpRight } from \"lucide-react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface Compliance8Props {\n  className?: string;\n}\n\nconst Compliance8 = ({ className }: Compliance8Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"mx-auto max-w-3xl text-center\">\n          <p className=\"text-xs text-muted-foreground uppercase\">\n            trusted certifications\n          </p>\n          <h1 className=\"my-3 text-4xl font-bold\">\n            Industry-leading compliance standards\n          </h1>\n          <p className=\"text-muted-foreground\">\n            Maintain confidence in your data security with our comprehensive\n            compliance portfolio. We continuously undergo rigorous third-party\n            audits and assessments to validate our adherence to international\n            security, privacy, and regulatory frameworks.\n          </p>\n        </div>\n        <div className=\"mx-auto mt-10 grid max-w-3xl grid-cols-2 place-items-center gap-4 md:grid-cols-4\">\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/ISO-27001.svg\"\n            alt=\"ISO 27001\"\n            className=\"max-h-24 dark:invert\"\n          />\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/GDPR.svg\"\n            alt=\"GDPR\"\n            className=\"max-h-24 dark:invert\"\n          />\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/CCPA.svg\"\n            alt=\"CCPA\"\n            className=\"max-h-24 dark:invert\"\n          />\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/compliance/AICPA-SOC.svg\"\n            alt=\"AICPA SOC\"\n            className=\"max-h-24 dark:invert\"\n          />\n        </div>\n        <Button variant=\"link\" className=\"mx-auto mt-10 flex\" asChild>\n          <a href=\"#\">\n            View compliance documentation\n            <ArrowUpRight />\n          </a>\n        </Button>\n      </div>\n    </section>\n  );\n};\n\nexport { Compliance8 };\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

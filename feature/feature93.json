@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature93",
+  "title": "Feature",
+  "description": "A component featuring staggered avatars and a 3-column layout with icons, highlighting customer care themes, and focusing on support, solutions, and feedback.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-avatar"
+  ],
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature93.tsx",
+      "content": "import { Infinity as InfinityIcon, MessagesSquare, Target } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Avatar, AvatarImage } from \"@/components/ui/avatar\";\n\ninterface Feature93Props {\n  className?: string;\n}\n\nconst Feature93 = ({ className }: Feature93Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"text-center\">\n          <span className=\"flex items-end justify-center -space-x-4\">\n            <Avatar className=\"size-16 border\">\n              <AvatarImage\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp\"\n                alt=\"placeholder\"\n              />\n            </Avatar>\n            <Avatar className=\"size-24 border\">\n              <AvatarImage\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-6.webp\"\n                alt=\"placeholder\"\n              />\n            </Avatar>\n            <Avatar className=\"size-16 border\">\n              <AvatarImage\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-3.webp\"\n                alt=\"placeholder\"\n              />\n            </Avatar>\n          </span>\n          <h2 className=\"mt-12 text-4xl font-bold lg:text-5xl\">\n            Outstanding customer care\n          </h2>\n          <div className=\"mt-20 grid justify-center gap-16 lg:grid-cols-3\">\n            <div className=\"max-w-md\">\n              <MessagesSquare\n                className=\"mx-auto mb-6 size-12\"\n                strokeWidth={1.5}\n              />\n              <h3 className=\"mb-4 text-2xl font-medium lg:text-2xl\">\n                Dedicated support for your team\n              </h3>\n              <p className=\"text-muted-foreground\">\n                Our team consists of experts who ensure that your questions are\n                answered promptly and accurately.\n              </p>\n            </div>\n            <div className=\"max-w-md\">\n              <Target className=\"mx-auto mb-6 size-12\" strokeWidth={1.5} />\n              <h3 className=\"mb-4 text-2xl font-medium lg:text-2xl\">\n                Quick and precise solutions to your problems\n              </h3>\n              <p className=\"text-muted-foreground\">\n                We know the importance of timely answers, which is why we\n                prioritize fast, reliable responses.\n              </p>\n            </div>\n            <div className=\"max-w-md\">\n              <InfinityIcon\n                className=\"mx-auto mb-6 size-12\"\n                strokeWidth={1.5}\n              />\n              <h3 className=\"mb-4 text-2xl font-medium lg:text-2xl\">\n                Continuous improvement through feedback\n              </h3>\n              <p className=\"text-muted-foreground\">\n                Your input helps us grow. We regularly update and enhance our\n                services based on what matters to you.\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature93 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/avatar.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as AvatarPrimitive from \"@radix-ui/react-avatar\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Avatar({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Root>) {\n  return (\n    <AvatarPrimitive.Root\n      data-slot=\"avatar\"\n      className={cn(\n        \"relative flex size-8 shrink-0 overflow-hidden rounded-full\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarImage({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Image>) {\n  return (\n    <AvatarPrimitive.Image\n      data-slot=\"avatar-image\"\n      className={cn(\"aspect-square size-full\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarFallback({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {\n  return (\n    <AvatarPrimitive.Fallback\n      data-slot=\"avatar-fallback\"\n      className={cn(\n        \"bg-muted flex size-full items-center justify-center rounded-full\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Avatar, AvatarImage, AvatarFallback }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

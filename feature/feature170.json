@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature170",
+  "title": "Feature",
+  "description": "This component displays \"Our Core Values\" with a badge and a call-to-action link, followed by a three-column grid of icons and texts detailing each value.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature170.tsx",
+      "content": "import { ArrowRight, Heart, Lightbulb, Shield, UserPen } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"@/components/ui/badge\";\n\nconst values = [\n  {\n    title: \"User-Centered Design\",\n    description:\n      \"We prioritize the user experience, ensuring every feature adds real value and is intuitive to use.\",\n    icon: UserPen,\n  },\n  {\n    title: \"Continuous Innovation\",\n    description:\n      \"We are committed to pushing boundaries, and evolving to meet the needs of modern teams.\",\n    icon: Lightbulb,\n  },\n  {\n    title: \"Integrity and Transparency\",\n    description:\n      \"We build with honesty and clarity, fostering trust with our users and partners.\",\n    icon: Shield,\n  },\n];\n\ninterface Feature170Props {\n  className?: string;\n}\n\nconst Feature170 = ({ className }: Feature170Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"flex flex-col gap-6 py-4 lg:py-8\">\n          <Badge\n            variant=\"outline\"\n            className=\"w-fit gap-1 bg-card px-3 text-sm font-normal tracking-tight shadow-sm\"\n          >\n            <Heart className=\"size-4\" />\n            <span>We live by</span>\n          </Badge>\n          <h2 className=\"text-3xl leading-tight tracking-tight md:text-4xl lg:text-6xl\">\n            Our Core Values\n          </h2>\n          <div className=\"flex flex-col gap-2\">\n            <p className=\"text-muted-foreground\">\n              We believe in principles that guide our growth and inspire our\n              community.\n            </p>\n            <p className=\"inline-flex items-center gap-1 text-primary\">\n              <span className=\"underline\">Learn More</span>\n              <ArrowRight className=\"size-4\" />\n            </p>\n          </div>\n        </div>\n\n        <div className=\"mt-10 grid gap-8 sm:grid-cols-2 md:mt-14 lg:grid-cols-3\">\n          {values.map((value, index) => (\n            <div className=\"flex gap-2.5\" key={index}>\n              <value.icon className=\"mt-0.5 size-[18px] shrink-0\" />\n              <div>\n                <h3 className=\"text-lg leading-none! tracking-[-0.96px] lg:text-2xl\">\n                  {value.title}\n                </h3>\n                <p className=\"mt-2.5 text-sm tracking-[-0.36px] text-muted-foreground\">\n                  {value.description}\n                </p>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature170 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

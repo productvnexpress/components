@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero141",
+  "title": "Hero",
+  "description": "A component with a video background, featuring a central column for text, a call-to-action button, and a 5-star rating.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/hero141.tsx",
+      "content": "import { ChevronRight, Star } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface Hero141Props {\n  className?: string;\n}\n\nconst Hero141 = ({ className }: Hero141Props) => {\n  return (\n    <section\n      className={cn(\n        \"dark relative h-svh max-h-[1400px] min-h-[600px] w-full overflow-hidden bg-background px-5 font-sans\",\n        className,\n      )}\n    >\n      <div className=\"relative z-10 flex size-full\">\n        <div className=\"m-auto flex max-w-[25rem] flex-col items-center gap-9 sm:max-w-[31.25rem] md:max-w-[50rem]\">\n          <h1 className=\"bg-linear-to-br from-neutral-100 to-neutral-600 bg-clip-text text-center text-4xl leading-tight font-semibold text-transparent sm:text-5xl md:text-[4rem]\">\n            Liberate yourself from phone interruptions\n          </h1>\n          <Button\n            asChild\n            className=\"flex h-fit w-fit items-center justify-center gap-2 rounded-full px-7 py-3.5 font-medium shadow-[0_0_5px_5px_rgba(255,255,255,.3)] transition-all duration-500 hover:bg-neutral-200 hover:shadow-[0_0_10px_5px_rgba(255,255,255,.5)]\"\n          >\n            <a href=\"#\">\n              <p>Buy Here</p>\n              <ChevronRight className=\"size-5\" />\n            </a>\n          </Button>\n          <div>\n            <div className=\"flex items-center justify-center gap-0.5\">\n              <Star className=\"fill-muted2-foreground size-3\" />\n              <Star className=\"fill-muted2-foreground size-3\" />\n              <Star className=\"fill-muted2-foreground size-3\" />\n              <Star className=\"fill-muted2-foreground size-3\" />\n              <Star className=\"fill-muted2-foreground size-3\" />\n            </div>\n            <p className=\"mt-1.5 max-w-40 text-center text-xs leading-snug font-medium text-foreground/60\">\n              Trusted by 2,000+ high performing individuals\n            </p>\n          </div>\n        </div>\n      </div>\n      <div className=\"absolute inset-0 size-full before:absolute before:inset-0 before:bg-background/85 before:content-['']\">\n        <video\n          src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/video-1.mp4\"\n          muted\n          autoPlay\n          loop\n          controls={false}\n          className=\"size-full object-cover object-center\"\n        />\n      </div>\n    </section>\n  );\n};\n\nexport { Hero141 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

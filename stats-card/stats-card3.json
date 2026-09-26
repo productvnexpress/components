@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-card3",
+  "title": "Stats-card",
+  "description": "A metric card showing progress toward a goal with a progress bar and target value.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-progress"
+  ],
+  "registryDependencies": [
+    "card",
+    "progress"
+  ],
+  "files": [
+    {
+      "path": "code/block/stats-card3.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\nimport { Progress } from \"@/components/ui/progress\";\n\ninterface StatsCard3Props {\n  title?: string;\n  value?: number;\n  target?: number;\n  unit?: string;\n  className?: string;\n}\n\nconst StatsCard3 = ({\n  title = \"Monthly Goal\",\n  value = 7500,\n  target = 10000,\n  unit = \"$\",\n  className,\n}: StatsCard3Props) => {\n  const percentage = Math.min(Math.round((value / target) * 100), 100);\n  const formattedValue = value.toLocaleString();\n  const formattedTarget = target.toLocaleString();\n\n  return (\n    <Card className={cn(\"w-full max-w-xs\", className)}>\n      <CardHeader className=\"pb-2\">\n        <CardTitle className=\"text-sm font-medium text-muted-foreground\">\n          {title}\n        </CardTitle>\n      </CardHeader>\n      <CardContent>\n        <div className=\"text-3xl font-bold\">\n          {unit}\n          {formattedValue}\n        </div>\n        <div className=\"mt-3 space-y-2\">\n          <Progress value={percentage} className=\"h-2\" />\n          <div className=\"flex justify-between text-sm text-muted-foreground\">\n            <span>{percentage}% complete</span>\n            <span>\n              Target: {unit}\n              {formattedTarget}\n            </span>\n          </div>\n        </div>\n      </CardContent>\n    </Card>\n  );\n};\n\nexport { StatsCard3 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-header\"\n      className={cn(\n        \"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-title\"\n      className={cn(\"leading-none font-semibold\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-description\"\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-action\"\n      className={cn(\n        \"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-content\"\n      className={cn(\"px-6\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-footer\"\n      className={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardAction,\n  CardDescription,\n  CardContent,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/progress.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as ProgressPrimitive from \"@radix-ui/react-progress\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Progress({\n  className,\n  value,\n  ...props\n}: React.ComponentProps<typeof ProgressPrimitive.Root>) {\n  return (\n    <ProgressPrimitive.Root\n      data-slot=\"progress\"\n      className={cn(\n        \"bg-primary/20 relative h-2 w-full overflow-hidden rounded-full\",\n        className\n      )}\n      {...props}\n    >\n      <ProgressPrimitive.Indicator\n        data-slot=\"progress-indicator\"\n        className=\"bg-primary h-full w-full flex-1 transition-all\"\n        style={{ transform: `translateX(-${100 - (value || 0)}%)` }}\n      />\n    </ProgressPrimitive.Root>\n  )\n}\n\nexport { Progress }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

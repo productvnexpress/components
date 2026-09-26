@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature249",
+  "title": "Feature",
+  "description": "A component displaying a large, animated title with gradient and a below image, structured in a single column layout.",
+  "dependencies": [
+    "motion",
+    "react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "https://magicui.design/r/aurora-text"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature249.tsx",
+      "content": "\"use client\";\n\nimport { motion, MotionValue, useScroll, useTransform } from \"motion/react\";\nimport React, { useRef } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { AuroraText } from \"@/components/magicui/aurora-text\";\n\ninterface Feature249Props {\n  className?: string;\n}\n\nconst Feature249 = ({ className }: Feature249Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <ContainerScroll\n          titleComponent={\n            <>\n              <p className=\"mx-auto mb-4 text-muted-foreground md:text-xl\">\n                Blocks Build with Shadcn and Tailwindcss\n              </p>\n              <h1 className=\"text-7xl font-semibold tracking-tighter md:text-8xl xl:text-[10rem]\">\n                <span className=\"pr-6 text-muted-foreground/40\">Build</span>\n                <AuroraText\n                  colors={[\"#ff6449\", \"#ff6449\", \"#6248fe\", \"#6248fe\"]}\n                >\n                  Faster\n                </AuroraText>\n              </h1>\n            </>\n          }\n        >\n          <img\n            src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-1.png\"\n            alt=\"hero\"\n            height={720}\n            width={1400}\n            className=\"mx-auto h-full rounded-2xl object-cover object-left-top\"\n            draggable={false}\n          />\n        </ContainerScroll>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature249 };\n\n// Below is the modified component from Aceternity UI\n// Original source: npx shadcn@latest add https://ui.aceternity.com/registry/container-scroll-animation.json\n// Modified to follow our coding standards and design system\n// We respect copyright and attribution to the original creators\n\nexport const ContainerScroll = ({\n  titleComponent,\n  children,\n}: {\n  titleComponent: string | React.ReactNode;\n  children: React.ReactNode;\n}) => {\n  const containerRef = useRef<HTMLDivElement>(null);\n  const { scrollYProgress } = useScroll({\n    target: containerRef,\n  });\n  const [isMobile, setIsMobile] = React.useState(false);\n\n  React.useEffect(() => {\n    const checkMobile = () => {\n      setIsMobile(window.innerWidth <= 768);\n    };\n    checkMobile();\n    window.addEventListener(\"resize\", checkMobile);\n    return () => {\n      window.removeEventListener(\"resize\", checkMobile);\n    };\n  }, []);\n\n  const scaleDimensions = () => {\n    return isMobile ? [0.7, 0.9] : [1.05, 1];\n  };\n\n  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);\n  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());\n  const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);\n\n  return (\n    <div\n      className=\"relative flex h-[60rem] items-center justify-center\"\n      ref={containerRef}\n    >\n      <div\n        className=\"relative w-full\"\n        style={{\n          perspective: \"1000px\",\n        }}\n      >\n        <Header translate={translate} titleComponent={titleComponent} />\n        <Card rotate={rotate} translate={translate} scale={scale}>\n          {children}\n        </Card>\n      </div>\n    </div>\n  );\n};\n\nexport const Header = ({\n  translate,\n  titleComponent,\n}: {\n  translate: MotionValue<number>;\n  titleComponent: React.ReactNode;\n}) => {\n  return (\n    <motion.div\n      style={{\n        translateY: translate,\n      }}\n      className=\"div mx-auto max-w-5xl text-center\"\n    >\n      {titleComponent}\n    </motion.div>\n  );\n};\n\nexport const Card = ({\n  rotate,\n  scale,\n  children,\n}: {\n  rotate: MotionValue<number>;\n  scale: MotionValue<number>;\n  translate: MotionValue<number>;\n  children: React.ReactNode;\n}) => {\n  return (\n    <motion.div\n      style={{\n        rotateX: rotate,\n        scale,\n      }}\n      className=\"-4 mx-auto -mt-12 h-[30rem] w-full max-w-5xl rounded-[30px] p-2 shadow-2xl md:h-[40rem] md:p-6\"\n    >\n      <div className=\"h-full w-full overflow-hidden rounded-2xl bg-gray-100 md:rounded-2xl md:p-4 dark:bg-zinc-900\">\n        {children}\n      </div>\n    </motion.div>\n  );\n};\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/magicui/aurora-text.tsx",
+      "content": "\"use client\";\n\nimport React, { memo } from \"react\";\n\ninterface AuroraTextProps {\n  children: React.ReactNode;\n  className?: string;\n  colors?: string[];\n  speed?: number;\n}\n\nexport const AuroraText = memo(\n  ({\n    children,\n    className = \"\",\n    colors = [\"#FF0080\", \"#7928CA\", \"#0070F3\", \"#38bdf8\"],\n    speed = 1,\n  }: AuroraTextProps) => {\n    const gradientStyle = {\n      backgroundImage: `linear-gradient(135deg, ${colors.join(\", \")}, ${\n        colors[0]\n      })`,\n      WebkitBackgroundClip: \"text\",\n      WebkitTextFillColor: \"transparent\",\n      animationDuration: `${10 / speed}s`,\n    };\n\n    return (\n      <span className={`relative inline-block ${className}`}>\n        <span className=\"sr-only\">{children}</span>\n        <span\n          className=\"relative animate-aurora bg-[length:200%_auto] bg-clip-text text-transparent\"\n          style={gradientStyle}\n          aria-hidden=\"true\"\n        >\n          {children}\n        </span>\n      </span>\n    );\n  },\n);\n\nAuroraText.displayName = \"AuroraText\";\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

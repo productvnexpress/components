@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature30",
+  "title": "Feature",
+  "description": "A component featuring a 3-column layout with 2 images and a text block, showcasing a blend of aesthetics and information.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature30.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Feature30Props {\n  className?: string;\n}\n\nconst Feature30 = ({ className }: Feature30Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"flex flex-col gap-16 md:grid md:grid-cols-3 md:gap-10\">\n          <div className=\"order-1 flex h-full items-end rounded-lg bg-muted pt-10 pr-5 md:pt-20 md:pr-10\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\"\n              alt=\"placeholder\"\n              className=\"h-full w-full rounded-tr-lg object-cover\"\n            />\n          </div>\n          <div className=\"order-3 rounded-lg bg-muted pt-10 pl-5 md:order-2 md:col-span-2 md:pt-20 md:pl-10\">\n            <img\n              src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-8.svg\"\n              alt=\"placeholder\"\n              className=\"max-h-[500px] w-full rounded-tl-lg object-cover\"\n            />\n          </div>\n          <div className=\"order-2 -mt-6 md:order-3\">\n            <p className=\"mb-6 text-sm text-muted-foreground md:mb-12\">\n              Lorem ipsum dolor sit amet.\n            </p>\n            <h3 className=\"mb-3 text-2xl font-medium md:mb-6\">\n              Quality and Durability\n            </h3>\n            <p>\n              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi\n              distinctio maiores sint cupiditate ab ullam numquam a similique\n              vel itaque.\n            </p>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature30 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

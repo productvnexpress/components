@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature92",
+  "title": "Feature",
+  "description": "A component showcasing tools integrations and social media links in a 3-column layout followed by a 6-icon row for connectivity options.",
+  "dependencies": [
+    "react-icons",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "code/block/feature92.tsx",
+      "content": "import {\n  FaDiscord,\n  FaLinkedin,\n  FaRedditAlien,\n  FaTelegramPlane,\n  FaTwitter,\n} from \"react-icons/fa\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Feature92Props {\n  className?: string;\n}\n\nconst Feature92 = ({ className }: Feature92Props) => {\n  return (\n    <section className={cn(\"border-y bg-muted/50 py-32\", className)}>\n      <div className=\"container\">\n        <div>\n          <h2 className=\"text-3xl font-bold lg:text-4xl\">\n            Versatile connections.\n          </h2>\n          <p className=\"text-3xl text-muted-foreground lg:text-4xl\">\n            Sync all communications and tasks with active projects.\n          </p>\n        </div>\n        <div className=\"mt-10 mb-8 grid gap-7 lg:grid-cols-3\">\n          <div className=\"flex flex-col gap-2\">\n            <div className=\"flex items-center gap-2 text-xl font-semibold\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/figma-icon.svg\"\n                alt=\"shadcn\"\n                className=\"h-5 w-auto\"\n              />\n              Figma\n            </div>\n            <p>\n              Utilize live-updated thumbnails and synced feedback in tasks to\n              maintain alignment between your teams and projects.\n            </p>\n          </div>\n          <div className=\"flex flex-col gap-2\">\n            <div className=\"flex items-center gap-2 text-xl font-semibold\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/tailwind-icon.svg\"\n                alt=\"shadcn\"\n                className=\"h-5 w-auto\"\n              />\n              TailwindCSS\n            </div>\n            <p>\n              Automate actions using commits and pull requests, linking related\n              tasks directly across platforms for a seamless workflow.\n            </p>\n          </div>\n          <div className=\"flex flex-col gap-2\">\n            <div className=\"flex items-center gap-2 text-xl font-semibold\">\n              <img\n                src=\"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcn-ui-icon.svg\"\n                alt=\"shadcn\"\n                className=\"h-5 w-auto\"\n              />\n              shadcn/ui\n            </div>\n            <p>\n              Receive insights on linked items, and associate conversations to\n              tasks for streamlined collaboration and project management.\n            </p>\n          </div>\n        </div>\n        <ul className=\"grid grid-cols-2 items-center gap-7 text-muted-foreground md:grid-cols-3 lg:grid-cols-6\">\n          <li className=\"flex items-center gap-2 font-medium\">\n            <FaDiscord className=\"size-6 shrink-0\" />\n            Discord\n          </li>\n          <li className=\"flex items-center gap-2 font-medium\">\n            <FaRedditAlien className=\"size-6 shrink-0\" />\n            Reddit\n          </li>\n          <li className=\"flex items-center gap-2 font-medium\">\n            <FaTwitter className=\"size-6 shrink-0\" />\n            Twitter\n          </li>\n          <li className=\"flex items-center gap-2 font-medium\">\n            <FaTelegramPlane className=\"size-6 shrink-0\" />\n            Telegram\n          </li>\n          <li className=\"flex items-center gap-2 font-medium\">\n            <FaLinkedin className=\"size-6 shrink-0\" />\n            LinkedIn\n          </li>\n        </ul>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature92 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}

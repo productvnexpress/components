@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature181",
+  "title": "Feature",
+  "description": "A component showcasing four key features in a grid layout. Each card has a large masked index number, feature details, and a time badge.",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "badge",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "code/block/feature181.tsx",
+      "content": "\"use client\";\nimport {\n  ArrowRight,\n  BadgeCheck,\n  Clock,\n  Pyramid,\n  Sparkle,\n  Zap,\n} from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { Button } from \"@/components/ui/button\";\n\ninterface DataItem {\n  title: string;\n  description: string;\n  image: string;\n  icon: React.ReactNode;\n}\n\nconst DATA: DataItem[] = [\n  {\n    title: \"Seamless Integrations\",\n    description:\n      \"Connect your favorite tools and services effortlessly for a unified workflow.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg\",\n    icon: <Zap className=\"size-5\" />,\n  },\n  {\n    title: \"Advanced Analytics\",\n    description:\n      \"Gain deep insights with powerful analytics to make data-driven decisions.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg\",\n    icon: <Pyramid className=\"size-5\" />,\n  },\n  {\n    title: \"Smart Search & Filters\",\n    description:\n      \"Find exactly what you need with intelligent search and filtering options.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg\",\n    icon: <Sparkle className=\"size-5\" />,\n  },\n  {\n    title: \"Enhanced Security\",\n    description:\n      \"Protect your data with top-notch security features and encryption.\",\n    image: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg\",\n    icon: <BadgeCheck className=\"size-5\" />,\n  },\n];\n\ninterface Feature181Props {\n  className?: string;\n}\n\nconst Feature181 = ({ className }: Feature181Props) => {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container\">\n        <div className=\"text-left\">\n          <h2 className=\"mb-6 text-3xl font-semibold lg:text-4xl\">\n            Discover Powerful Features\n          </h2>\n          <Button className=\"mr-4 rounded-full\">\n            Get Started\n            <ArrowRight className=\"ml-2 size-4\" />\n          </Button>\n        </div>\n\n        {/* Feature Cards Section */}\n        <div className=\"mt-12 grid md:grid-cols-2 lg:grid-cols-4\">\n          {DATA.map((feature, index) => (\n            <div\n              key={index}\n              className={cn(\"mt-0 flex flex-col border-l px-6 sm:mt-4 md:mt-6\")}\n            >\n              {/* Masked Text */}\n              <div className=\"relative\">\n                <h1 className=\"mb-16 bg-linear-to-r from-white to-transparent bg-clip-text text-9xl\">\n                  0{index + 1}\n                </h1>\n                <div className=\"absolute inset-0 bg-linear-to-r from-white to-transparent opacity-100\"></div>\n              </div>\n\n              <p className=\"text-md mt-4 mb-2 font-semibold\">{feature.title}</p>\n              <p className=\"text-md mb-6 text-muted-foreground\">\n                {feature.description}\n              </p>\n              <Badge variant=\"outline\" className=\"w-fit gap-2 py-2\">\n                <Clock className=\"size-4\" />5 Minute\n              </Badge>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Feature181 };\n",
+      "type": "registry:block"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90\",\n        secondary:\n          \"border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90\",\n        destructive:\n          \"border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"destructive-outline\":\n          \"border-destructive bg-destructive/10 text-destructive font-medium\",\n        success: \n          \"border-green-500 bg-green-200 text-green-700 font-medium\"\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"span\"\n\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\",\n        outline:\n          \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost:\n          \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n        sm: \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\",\n        lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n        icon: \"size-9\",\n        \"icon-sm\": \"size-8\",\n        \"icon-lg\": \"size-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"button\"\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:block"
+}
